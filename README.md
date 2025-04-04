@@ -1,6 +1,6 @@
 # UnitySampleProjects 
 
-Ici, y a des projets différents qui vont représenter des mechaniques différentes du projet, je préfère scinder ce qui peut l'être en plusieurs projets pour éviter de se trouver avec des dossiers surchargés, 
+Ici, y a des projets différents qui vont représenter des mechaniques différentes du projet, je préfère scinder ce qui peut l'être en plusieurs entités pour éviter de se trouver avec des dossiers surchargés, 
 
 On essaie de s'organiser un minimum hein
 
