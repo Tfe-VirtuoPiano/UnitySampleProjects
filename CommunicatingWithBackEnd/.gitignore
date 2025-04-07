@@ -1,0 +1,77 @@
+# Ignore les fichiers système
+[Dd]ebug/
+[Ee]xports/
+[Ll]ibrary/
+[Tt]emp/
+[Oo]bj/
+[Bb]uild/
+[Bb]uilds/
+[Mm]emoryCaptures/
+
+# Ignore les fichiers Unity auto-générés
+sysinfo.txt
+*.stacktrace
+*.userprefs
+
+# VS/VSCode files
+.vscode/
+*.csproj
+*.unityproj
+*.sln
+*.suo
+*.tmp
+*.user
+*.userprefs
+*.pidb
+*.booproj
+*.svd
+
+# Rider files
+.idea/
+*.sln.iml
+
+# Mac system files
+.DS_Store
+
+# Windows system files
+Thumbs.db
+Desktop.ini
+
+# Crash Reports
+sysinfo.txt
+
+# JetBrains Rider
+.idea/
+
+# Autres caches
+*.apk
+*.aab
+
+# Cache Unity Collaborate
+.collabignore
+.Collab/
+
+# Cache Addressables
+Assets/AddressableAssetsData/*/AssetBundleBuildLogs/
+
+# Ignore Unity Cloud build metadata
+UnityCloudBuild/
+
+# Ignore Logs
+*.log
+*.log.*
+
+# Git LFS objects (si utilisé)
+*.psd
+*.png
+*.fbx
+*.mp4
+*.wav
+*.mp3
+*.wav
+*.ogg
+*.wav
+*.wav
+*.wav
+*.wav
+*.wav
