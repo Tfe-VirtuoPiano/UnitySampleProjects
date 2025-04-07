@@ -39,7 +39,7 @@ sysinfo.txt
 *.booproj
 *.svd
 
-Assets/Scripts/*.cs
+
 # Rider files
 .idea/
 *.sln.iml
