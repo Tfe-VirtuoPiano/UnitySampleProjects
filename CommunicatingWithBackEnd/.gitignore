@@ -26,6 +26,20 @@ sysinfo.txt
 *.booproj
 *.svd
 
+# VS/VSCode files
+.vs/
+*.csproj
+*.unityproj
+*.sln
+*.suo
+*.tmp
+*.user
+*.userprefs
+*.pidb
+*.booproj
+*.svd
+
+Assets/Scripts/*.cs
 # Rider files
 .idea/
 *.sln.iml
@@ -56,6 +70,9 @@ Assets/AddressableAssetsData/*/AssetBundleBuildLogs/
 
 # Ignore Unity Cloud build metadata
 UnityCloudBuild/
+
+# Ignore APIConfig
+Assets/Scripts/APIConfig.asset
 
 # Ignore Logs
 *.log
