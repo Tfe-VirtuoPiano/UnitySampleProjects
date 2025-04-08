@@ -3,27 +3,24 @@ using UnityEngine.Networking;
 using System.Text;
 using System.Threading.Tasks;
 
+[System.Serializable]
+public class ErrorResponse
+{
+    public string message;
+}
+
 public class AuthManager : MonoBehaviour
 {
     [SerializeField] private string testEmail = "test@example.com";
     [SerializeField] private string testPassword = "password123";
     [SerializeField] private bool autoLoginOnStart = true;
 
+    // Événement pour notifier les erreurs
+    public delegate void ErrorHandler(string message);
+    public event ErrorHandler OnError;
+
     private string authToken;
     private const string API_URL = "http://localhost:3000/api/auth/unity";
-
-    [System.Serializable]
-    public class LoginData
-    {
-        public string email;
-        public string password;
-
-        public LoginData(string email, string password)
-        {
-            this.email = email;
-            this.password = password;
-        }
-    }
 
     private void Start()
     {
@@ -44,11 +41,9 @@ public class AuthManager : MonoBehaviour
     {
         try
         {
-            // Création de l'objet de données
             var loginData = new LoginData(email, password);
             string jsonData = JsonUtility.ToJson(loginData);
 
-            // Log des données envoyées
             Debug.Log($"Données envoyées : {jsonData}");
 
             byte[] bodyRaw = Encoding.UTF8.GetBytes(jsonData);
@@ -58,10 +53,6 @@ public class AuthManager : MonoBehaviour
                 www.uploadHandler = new UploadHandlerRaw(bodyRaw);
                 www.downloadHandler = new DownloadHandlerBuffer();
                 www.SetRequestHeader("Content-Type", "application/json");
-
-                // Log de la requête
-                Debug.Log($"URL de la requête : {API_URL}");
-                Debug.Log($"Headers : {www.GetRequestHeader("Content-Type")}");
 
                 var operation = www.SendWebRequest();
                 while (!operation.isDone)
@@ -79,18 +70,47 @@ public class AuthManager : MonoBehaviour
                 }
                 else
                 {
-                    Debug.LogError($"Erreur de connexion : {www.error}");
-                    Debug.LogError($"Code de réponse : {www.responseCode}");
-                    Debug.LogError($"Headers de réponse : {www.GetResponseHeaders()}");
+                    // Tenter de parser le message d'erreur
+                    string errorMessage = "Erreur de connexion";
+                    if (!string.IsNullOrEmpty(www.downloadHandler.text))
+                    {
+                        try
+                        {
+                            var errorResponse = JsonUtility.FromJson<ErrorResponse>(www.downloadHandler.text);
+                            errorMessage = errorResponse.message;
+                        }
+                        catch
+                        {
+                            errorMessage = www.error;
+                        }
+                    }
+
+                    Debug.LogError($"Erreur de connexion : {errorMessage}");
+                    OnError?.Invoke(errorMessage); // Déclencher l'événement d'erreur
                     return false;
                 }
             }
         }
         catch (System.Exception e)
         {
-            Debug.LogError($"Exception lors de la connexion : {e.Message}");
+            string errorMessage = $"Exception lors de la connexion : {e.Message}";
+            Debug.LogError(errorMessage);
+            OnError?.Invoke(errorMessage); // Déclencher l'événement d'erreur
             return false;
         }
+    }
+}
+
+[System.Serializable]
+public class LoginData
+{
+    public string email;
+    public string password;
+
+    public LoginData(string email, string password)
+    {
+        this.email = email;
+        this.password = password;
     }
 }
 
