@@ -92,7 +92,7 @@ public class NoteTrigger : MonoBehaviour
     {
         if (noteInZone != null)
         {
-            Debug.Log($"✅ HIT! Played note: {expectedNote} with key {expectedKey}");
+         
             
             // Utiliser la méthode Hit() du NoteMover
             noteInZone.Hit();

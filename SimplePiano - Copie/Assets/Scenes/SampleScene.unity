@@ -1909,7 +1909,7 @@ MonoBehaviour:
   startDelay: 3
   tempo: 0
   travelDistance: 5
-  zoomFactor: 0.4
+  zoomFactor: 0.2
 --- !u!4 &1190097020
 Transform:
   m_ObjectHideFlags: 0

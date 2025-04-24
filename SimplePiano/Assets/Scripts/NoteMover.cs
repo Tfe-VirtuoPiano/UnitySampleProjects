@@ -6,7 +6,6 @@ public class NoteMover : MonoBehaviour
     private Vector3 targetPosition;
     private float travelTime; // Temps total de parcours basé sur le tempo
     private float elapsed;
-    private float extraDestructionTime = 2.0f; // Temps supplémentaire avant destruction
 
     public string noteName;
     public bool isInHitZone = false;
@@ -38,11 +37,9 @@ public class NoteMover : MonoBehaviour
         // Déplacement du pivot à vitesse constante
         transform.position = Vector3.Lerp(startPosition, targetPosition, t);
 
-        // Destruction automatique après un délai supplémentaire une fois que la note est passée
-        // pour permettre à l'objet enfant (la note visuelle) de sortir complètement de l'écran
-        if (elapsed > travelTime + extraDestructionTime)
+     
+        if (elapsed > travelTime )
         {
-            Debug.Log($"🗑️ Auto-destruction de la note {noteName} après sortie de l'écran");
             DestroyNote();
         }
     }
@@ -57,6 +54,6 @@ public class NoteMover : MonoBehaviour
     public void Hit()
     {
         hasBeenHit = true;
-        Debug.Log($"🎵 Note {noteName} frappée!");
+        
     }
 }

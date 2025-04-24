@@ -27,13 +27,13 @@ public class NoteSpawner : MonoBehaviour
     private Dictionary<string, float> noteToX = new Dictionary<string, float>()
     {
         { "C4", 0.00f },
-        { "D4", 0.21f },
-        { "E4", 0.42f },
-        { "F4", 0.63f },
-        { "G4", 0.84f },
-        { "A4", 1.05f },
-        { "B4", 1.26f },
-        { "C5", 1.47f }
+        { "D4", 0.22f },
+        { "E4", 0.44f },
+        { "F4", 0.66f },
+        { "G4", 0.88f },
+        { "A4", 1.10f },
+        { "B4", 1.32f },
+        { "C5", 1.54f }
     };
 
     void Start()
@@ -128,7 +128,6 @@ public class NoteSpawner : MonoBehaviour
                 float travelTime = travelDistance / noteSpeed;
                 pivotObject.AddComponent<NoteMover>().Init(travelTime, new Vector3(xPos, 0.1f, 0), note.note);
                 
-                Debug.Log($"✨ Créé note {note.note} - Début: {note.startBeat}, Durée: {note.durationInBeats}");
             }
         }
     }
