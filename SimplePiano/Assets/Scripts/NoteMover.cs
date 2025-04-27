@@ -10,6 +10,7 @@ public class NoteMover : MonoBehaviour
     private float totalTravelTime; // Temps total incluant le passage de l'arrière de la note
 
     public string noteName;
+    public string handType = "right"; // "left" ou "right" - par défaut "right"
     public bool isInHitZone = false;
     public bool hasBeenHit = false; // Indique si la note a été frappée par le joueur
     public Material hitMaterial; // Matériau à appliquer quand la note est jouée
@@ -59,7 +60,7 @@ public class NoteMover : MonoBehaviour
             float extraDistance = moveSpeed * extraTailTime;
             endPosition = targetPosition + (moveDirection * extraDistance);
             
-            Debug.Log($"Note {noteName} - Longueur: {noteLength}, Position arrière: {backEdgeOffset}, " +
+            Debug.Log($"Note {noteName} ({handType}) - Longueur: {noteLength}, Position arrière: {backEdgeOffset}, " +
                      $"Temps standard: {travelTime}s, Temps supplémentaire: {extraTailTime}s, " +
                      $"Total: {totalTravelTime}s");
         }
@@ -116,7 +117,7 @@ public class NoteMover : MonoBehaviour
         // Changer la couleur de la note si on a un renderer et un matériau
         if (noteRenderer != null && hitMaterial != null)
         {
-            Debug.Log($"🎨 Changement de couleur pour la note {noteName}");
+            Debug.Log($"🎨 Changement de couleur pour la note {noteName} ({handType})");
             noteRenderer.material = hitMaterial;
         }
         else

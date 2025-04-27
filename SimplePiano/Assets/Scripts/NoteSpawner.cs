@@ -8,8 +8,13 @@ public class NoteSpawner : MonoBehaviour
     public Transform spawnParent;
     public SongData songData;
     
-    // Matériau à appliquer quand une note est jouée
-    public Material hitNoteMaterial;
+    // Matériaux pour les notes
+    public Material rightHandNoteMaterial; // Matériau pour les notes de la main droite (par défaut)
+    public Material leftHandNoteMaterial;  // Matériau pour les notes de la main gauche
+    
+    // Matériaux pour les notes jouées
+    public Material rightHandHitMaterial;  // Matériau quand une note de main droite est jouée
+    public Material leftHandHitMaterial;   // Matériau quand une note de main gauche est jouée
     
     // Collection des triggers de notes pour vérification
     public NoteTrigger[] noteTriggers;
@@ -52,10 +57,10 @@ public class NoteSpawner : MonoBehaviour
             Debug.Log($"NoteSpawner a trouvé {noteTriggers.Length} NoteTriggers dans la scène");
         }
         
-        // Vérifier que le matériau pour les notes jouées est assigné
-        if (hitNoteMaterial == null)
+        // Vérifier que les matériaux sont assignés
+        if (rightHandHitMaterial == null || leftHandHitMaterial == null)
         {
-            Debug.LogWarning("Pas de matériau assigné pour les notes jouées! Les notes ne changeront pas de couleur.");
+            Debug.LogWarning("Un ou plusieurs matériaux pour les notes jouées ne sont pas assignés!");
         }
         
         tempo = songData.tempo;
@@ -96,11 +101,23 @@ public class NoteSpawner : MonoBehaviour
                 // Pour positionner correctement les notes, on calcule leur longueur en unités
                 float noteLengthUnits = note.durationInBeats * unitPerBeat;
                 
-                // Nous devons positionner les notes de façon à ce que leur bord avant soit à la position de début
-                // et leur bord arrière soit à la position de fin (début + durée)
-                
                 // Créer l'objet note à la position initiale
                 GameObject newNote = Instantiate(notePrefab, spawnParent);
+                
+                // Définir le matériau initial en fonction de la main (gauche/droite)
+                Renderer noteRenderer = newNote.GetComponent<Renderer>();
+                if (noteRenderer != null)
+                {
+                    // Déterminer quel matériau utiliser en fonction de la main
+                    if (note.hand != null && note.hand.ToLower() == "left")
+                    {
+                        noteRenderer.material = leftHandNoteMaterial;
+                    }
+                    else
+                    {
+                        noteRenderer.material = rightHandNoteMaterial;
+                    }
+                }
                 
                 // Ajuster l'échelle pour la longueur de la note
                 newNote.transform.localScale = new Vector3(0.18f, 0.1f, noteLengthUnits);
@@ -137,7 +154,18 @@ public class NoteSpawner : MonoBehaviour
                 float travelTime = travelDistance / noteSpeed;
                 NoteMover noteMover = pivotObject.AddComponent<NoteMover>();
                 noteMover.Init(travelTime, new Vector3(xPos, 0.1f, 0), note.note);
-                noteMover.hitMaterial = hitNoteMaterial; // Assigner le matériau pour les notes jouées
+                
+                // Assigner le matériau de surbrillance approprié en fonction de la main
+                if (note.hand != null && note.hand.ToLower() == "left")
+                {
+                    noteMover.hitMaterial = leftHandHitMaterial;
+                    noteMover.handType = "left";
+                }
+                else
+                {
+                    noteMover.hitMaterial = rightHandHitMaterial;
+                    noteMover.handType = "right";
+                }
             }
         }
     }
