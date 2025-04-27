@@ -8,6 +8,9 @@ public class NoteSpawner : MonoBehaviour
     public Transform spawnParent;
     public SongData songData;
     
+    // Matériau à appliquer quand une note est jouée
+    public Material hitNoteMaterial;
+    
     // Collection des triggers de notes pour vérification
     public NoteTrigger[] noteTriggers;
 
@@ -47,6 +50,12 @@ public class NoteSpawner : MonoBehaviour
         else
         {
             Debug.Log($"NoteSpawner a trouvé {noteTriggers.Length} NoteTriggers dans la scène");
+        }
+        
+        // Vérifier que le matériau pour les notes jouées est assigné
+        if (hitNoteMaterial == null)
+        {
+            Debug.LogWarning("Pas de matériau assigné pour les notes jouées! Les notes ne changeront pas de couleur.");
         }
         
         tempo = songData.tempo;
@@ -126,8 +135,9 @@ public class NoteSpawner : MonoBehaviour
                 
                 // Déplacer le pivot (point avant de la note) à vitesse constante
                 float travelTime = travelDistance / noteSpeed;
-                pivotObject.AddComponent<NoteMover>().Init(travelTime, new Vector3(xPos, 0.1f, 0), note.note);
-                
+                NoteMover noteMover = pivotObject.AddComponent<NoteMover>();
+                noteMover.Init(travelTime, new Vector3(xPos, 0.1f, 0), note.note);
+                noteMover.hitMaterial = hitNoteMaterial; // Assigner le matériau pour les notes jouées
             }
         }
     }

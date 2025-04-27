@@ -1,4 +1,5 @@
 using UnityEngine;
+using MidiJack;
 
 public class NoteTrigger : MonoBehaviour
 {
@@ -6,14 +7,14 @@ public class NoteTrigger : MonoBehaviour
 
     private NoteMover noteInZone;
     private GameObject noteObject; // Référence à l'objet note (enfant du pivot)
-    private KeyCode expectedKey;
-    private bool debugKeyPressed = false;
+    private int expectedMidiNote;
 
     void Start()
     {
-        // Récupérer la touche correspondante à la note attendue
-        expectedKey = KeyMapper.GetKeyForNote(expectedNote);
-        Debug.Log($"NoteTrigger pour {expectedNote} initialisé - Touche attendue: {expectedKey}");
+        // Récupérer le numéro MIDI correspondant à la note attendue
+        expectedMidiNote = MidiNoteUtils.GetMidiNumber(expectedNote);
+        
+        Debug.Log($"NoteTrigger pour {expectedNote} initialisé - MIDI: {expectedMidiNote}");
         
         // Vérifier que le trigger a bien un collider
         if (GetComponent<Collider>() == null)
@@ -47,7 +48,7 @@ public class NoteTrigger : MonoBehaviour
                 noteObject = other.transform.GetChild(0).gameObject;
             }
             
-            Debug.Log($"🎹 Note {expectedNote} prête à être jouée avec la touche {expectedKey}");
+            Debug.Log($"🎹 Note {expectedNote} prête à être jouée avec MIDI {expectedMidiNote}");
         }
     }
 
@@ -65,19 +66,10 @@ public class NoteTrigger : MonoBehaviour
 
     void Update()
     {
-        // Test spécifique pour cette note - appuyez sur la touche Tab pour frapper n'importe quelle note
-        if (Input.GetKeyDown(KeyCode.Tab) && noteInZone != null)
+        // Détection des entrées MIDI uniquement
+        if (MidiMaster.GetKeyDown(expectedMidiNote))
         {
-            Debug.Log($"🔨 Forçage de frappe avec Tab pour {expectedNote}");
-            PlayNote();
-            return;
-        }
-    
-        // Détection normale de la touche associée à cette note
-        if (Input.GetKeyDown(expectedKey))
-        {
-            Debug.Log($"⌨️ Touche {expectedKey} pour note {expectedNote} enfoncée!");
-            debugKeyPressed = true;
+            Debug.Log($"🎹 Note MIDI {expectedMidiNote} ({expectedNote}) enfoncée!");
             
             // Si une note est dans la zone, la jouer
             if (noteInZone != null)
@@ -92,8 +84,6 @@ public class NoteTrigger : MonoBehaviour
     {
         if (noteInZone != null)
         {
-         
-            
             // Utiliser la méthode Hit() du NoteMover
             noteInZone.Hit();
             
