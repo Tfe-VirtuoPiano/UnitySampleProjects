@@ -19,11 +19,11 @@ public class NoteSpawner : MonoBehaviour
     // Collection des triggers de notes pour vérification
     public NoteTrigger[] noteTriggers;
 
-    public float startDelay = 3f;
+    public float startDelay = 1f;
     public int tempo; // modifiable via UI plus tard
     
-    // Distance parcourue par les notes
-    public float travelDistance = 5f;
+    // Distance parcourue par les notes (maintenant relative au piano)
+    public float travelDistance = 50f; 
     // Distance en unités qui représente 1 beat
     public float unitPerBeat = 1.0f;
     
@@ -31,7 +31,7 @@ public class NoteSpawner : MonoBehaviour
     private float beatDuration; // Durée d'un temps en secondes
     private float noteSpeed; // Vitesse constante basée sur le tempo
     
-    // Mapping des notes vers leur position X
+    // Mapping des notes vers leur position X relative
     private Dictionary<string, float> noteToX = new Dictionary<string, float>()
     {
         { "C4", 0.00f },
@@ -46,6 +46,13 @@ public class NoteSpawner : MonoBehaviour
 
     void Start()
     {
+        // Vérifier que le spawner est bien un enfant du piano
+        if (transform.parent == null)
+        {
+            Debug.LogError("Le NoteSpawner doit être un enfant du piano !");
+            return;
+        }
+
         // Vérifier que les triggers sont bien configurés
         noteTriggers = FindObjectsOfType<NoteTrigger>();
         if (noteTriggers.Length == 0)
@@ -101,8 +108,8 @@ public class NoteSpawner : MonoBehaviour
                 // Pour positionner correctement les notes, on calcule leur longueur en unités
                 float noteLengthUnits = note.durationInBeats * unitPerBeat;
                 
-                // Créer l'objet note à la position initiale
-                GameObject newNote = Instantiate(notePrefab, spawnParent);
+                // Créer l'objet note comme enfant du spawner
+                GameObject newNote = Instantiate(notePrefab, transform);
                 
                 // Définir le matériau initial en fonction de la main (gauche/droite)
                 Renderer noteRenderer = newNote.GetComponent<Renderer>();
@@ -122,15 +129,12 @@ public class NoteSpawner : MonoBehaviour
                 // Ajuster l'échelle pour la longueur de la note
                 newNote.transform.localScale = new Vector3(0.18f, 0.1f, noteLengthUnits);
                 
-                // Déplacer le pivot au bord avant (côté piano) de la note
-                // Par défaut, le pivot est au centre de l'objet
-                // Nous devons créer un objet parent pour gérer correctement le décalage du pivot
+                // Créer le pivot comme enfant du spawner
                 GameObject pivotObject = new GameObject("NotePivot_" + note.note);
-                pivotObject.transform.SetParent(spawnParent);
+                pivotObject.transform.SetParent(transform);
                 
-                // Le bord avant de la note doit être à Z = travelDistance au départ
-                // et se déplacer vers Z = 0 (position du clavier)
-                pivotObject.transform.position = new Vector3(xPos, 0.1f, travelDistance);
+                // Position relative au piano - Augmenté la hauteur (Y) de 0.1f à 0.5f
+                pivotObject.transform.localPosition = new Vector3(xPos, 0f, travelDistance);
                 
                 // Ajouter un BoxCollider plus grand pour la détection des collisions
                 BoxCollider pivotCollider = pivotObject.AddComponent<BoxCollider>();
@@ -153,7 +157,8 @@ public class NoteSpawner : MonoBehaviour
                 // Déplacer le pivot (point avant de la note) à vitesse constante
                 float travelTime = travelDistance / noteSpeed;
                 NoteMover noteMover = pivotObject.AddComponent<NoteMover>();
-                noteMover.Init(travelTime, new Vector3(xPos, 0.1f, 0), note.note);
+                // Position cible relative au piano - Augmenté la hauteur (Y) ici aussi
+                noteMover.Init(travelTime, new Vector3(xPos, 0f, 0), note.note);
                 
                 // Assigner le matériau de surbrillance approprié en fonction de la main
                 if (note.hand != null && note.hand.ToLower() == "left")

@@ -24,7 +24,7 @@ public class NoteMover : MonoBehaviour
     public void Init(float targetTravelTime, Vector3 destination, string note)
     {
         travelTime = targetTravelTime;
-        startPosition = transform.position;
+        startPosition = transform.localPosition; // Utiliser localPosition au lieu de position
         targetPosition = destination;
         noteName = note;
         elapsed = 0f;
@@ -83,14 +83,14 @@ public class NoteMover : MonoBehaviour
             {
                 // Déplacement linéaire standard jusqu'au clavier
                 float t = elapsed / travelTime;
-                transform.position = Vector3.Lerp(startPosition, targetPosition, t);
+                transform.localPosition = Vector3.Lerp(startPosition, targetPosition, t); // Utiliser localPosition
             }
             else
             {
                 // Une fois le clavier atteint, on continue au-delà pour que l'arrière passe
                 // Calcul de la progression dans cette seconde phase
                 float t2 = (elapsed - travelTime) / extraTailTime;
-                transform.position = Vector3.Lerp(targetPosition, endPosition, t2);
+                transform.localPosition = Vector3.Lerp(targetPosition, endPosition, t2); // Utiliser localPosition
             }
         }
         else
