@@ -523,6 +523,9 @@ MonoBehaviour:
   mainDroiteColor: {r: 1, g: 0.57628596, b: 0, a: 1}
   noteSeparation: 39
   darkenFactor: 0.9
+  isRecording: 1
+  fileName: Enregistrement4
+  showRecordingControls: 1
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
