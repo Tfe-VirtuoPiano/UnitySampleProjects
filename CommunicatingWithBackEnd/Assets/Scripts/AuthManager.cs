@@ -2,6 +2,7 @@ using UnityEngine;
 using UnityEngine.Networking;
 using System.Text;
 using System.Threading.Tasks;
+using System.Collections;
 
 [System.Serializable]
 public class ErrorResponse
@@ -9,11 +10,26 @@ public class ErrorResponse
     public string message;
 }
 
+[System.Serializable]
+public class User
+{
+    public string userName;
+    public string email;
+    public int level;
+    public string createdAt;
+}
+
+public class UsersList
+{
+    public User[] Users;
+}
+
 public class AuthManager : MonoBehaviour
 {
     [SerializeField] private string testEmail = "test@example.com";
     [SerializeField] private string testPassword = "password123";
     [SerializeField] private bool autoLoginOnStart = true;
+    [SerializeField] private APIConfig APIConfig;
 
     // Événement pour notifier les erreurs
     public delegate void ErrorHandler(string message);
@@ -64,8 +80,18 @@ public class AuthManager : MonoBehaviour
                 {
                     Debug.Log($"Réponse du serveur : {www.downloadHandler.text}");
                     authToken = JsonUtility.FromJson<AuthResponse>(www.downloadHandler.text).token;
+
+                    // Logs de débogage pour le token
+                    Debug.Log($"🔍 Token complet reçu: {authToken}");
+                    Debug.Log($"🔍 Longueur du token: {authToken?.Length ?? 0}");
+                    Debug.Log($"🔍 Token non vide: {!string.IsNullOrEmpty(authToken)}");
+
                     PlayerPrefs.SetString("AuthToken", authToken);
                     PlayerPrefs.Save();
+
+                    // Appeler l'API utilisateur après une authentification réussie
+                    StartCoroutine(GetUsers());
+
                     return true;
                 }
                 else
@@ -97,6 +123,55 @@ public class AuthManager : MonoBehaviour
             Debug.LogError(errorMessage);
             OnError?.Invoke(errorMessage); // Déclencher l'événement d'erreur
             return false;
+        }
+    }
+
+    IEnumerator GetUsers()
+    {
+        Debug.Log($"🔍 Début de GetUsers()");
+        Debug.Log($"🔍 Token stocké: {authToken?.Substring(0, Mathf.Min(50, authToken?.Length ?? 0))}...");
+        Debug.Log($"🔍 API URL: {APIConfig.APIUrl}/api/users");
+        Debug.Log($"🔍 API Key: {APIConfig.APIKey?.Substring(0, Mathf.Min(10, APIConfig.APIKey?.Length ?? 0))}...");
+
+        using (UnityWebRequest request = UnityWebRequest.Get($"{APIConfig.APIUrl}/api/users"))
+        {
+            request.SetRequestHeader("x-api-key", APIConfig.APIKey);
+
+            // IMPORTANT: Ajouter le token d'authentification
+            if (!string.IsNullOrEmpty(authToken))
+            {
+                string authHeader = $"Bearer {authToken}";
+                request.SetRequestHeader("Authorization", authHeader);
+                Debug.Log($"🔍 Header Authorization ajouté: {authHeader.Substring(0, Mathf.Min(60, authHeader.Length))}...");
+            }
+            else
+            {
+                Debug.LogError("🔍 Aucun token d'authentification disponible !");
+            }
+
+            yield return request.SendWebRequest();
+
+            Debug.Log($"🔍 Résultat de la requête: {request.result}");
+            Debug.Log($"🔍 Code de statut: {request.responseCode}");
+
+            if (request.result == UnityWebRequest.Result.Success)
+            {
+                string jsonResponse = request.downloadHandler.text;
+                Debug.Log($"Users reçus : {jsonResponse}");
+
+                string wrappedJson = "{\"Users\":" + jsonResponse + "}";
+                UsersList AllMyUsers = JsonUtility.FromJson<UsersList>(wrappedJson);
+                foreach (User user in AllMyUsers.Users)
+                {
+                    Debug.Log($"Utilisateur: {user.userName}, Niveau: {user.level}");
+                }
+            }
+            else
+            {
+                Debug.LogError($"Erreur lors de la récupération des utilisateurs: {request.error}");
+                Debug.LogError($"Code de statut: {request.responseCode}");
+                Debug.LogError($"Réponse du serveur: {request.downloadHandler.text}");
+            }
         }
     }
 }

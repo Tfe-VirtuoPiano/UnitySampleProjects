@@ -9,10 +9,11 @@ using Melanchall.DryWetMidi.Common;
 public class BarScript : MonoBehaviour
 {
     const int keysCount = 88;
+    [SerializeField] bool showDebug = true;
     [SerializeField] GameObject barManager;
     GameObject[] barsPressed = new GameObject[keysCount];
     [SerializeField] List<GameObject> barsReleased = new List<GameObject>();
-   
+    
     bool[] isKeyPressed = new bool[keysCount];
 
     [SerializeField] float barSpeed = (float)0.01;
@@ -32,7 +33,7 @@ public class BarScript : MonoBehaviour
     [SerializeField] int tempoBPM = 120;
     [SerializeField] int timeSignatureNumerator = 4;
     [SerializeField] int timeSignatureDenominator = 4;
-    [SerializeField] int ticksPerBeat = 960;
+    [SerializeField] short ticksPerBeat = 960;
     
     [Header("Contrôles d'enregistrement")]
     [SerializeField] bool showRecordingControls = true;
@@ -123,7 +124,7 @@ public class BarScript : MonoBehaviour
         }
         
         // Debug temporaire pour vérifier les touches noires
-        if (IsToucheNoire(noteNumber))
+        if (showDebug && IsToucheNoire(noteNumber))
         {
             Debug.Log($"Touche noire détectée: Note {noteNumber} (position {noteNumber % 12})");
         }
@@ -203,14 +204,14 @@ public class BarScript : MonoBehaviour
         recordingStartTime = Time.time;
         recordingStarted = true;
         isRecording = true;
-        Debug.Log("🎵 Enregistrement MIDI démarré !");
+        if (showDebug) Debug.Log("🎵 Enregistrement MIDI démarré !");
     }
     
     public void StopRecording()
     {
         recordingStarted = false;
         isRecording = false;
-        Debug.Log($"🎵 Enregistrement MIDI terminé ! {recordedEvents.Count} événements enregistrés.");
+        if (showDebug) Debug.Log($"🎵 Enregistrement MIDI terminé ! {recordedEvents.Count} événements enregistrés.");
     }
     
     private void RecordMidiEvent(int noteNumber, float velocity, bool isNoteOn)
@@ -231,7 +232,7 @@ public class BarScript : MonoBehaviour
     {
         if (recordedEvents.Count == 0)
         {
-            Debug.LogWarning("❌ Aucun événement à exporter !");
+            if (showDebug) Debug.LogWarning("❌ Aucun événement à exporter !");
             return;
         }
         
@@ -241,7 +242,7 @@ public class BarScript : MonoBehaviour
         }
         catch (System.Exception e)
         {
-            Debug.LogError($"❌ Erreur lors de l'export MIDI : {e.Message}");
+            if (showDebug) Debug.LogError($"❌ Erreur lors de l'export MIDI : {e.Message}");
         }
     }
     
@@ -327,12 +328,15 @@ public class BarScript : MonoBehaviour
         string filePath = System.IO.Path.Combine(Application.persistentDataPath, fileName + ".mid");
         midiFile.Write(filePath, true);
         
-        Debug.Log($"✅ Fichier MIDI exporté : {filePath}");
-        Debug.Log($"📊 Événements enregistrés : {recordedEvents.Count}");
-        Debug.Log($"📁 Chemin du fichier : {filePath}");
+        if (showDebug){
+            Debug.Log($"✅ Fichier MIDI exporté : {filePath}");   
+            Debug.Log($"📊 Événements enregistrés : {recordedEvents.Count}");
+            Debug.Log($"📁 Chemin du fichier : {filePath}");
         
+        } 
+     
         // Debug: afficher quelques événements
-        if (recordedEvents.Count > 0)
+        if (showDebug && recordedEvents.Count > 0)
         {
             Debug.Log($"🎵 Premier événement : {recordedEvents[0].time}s - Note {recordedEvents[0].originalMidiNote} - {(recordedEvents[0].isNoteOn ? "ON" : "OFF")}");
             Debug.Log($"🎵 Dernier événement : {recordedEvents[recordedEvents.Count-1].time}s - Note {recordedEvents[recordedEvents.Count-1].originalMidiNote} - {(recordedEvents[recordedEvents.Count-1].isNoteOn ? "ON" : "OFF")}");
@@ -340,8 +344,11 @@ public class BarScript : MonoBehaviour
         }
         
         // Debug: afficher les delta times calculés
-        Debug.Log("🔍 Vérification des delta times :");
-        Debug.Log($"🎵 Tempo: {tempoBPM} BPM, Signature: {timeSignatureNumerator}/{timeSignatureDenominator}, Ticks/Beat: {ticksPerBeat}");
+        if (showDebug) {
+            Debug.Log("🔍 Vérification des delta times :");
+            Debug.Log($"🎵 Tempo: {tempoBPM} BPM, Signature: {timeSignatureNumerator}/{timeSignatureDenominator}, Ticks/Beat: {ticksPerBeat}");
+        }
+
         long totalTicks = 0;
         foreach (var evt in sortedEvents.Take(5)) // Afficher les 5 premiers
         {
@@ -349,7 +356,7 @@ public class BarScript : MonoBehaviour
             double ticksPerSecond = beatsPerSecond * ticksPerBeat;
             long currentTicks = (long)(evt.time * ticksPerSecond);
             long deltaTicks = currentTicks - totalTicks;
-            Debug.Log($"  {evt.time:F3}s → {currentTicks} ticks (delta: {deltaTicks})");
+            if (showDebug) {Debug.Log($"  {evt.time:F3}s → {currentTicks} ticks (delta: {deltaTicks})");}
             totalTicks = currentTicks;
         }
     }
