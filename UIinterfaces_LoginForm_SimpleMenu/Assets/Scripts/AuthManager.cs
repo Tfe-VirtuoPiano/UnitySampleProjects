@@ -19,7 +19,7 @@ public class AuthManager : MonoBehaviour
     public event ErrorHandler OnError;
 
     private string authToken;
-    private const string API_URL = "http://localhost:3000/api/auth/unity";
+    private const string API_URL = "https://virtuo-piano.vercel.app/api/auth/unity";
 
     private void Start()
     {
