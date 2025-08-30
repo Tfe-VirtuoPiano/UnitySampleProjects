@@ -163,6 +163,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5ddd37eea955fb3468e5b596478d2dd4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  showDebug: 0
   barManager: {fileID: 992004354}
 --- !u!1 &330585543
 GameObject:
@@ -519,12 +520,12 @@ MonoBehaviour:
   barsReleased: []
   barSpeed: 0.01
   upperPositionLimit: 100
-  mainGaucheColor: {r: 0, g: 0.6170807, b: 1, a: 1}
-  mainDroiteColor: {r: 1, g: 0.57628596, b: 0, a: 1}
+  mainGaucheColor: {r: 0, g: 0, b: 1, a: 1}
+  mainDroiteColor: {r: 1, g: 0.5, b: 0, a: 1}
   noteSeparation: 39
-  darkenFactor: 0.9
-  isRecording: 1
-  fileName: Enregistrement4
+  darkenFactor: 0.75
+  isRecording: 0
+  fileName: Enregistrement
   showRecordingControls: 1
 --- !u!1660057539 &9223372036854775807
 SceneRoots:

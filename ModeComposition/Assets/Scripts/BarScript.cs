@@ -1,6 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
+using Melanchall.DryWetMidi.Core;
+using Melanchall.DryWetMidi.Interaction;
+using Melanchall.DryWetMidi.Common;
 
 public class BarScript : MonoBehaviour
 {
@@ -24,12 +28,18 @@ public class BarScript : MonoBehaviour
     [SerializeField] bool isRecording = false;
     [SerializeField] string fileName = "Enregistrement";
     
+    [Header("Paramètres MIDI")]
+    [SerializeField] int tempoBPM = 120;
+    [SerializeField] int timeSignatureNumerator = 4;
+    [SerializeField] int timeSignatureDenominator = 4;
+    [SerializeField] int ticksPerBeat = 960;
+    
     [Header("Contrôles d'enregistrement")]
     [SerializeField] bool showRecordingControls = true;
     
     // Structure pour stocker les événements MIDI
     [System.Serializable]
-    public class MidiEvent
+    public class RecordedMidiEvent
     {
         public float time; // Temps en secondes depuis le début
         public int noteNumber; // Numéro de note (0-87 après offset)
@@ -38,7 +48,7 @@ public class BarScript : MonoBehaviour
         public int originalMidiNote; // Numéro MIDI original (avec offset)
     }
     
-    private List<MidiEvent> recordedEvents = new List<MidiEvent>();
+    private List<RecordedMidiEvent> recordedEvents = new List<RecordedMidiEvent>();
     private float recordingStartTime;
     private bool recordingStarted = false;
  
@@ -205,7 +215,7 @@ public class BarScript : MonoBehaviour
     
     private void RecordMidiEvent(int noteNumber, float velocity, bool isNoteOn)
     {
-        MidiEvent midiEvent = new MidiEvent
+        RecordedMidiEvent midiEvent = new RecordedMidiEvent
         {
             time = Time.time - recordingStartTime,
             noteNumber = noteNumber,
@@ -225,130 +235,123 @@ public class BarScript : MonoBehaviour
             return;
         }
         
-        byte[] midiBytes = GenerateMidiBytes();
-        string filePath = System.IO.Path.Combine(Application.persistentDataPath, fileName + ".mid");
-        
         try
         {
-            System.IO.File.WriteAllBytes(filePath, midiBytes);
-            Debug.Log($"✅ Fichier MIDI exporté : {filePath}");
-            Debug.Log($"📊 Taille du fichier : {midiBytes.Length} bytes");
-            Debug.Log($"🎵 Événements enregistrés : {recordedEvents.Count}");
+            GenerateMidiFile();
         }
         catch (System.Exception e)
         {
-            Debug.LogError($"❌ Erreur lors de l'export : {e.Message}");
+            Debug.LogError($"❌ Erreur lors de l'export MIDI : {e.Message}");
         }
     }
     
-    private byte[] GenerateMidiBytes()
+    private void GenerateMidiFile()
     {
-        // Créer un vrai fichier MIDI binaire
-        List<byte> midiBytes = new List<byte>();
+        // Créer un nouveau fichier MIDI
+        var midiFile = new MidiFile();
         
-        // Header MIDI (MThd)
-        midiBytes.AddRange(System.Text.Encoding.ASCII.GetBytes("MThd"));
+        // Définir la division temporelle
+        midiFile.TimeDivision = new TicksPerQuarterNoteTimeDivision(ticksPerBeat);
         
-        // Longueur du header (6 bytes)
-        midiBytes.AddRange(IntToBytes(6, 4));
+        // Créer une piste
+        var trackChunk = new TrackChunk();
+        midiFile.Chunks.Add(trackChunk);
         
-        // Format 0 (1 track)
-        midiBytes.AddRange(IntToBytes(0, 2));
+        // Ajouter un événement de tempo au début
+        // Convertir BPM en microsecondes par beat
+        long microsecondsPerBeat = (long)(60000000.0 / tempoBPM);
+        var tempoEvent = new SetTempoEvent(microsecondsPerBeat);
+        tempoEvent.DeltaTime = 0; // Tempo au tout début
+        trackChunk.Events.Add(tempoEvent);
         
-        // Nombre de tracks (1)
-        midiBytes.AddRange(IntToBytes(1, 2));
+        // Ajouter un événement de signature rythmique
+        var timeSignatureEvent = new TimeSignatureEvent(
+            (FourBitNumber)timeSignatureNumerator,
+            (FourBitNumber)timeSignatureDenominator
+        );
+        timeSignatureEvent.DeltaTime = 0; // Signature au tout début
+        trackChunk.Events.Add(timeSignatureEvent);
         
-        // Division (ticks par beat) - 480 ticks par beat
-        midiBytes.AddRange(IntToBytes(480, 2));
-        
-        // Track header (MTrk)
-        midiBytes.AddRange(System.Text.Encoding.ASCII.GetBytes("MTrk"));
-        
-        // Placeholder pour la longueur du track
-        int trackLengthPosition = midiBytes.Count;
-        midiBytes.AddRange(IntToBytes(0, 4));
-        
-        // Tempo (120 BPM)
-        midiBytes.AddRange(new byte[] { 0x00, 0xFF, 0x51, 0x03, 0x07, 0xA1, 0x20 });
-        
-        // Instrument (Piano)
-        midiBytes.AddRange(new byte[] { 0x00, 0xC0, 0x00 });
+        // Trier les événements par temps
+        var sortedEvents = recordedEvents.OrderBy(e => e.time).ToList();
         
         // Convertir les événements en MIDI
-        float previousTime = 0;
-        foreach (var evt in recordedEvents)
+        long previousTicks = 0;
+        
+        foreach (var evt in sortedEvents)
         {
-            // Calculer le delta time entre cet événement et le précédent
-            float deltaTime = evt.time - previousTime;
+            // Convertir le temps en ticks MIDI
+            // Calculer les ticks par seconde selon le tempo
+            // BPM = beats par minute, donc BPM/60 = beats par seconde
+            // ticks par seconde = (BPM/60) * ticksPerBeat
+            double beatsPerSecond = tempoBPM / 60.0;
+            double ticksPerSecond = beatsPerSecond * ticksPerBeat;
+            long currentTicks = (long)(evt.time * ticksPerSecond);
+            long deltaTicks = currentTicks - previousTicks;
             
-            // À 120 BPM : 2 beats/sec, 480 ticks/beat = 960 ticks/sec
-            // Donc 1 seconde = 960 ticks
-            int ticks = (int)(deltaTime * 960);
+            // S'assurer que le delta time n'est pas négatif
+            if (deltaTicks < 0) deltaTicks = 0;
             
-            // Delta time (VLQ)
-            midiBytes.AddRange(IntToVLQ(ticks));
+            // Créer l'événement MIDI
+            Melanchall.DryWetMidi.Core.MidiEvent midiEvent;
             
-            // Note On/Off
-            byte status = evt.isNoteOn ? (byte)0x90 : (byte)0x80; // Note On = 0x90, Note Off = 0x80
-            midiBytes.Add(status);
+            if (evt.isNoteOn)
+            {
+                // Note On
+                var noteOnEvent = new NoteOnEvent(
+                    (SevenBitNumber)evt.originalMidiNote,
+                    (SevenBitNumber)(evt.velocity * 127)
+                );
+                midiEvent = noteOnEvent;
+            }
+            else
+            {
+                // Note Off
+                var noteOffEvent = new NoteOffEvent(
+                    (SevenBitNumber)evt.originalMidiNote,
+                    (SevenBitNumber)0
+                );
+                midiEvent = noteOffEvent;
+            }
             
-            // Note number
-            midiBytes.Add((byte)evt.originalMidiNote);
+            // Définir le delta time pour cet événement
+            midiEvent.DeltaTime = deltaTicks;
             
-            // Velocity
-            byte velocity = (byte)(evt.velocity * 127);
-            midiBytes.Add(velocity);
+            // Ajouter l'événement à la piste
+            trackChunk.Events.Add(midiEvent);
             
-            previousTime = evt.time;
+            previousTicks = currentTicks;
         }
         
-        // End of track
-        midiBytes.AddRange(new byte[] { 0x00, 0xFF, 0x2F, 0x00 });
+        // Sauvegarder le fichier MIDI
+        string filePath = System.IO.Path.Combine(Application.persistentDataPath, fileName + ".mid");
+        midiFile.Write(filePath, true);
         
-        // Calculer et insérer la longueur du track
-        int trackLength = midiBytes.Count - trackLengthPosition - 4;
-        byte[] trackLengthBytes = IntToBytes(trackLength, 4);
-        for (int i = 0; i < 4; i++)
+        Debug.Log($"✅ Fichier MIDI exporté : {filePath}");
+        Debug.Log($"📊 Événements enregistrés : {recordedEvents.Count}");
+        Debug.Log($"📁 Chemin du fichier : {filePath}");
+        
+        // Debug: afficher quelques événements
+        if (recordedEvents.Count > 0)
         {
-            midiBytes[trackLengthPosition + i] = trackLengthBytes[i];
+            Debug.Log($"🎵 Premier événement : {recordedEvents[0].time}s - Note {recordedEvents[0].originalMidiNote} - {(recordedEvents[0].isNoteOn ? "ON" : "OFF")}");
+            Debug.Log($"🎵 Dernier événement : {recordedEvents[recordedEvents.Count-1].time}s - Note {recordedEvents[recordedEvents.Count-1].originalMidiNote} - {(recordedEvents[recordedEvents.Count-1].isNoteOn ? "ON" : "OFF")}");
+            Debug.Log($"⏱️ Durée totale enregistrée : {recordedEvents[recordedEvents.Count-1].time - recordedEvents[0].time:F2} secondes");
         }
         
-        // Retourner les bytes binaires
-        return midiBytes.ToArray();
-    }
-    
-    private byte[] IntToBytes(int value, int length)
-    {
-        byte[] bytes = new byte[length];
-        for (int i = 0; i < length; i++)
+        // Debug: afficher les delta times calculés
+        Debug.Log("🔍 Vérification des delta times :");
+        Debug.Log($"🎵 Tempo: {tempoBPM} BPM, Signature: {timeSignatureNumerator}/{timeSignatureDenominator}, Ticks/Beat: {ticksPerBeat}");
+        long totalTicks = 0;
+        foreach (var evt in sortedEvents.Take(5)) // Afficher les 5 premiers
         {
-            bytes[length - 1 - i] = (byte)((value >> (i * 8)) & 0xFF);
+            double beatsPerSecond = tempoBPM / 60.0;
+            double ticksPerSecond = beatsPerSecond * ticksPerBeat;
+            long currentTicks = (long)(evt.time * ticksPerSecond);
+            long deltaTicks = currentTicks - totalTicks;
+            Debug.Log($"  {evt.time:F3}s → {currentTicks} ticks (delta: {deltaTicks})");
+            totalTicks = currentTicks;
         }
-        return bytes;
-    }
-    
-    private byte[] IntToVLQ(int value)
-    {
-        List<byte> bytes = new List<byte>();
-        
-        if (value == 0)
-        {
-            bytes.Add(0);
-            return bytes.ToArray();
-        }
-        
-        while (value > 0)
-        {
-            byte b = (byte)(value & 0x7F);
-            value >>= 7;
-            
-            if (value > 0)
-                b |= 0x80;
-                
-            bytes.Add(b);
-        }
-        
-        return bytes.ToArray();
     }
     
     // Méthodes publiques pour contrôler l'enregistrement

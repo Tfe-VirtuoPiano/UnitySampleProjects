@@ -8,7 +8,7 @@ public class MidiScript : MonoBehaviour
     // midi note number of lowest key in your midi device
     // 21: A0
     int keyOffset = 21;
-
+    [SerializeField] bool showDebug = true;
     [SerializeField] GameObject barManager;
 
     // Start is called before the first frame update
@@ -21,7 +21,7 @@ public class MidiScript : MonoBehaviour
             if (midiDevice == null) return;
 
             midiDevice.onWillNoteOn += (note, velocity) => {
-                Debug.Log(string.Format(
+                if (showDebug) Debug.Log(string.Format(
                     "Note On #{0} ({1}) vel:{2:0.00} ch:{3} dev:'{4}'",
                     note.noteNumber,
                     note.noteNumber.GetType(),
@@ -36,7 +36,7 @@ public class MidiScript : MonoBehaviour
             };
             
             midiDevice.onWillNoteOff += (note) => {
-                Debug.Log(string.Format(
+                if (showDebug) Debug.Log(string.Format(
                     "Note Off #{0} ({1}) ch:{2} dev:'{3}'",
                     note.noteNumber,
                     note.shortDisplayName,
