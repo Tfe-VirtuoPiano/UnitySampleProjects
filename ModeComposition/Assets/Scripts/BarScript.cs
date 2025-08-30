@@ -18,7 +18,7 @@ public class BarScript : MonoBehaviour
     [SerializeField] Color mainGaucheColor = Color.blue;
     [SerializeField] Color mainDroiteColor = new Color(1f, 0.5f, 0f); // Orange
     [SerializeField] int noteSeparation = 39; // C4 = note 39 (après offset de 21)
-    [SerializeField] float darkenFactor = 0.6f; // Facteur d'assombrissement pour les touches noires
+    [SerializeField] float darkenFactor = 0.75f; // Facteur d'assombrissement pour les touches noires
  
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
