@@ -1,22 +1,16 @@
 using UnityEngine;
-using UnityEngine.UI;
 using System.Collections;
 
 public class GameManager : MonoBehaviour
 {
     [Header("Références")]
     public NoteSpawner noteSpawner;
-    public Button startButton;
-    public Button pauseButton;
-    public Button restartButton;
-    
-    [Header("UI Elements")]
-    public GameObject mainMenuPanel;
-    public GameObject gamePanel;
-    public Text statusText;
     
     [Header("Paramètres")]
     public float countdownDuration = 3f;
+    
+    [Header("État du jeu")]
+    [SerializeField] private GameState currentState = GameState.MainMenu;
     
     public enum GameState
     {
@@ -27,14 +21,10 @@ public class GameManager : MonoBehaviour
         GameOver     // Fin de partie
     }
     
-    private GameState currentState = GameState.MainMenu;
     private Coroutine countdownCoroutine;
     
     void Start()
     {
-        // Initialiser l'interface
-        SetupUI();
-        
         // Désactiver le spawner automatique
         if (noteSpawner != null)
         {
@@ -45,19 +35,7 @@ public class GameManager : MonoBehaviour
         SetGameState(GameState.MainMenu);
     }
     
-    void SetupUI()
-    {
-        // Configurer les boutons
-        if (startButton != null)
-            startButton.onClick.AddListener(StartGame);
-            
-        if (pauseButton != null)
-            pauseButton.onClick.AddListener(TogglePause);
-            
-        if (restartButton != null)
-            restartButton.onClick.AddListener(RestartGame);
-    }
-    
+    [ContextMenu("Démarrer le jeu")]
     public void StartGame()
     {
         Debug.Log("🎮 Démarrage du jeu...");
@@ -75,14 +53,11 @@ public class GameManager : MonoBehaviour
         
         for (int i = (int)countdownDuration; i > 0; i--)
         {
-            if (statusText != null)
-                statusText.text = $"Préparez-vous... {i}";
+            Debug.Log($"Préparez-vous... {i}");
             yield return new WaitForSeconds(1f);
         }
         
-        if (statusText != null)
-            statusText.text = "C'est parti !";
-        
+        Debug.Log("C'est parti !");
         yield return new WaitForSeconds(0.5f);
         
         // Démarrer la musique
@@ -101,42 +76,39 @@ public class GameManager : MonoBehaviour
         }
     }
     
-    public void TogglePause()
+    [ContextMenu("Mettre en pause")]
+    public void PauseGame()
     {
         if (currentState == GameState.Playing)
         {
-            PauseGame();
-        }
-        else if (currentState == GameState.Paused)
-        {
-            ResumeGame();
+            Debug.Log("⏸️ Jeu mis en pause");
+            SetGameState(GameState.Paused);
+            Time.timeScale = 0f;
+            
+            if (noteSpawner != null)
+            {
+                noteSpawner.PauseMusic();
+            }
         }
     }
     
-    void PauseGame()
+    [ContextMenu("Reprendre")]
+    public void ResumeGame()
     {
-        Debug.Log("⏸️ Jeu mis en pause");
-        SetGameState(GameState.Paused);
-        Time.timeScale = 0f;
-        
-        if (noteSpawner != null)
+        if (currentState == GameState.Paused)
         {
-            noteSpawner.PauseMusic();
+            Debug.Log("▶️ Reprise du jeu");
+            SetGameState(GameState.Playing);
+            Time.timeScale = 1f;
+            
+            if (noteSpawner != null)
+            {
+                noteSpawner.ResumeMusic();
+            }
         }
     }
     
-    void ResumeGame()
-    {
-        Debug.Log("▶️ Reprise du jeu");
-        SetGameState(GameState.Playing);
-        Time.timeScale = 1f;
-        
-        if (noteSpawner != null)
-        {
-            noteSpawner.ResumeMusic();
-        }
-    }
-    
+    [ContextMenu("Recommencer")]
     public void RestartGame()
     {
         Debug.Log("🔄 Redémarrage du jeu");
@@ -153,40 +125,7 @@ public class GameManager : MonoBehaviour
     void SetGameState(GameState newState)
     {
         currentState = newState;
-        UpdateUI();
-        
         Debug.Log($"🎮 État du jeu changé vers: {newState}");
-    }
-    
-    void UpdateUI()
-    {
-        switch (currentState)
-        {
-            case GameState.MainMenu:
-                if (mainMenuPanel != null) mainMenuPanel.SetActive(true);
-                if (gamePanel != null) gamePanel.SetActive(false);
-                if (statusText != null) statusText.text = "Prêt à jouer ?";
-                break;
-                
-            case GameState.Countdown:
-                if (mainMenuPanel != null) mainMenuPanel.SetActive(false);
-                if (gamePanel != null) gamePanel.SetActive(true);
-                break;
-                
-            case GameState.Playing:
-                if (mainMenuPanel != null) mainMenuPanel.SetActive(false);
-                if (gamePanel != null) gamePanel.SetActive(true);
-                if (statusText != null) statusText.text = "Jouez !";
-                break;
-                
-            case GameState.Paused:
-                if (statusText != null) statusText.text = "Pause";
-                break;
-                
-            case GameState.GameOver:
-                if (statusText != null) statusText.text = "Partie terminée !";
-                break;
-        }
     }
     
     // Méthode publique pour vérifier l'état actuel
