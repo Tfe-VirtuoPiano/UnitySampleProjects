@@ -31,6 +31,11 @@ public class NoteSpawner : MonoBehaviour
     private float beatDuration; // Durée d'un temps en secondes
     private float noteSpeed; // Vitesse constante basée sur le tempo
     
+    // Variables pour le contrôle du jeu
+    private bool isMusicStarted = false;
+    private bool isPaused = false;
+    private Coroutine spawnCoroutine;
+    
     // Mapping des notes vers leur position X relative
     private Dictionary<string, float> noteToX = new Dictionary<string, float>()
     {
@@ -76,7 +81,8 @@ public class NoteSpawner : MonoBehaviour
         beatDuration = 60f / tempo;
         noteSpeed = unitPerBeat / beatDuration; // Unités par seconde
         
-        StartCoroutine(WaitBeforeStarting());
+        // Ne plus démarrer automatiquement - le GameManager s'en charge
+        // StartCoroutine(WaitBeforeStarting());
     }
 
     IEnumerator WaitBeforeStarting()
@@ -171,6 +177,75 @@ public class NoteSpawner : MonoBehaviour
                     noteMover.hitMaterial = rightHandHitMaterial;
                     noteMover.handType = "right";
                 }
+            }
+        }
+    }
+    
+    // Méthodes publiques pour le contrôle du jeu
+    
+    public void StartMusic()
+    {
+        if (!isMusicStarted && !isPaused)
+        {
+            Debug.Log("🎵 NoteSpawner: Démarrage de la musique");
+            isMusicStarted = true;
+            songStartTime = Time.time;
+            spawnCoroutine = StartCoroutine(SpawnNotes());
+        }
+        else if (isPaused)
+        {
+            Debug.Log("🎵 NoteSpawner: Reprise de la musique");
+            isPaused = false;
+            Time.timeScale = 1f;
+        }
+    }
+    
+    public void PauseMusic()
+    {
+        if (isMusicStarted && !isPaused)
+        {
+            Debug.Log("⏸️ NoteSpawner: Pause de la musique");
+            isPaused = true;
+            Time.timeScale = 0f;
+        }
+    }
+    
+    public void ResumeMusic()
+    {
+        if (isMusicStarted && isPaused)
+        {
+            Debug.Log("▶️ NoteSpawner: Reprise de la musique");
+            isPaused = false;
+            Time.timeScale = 1f;
+        }
+    }
+    
+    public void StopMusic()
+    {
+        Debug.Log("🛑 NoteSpawner: Arrêt de la musique");
+        isMusicStarted = false;
+        isPaused = false;
+        Time.timeScale = 1f;
+        
+        if (spawnCoroutine != null)
+        {
+            StopCoroutine(spawnCoroutine);
+            spawnCoroutine = null;
+        }
+        
+        // Nettoyer toutes les notes existantes
+        CleanupNotes();
+    }
+    
+    private void CleanupNotes()
+    {
+        // Supprimer toutes les notes existantes
+        NoteMover[] existingNotes = FindObjectsOfType<NoteMover>();
+        foreach (NoteMover note in existingNotes)
+        {
+            if (note != null)
+            {
+                DestroyImmediate(note.gameObject);
             }
         }
     }

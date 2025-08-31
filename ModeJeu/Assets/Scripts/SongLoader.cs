@@ -5,7 +5,7 @@ public class SongLoader : MonoBehaviour
 {
     public NoteSpawner noteSpawner;
 
-    void Awake()
+    void Start()
     {
         SongData mySong = new SongData
         {
