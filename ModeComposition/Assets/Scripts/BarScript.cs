@@ -29,14 +29,16 @@ public class BarScript : MonoBehaviour
     [SerializeField] bool isRecording = false;
     [SerializeField] string fileName = "Enregistrement";
     
+    // Propriété publique pour accéder au nom du fichier
+    public string FileName => fileName;
+    
     [Header("Paramètres MIDI")]
     [SerializeField] int tempoBPM = 120;
     [SerializeField] int timeSignatureNumerator = 4;
     [SerializeField] int timeSignatureDenominator = 4;
     [SerializeField] short ticksPerBeat = 960;
     
-    [Header("Contrôles d'enregistrement")]
-    [SerializeField] bool showRecordingControls = true;
+
     
     // Structure pour stocker les événements MIDI
     [System.Serializable]

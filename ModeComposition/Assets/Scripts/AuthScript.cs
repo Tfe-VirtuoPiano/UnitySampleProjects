@@ -60,8 +60,9 @@ public class AuthScript : MonoBehaviour
                 {
                     Debug.Log($"Réponse du serveur : {www.downloadHandler.text}");
                     authToken = JsonUtility.FromJson<AuthResponse>(www.downloadHandler.text).token;
-
+                    string idUser = JsonUtility.FromJson<AuthResponse>(www.downloadHandler.text).user.id;
                     PlayerPrefs.SetString("AuthToken", authToken);
+                    PlayerPrefs.SetString("idUser", idUser);
                     PlayerPrefs.Save();
 
                     Debug.Log("Login réussi");
