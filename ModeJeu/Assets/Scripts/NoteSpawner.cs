@@ -59,7 +59,7 @@ public class NoteSpawner : MonoBehaviour
         }
 
         // Vérifier que les triggers sont bien configurés
-        noteTriggers = FindObjectsOfType<NoteTrigger>();
+        noteTriggers = FindObjectsByType<NoteTrigger>(FindObjectsSortMode.None);
         if (noteTriggers.Length == 0)
         {
             Debug.LogError("Aucun NoteTrigger trouvé dans la scène! La détection des touches ne fonctionnera pas.");
@@ -240,7 +240,7 @@ public class NoteSpawner : MonoBehaviour
     private void CleanupNotes()
     {
         // Supprimer toutes les notes existantes
-        NoteMover[] existingNotes = FindObjectsOfType<NoteMover>();
+        NoteMover[] existingNotes = FindObjectsByType<NoteMover>(FindObjectsSortMode.None);
         foreach (NoteMover note in existingNotes)
         {
             if (note != null)

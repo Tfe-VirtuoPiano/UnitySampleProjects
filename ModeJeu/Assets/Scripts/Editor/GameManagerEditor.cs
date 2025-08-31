@@ -18,6 +18,26 @@ public class GameManagerEditor : Editor
         GameManager.GameState currentState = gameManager.GetCurrentState();
         EditorGUILayout.LabelField("État actuel:", currentState.ToString());
         
+        // Afficher les informations de chanson
+        if (gameManager.songManager != null)
+        {
+            EditorGUILayout.Space(5);
+            EditorGUILayout.LabelField("🎵 Gestion des Chansons", EditorStyles.boldLabel);
+            EditorGUILayout.LabelField("Chansons disponibles:", gameManager.songManager.GetSongCount().ToString());
+            
+            SongData currentSong = gameManager.songManager.GetCurrentSong();
+            if (currentSong != null)
+            {
+                EditorGUILayout.LabelField("Chanson actuelle:", currentSong.title);
+                EditorGUILayout.LabelField("Compositeur:", currentSong.composer);
+                EditorGUILayout.LabelField("Tempo:", currentSong.tempo.ToString() + " BPM");
+            }
+            else
+            {
+                EditorGUILayout.LabelField("Chanson actuelle:", "Aucune");
+            }
+        }
+        
         EditorGUILayout.Space(10);
         
         // Boutons de contrôle
@@ -66,6 +86,29 @@ public class GameManagerEditor : Editor
             gameManager.RestartGame();
         }
         
+        // Boutons pour les chansons
+        if (gameManager.songManager != null)
+        {
+            EditorGUILayout.Space(5);
+            EditorGUILayout.BeginHorizontal();
+            
+            // Bouton Charger les chansons
+            GUI.backgroundColor = Color.cyan;
+            if (GUILayout.Button("📥 Charger Chansons", GUILayout.Height(25)))
+            {
+                gameManager.LoadSongs();
+            }
+            
+            // Bouton Sélectionner première chanson
+            GUI.backgroundColor = Color.magenta;
+            if (GUILayout.Button("🎵 Première Chanson", GUILayout.Height(25)))
+            {
+                gameManager.SelectFirstSong();
+            }
+            
+            EditorGUILayout.EndHorizontal();
+        }
+        
         // Réinitialiser la couleur
         GUI.backgroundColor = Color.white;
         
@@ -88,7 +131,7 @@ public class GameManagerEditor : Editor
             EditorGUILayout.LabelField("📊 Statistiques", EditorStyles.boldLabel);
             
             // Compter les notes actives
-            NoteMover[] activeNotes = FindObjectsOfType<NoteMover>();
+            NoteMover[] activeNotes = FindObjectsByType<NoteMover>(FindObjectsSortMode.None);
             EditorGUILayout.LabelField("Notes actives:", activeNotes.Length.ToString());
             
             // Compter les notes jouées

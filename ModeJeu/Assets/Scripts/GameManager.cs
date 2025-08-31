@@ -1,10 +1,12 @@
 using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 public class GameManager : MonoBehaviour
 {
     [Header("Références")]
     public NoteSpawner noteSpawner;
+    public SongManager songManager;
     
     [Header("Paramètres")]
     public float countdownDuration = 3f;
@@ -29,6 +31,14 @@ public class GameManager : MonoBehaviour
         if (noteSpawner != null)
         {
             noteSpawner.startDelay = 0f; // Pas de délai automatique
+        }
+        
+        // Configurer le SongManager
+        if (songManager != null)
+        {
+            songManager.OnSongsLoaded += OnSongsLoaded;
+            songManager.OnSongSelected += OnSongSelected;
+            songManager.OnError += OnSongError;
         }
         
         // Afficher le menu principal
@@ -139,5 +149,45 @@ public class GameManager : MonoBehaviour
     {
         Debug.Log("🏁 Fin de la partie");
         SetGameState(GameState.GameOver);
+    }
+    
+    // Méthodes pour gérer les événements du SongManager
+    void OnSongsLoaded(List<SongData> songs)
+    {
+        Debug.Log($"🎵 {songs.Count} chansons chargées dans le GameManager");
+    }
+    
+    void OnSongSelected(SongData song)
+    {
+        Debug.Log($"🎵 Chanson sélectionnée dans le GameManager: {song.title}");
+        // Assigner la chanson au NoteSpawner
+        if (noteSpawner != null)
+        {
+            noteSpawner.songData = song;
+        }
+    }
+    
+    void OnSongError(string error)
+    {
+        Debug.LogError($"❌ Erreur SongManager: {error}");
+    }
+    
+    // Méthodes publiques pour contrôler les chansons
+    [ContextMenu("Charger les chansons")]
+    public void LoadSongs()
+    {
+        if (songManager != null)
+        {
+            songManager.LoadUserSongs();
+        }
+    }
+    
+    [ContextMenu("Sélectionner la première chanson")]
+    public void SelectFirstSong()
+    {
+        if (songManager != null)
+        {
+            songManager.SelectFirstSong();
+        }
     }
 }

@@ -2591,7 +2591,7 @@ MonoBehaviour:
   noteTriggers: []
   startDelay: 3
   tempo: 0
-  travelDistance: 50
+  travelDistance: 19.7
   unitPerBeat: 1
 --- !u!4 &1190097020
 Transform:
@@ -2854,6 +2854,37 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1221240788}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &1363097357
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1363097358}
+  m_Layer: 0
+  m_Name: SongManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1363097358
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1363097357}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 72.16787, y: 69.21609, z: 84.42702}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1366667980
 GameObject:
   m_ObjectHideFlags: 0
@@ -3723,7 +3754,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7be15df3c8099f24e9fe39921cf10948, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  noteSpawner: {fileID: 0}
+  noteSpawner: {fileID: 1190097019}
+  songManager: {fileID: 0}
   countdownDuration: 3
   currentState: 0
 --- !u!4 &1830779143
@@ -5116,3 +5148,4 @@ SceneRoots:
   - {fileID: 290191805}
   - {fileID: 1830779143}
   - {fileID: 750321640}
+  - {fileID: 1363097358}

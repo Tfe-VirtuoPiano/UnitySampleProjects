@@ -27,7 +27,7 @@ public class SongLoader : MonoBehaviour
         new NoteData { note = "G4", durationInBeats = 1.0f, startBeat = 4.0f, finger = 2, hand = "right" },
         new NoteData { note = "A4", durationInBeats = 1.0f, startBeat = 5.0f, finger = 3, hand = "left" },
         new NoteData { note = "B4", durationInBeats = 1.0f, startBeat = 6.0f, finger = 4, hand = "right" },
-        new NoteData { note = "C5", durationInBeats = 1.0f, startBeat = 7.0f, finger = 5, hand = "left" },
+        new NoteData { note = "C6", durationInBeats = 1.0f, startBeat = 7.0f, finger = 5, hand = "left" },
     }
         };
 
