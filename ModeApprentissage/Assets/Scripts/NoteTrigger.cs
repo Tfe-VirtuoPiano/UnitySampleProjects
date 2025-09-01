@@ -61,8 +61,8 @@ public class NoteTrigger : MonoBehaviour
             
             Debug.Log($"🎹 Note {expectedNote} prête à être jouée avec MIDI {expectedMidiNote}");
             
-            // Notifier le NoteSpawner qu'une note est entrée dans la zone (pour le mode stop-and-wait)
-            if (noteSpawner != null)
+            // Notifier le NoteSpawner uniquement si la note est active pour la pratique
+            if (noteSpawner != null && mover.isActiveForPractice)
             {
                 noteSpawner.OnNoteEnterHitZone(mover);
             }
@@ -94,7 +94,16 @@ public class NoteTrigger : MonoBehaviour
             // Si une note est dans la zone, la jouer
             if (noteInZone != null)
             {
-                PlayNote();
+                // Ne pas arrêter le morceau si la note n'est pas active pour la pratique
+                if (noteInZone.isActiveForPractice)
+                {
+                    PlayNote();
+                }
+                else
+                {
+                    // La note n'est pas active: on laisse passer sans impacter la pause
+                    noteInZone.Hit();
+                }
             }
             else
             {

@@ -69,6 +69,18 @@ public class GameManagerEditor : Editor
                 spawner.loopEndMeasure = endMeasure;
                 EditorUtility.SetDirty(spawner);
             }
+
+            EditorGUILayout.Space(5);
+            EditorGUILayout.LabelField("✋ Sélection de la main", EditorStyles.boldLabel);
+            EditorGUI.BeginChangeCheck();
+            var newPracticeHand = (NoteSpawner.PracticeHand)EditorGUILayout.EnumPopup("Main à pratiquer", spawner.practiceHand);
+            Material disabledMat = (Material)EditorGUILayout.ObjectField("Matériau désactivé", spawner.disabledNoteMaterial, typeof(Material), false);
+            if (EditorGUI.EndChangeCheck())
+            {
+                spawner.practiceHand = newPracticeHand;
+                spawner.disabledNoteMaterial = disabledMat;
+                EditorUtility.SetDirty(spawner);
+            }
         }
         
 

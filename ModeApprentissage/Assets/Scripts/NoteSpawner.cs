@@ -31,6 +31,11 @@ public class NoteSpawner : MonoBehaviour
     public int loopStartMeasure = 1; // Mesure de début (1-indexée)
     public int loopEndMeasure = 2;   // Mesure de fin incluse (1-indexée)
 
+    public enum PracticeHand { Both, Right, Left }
+    [Header("Filtre de main à pratiquer")]
+    public PracticeHand practiceHand = PracticeHand.Both; // Main ciblée pour la pratique
+    public Material disabledNoteMaterial; // Matériau gris pour les notes de la main non sélectionnée
+
     public float startDelay = 1f;
     public int tempo; // modifiable via UI plus tard
     
@@ -297,7 +302,7 @@ public class NoteSpawner : MonoBehaviour
                     float targetYPos = IsBlackKey(note.note) ? 0.055f : 0f;
                     noteMover.Init(travelTime, new Vector3(xPos, targetYPos, 0), note.note);
 
-                    // Matériau de hit
+                    // Matériau de hit et main
                     if (note.hand != null && note.hand.ToLower() == "left")
                     {
                         noteMover.hitMaterial = leftHandHitMaterial;
@@ -307,6 +312,24 @@ public class NoteSpawner : MonoBehaviour
                     {
                         noteMover.hitMaterial = rightHandHitMaterial;
                         noteMover.handType = "right";
+                    }
+
+                    // Activer/désactiver selon la main à pratiquer
+                    bool isRight = noteMover.handType == "right";
+                    bool isLeft = noteMover.handType == "left";
+                    bool active = practiceHand == PracticeHand.Both ||
+                                  (practiceHand == PracticeHand.Right && isRight) ||
+                                  (practiceHand == PracticeHand.Left && isLeft);
+                    noteMover.isActiveForPractice = active;
+
+                    // Si non active, assigner un matériau grisé
+                    if (!active && disabledNoteMaterial != null)
+                    {
+                        Renderer nr = newNote.GetComponent<Renderer>();
+                        if (nr != null)
+                        {
+                            nr.material = disabledNoteMaterial;
+                        }
                     }
                 }
             }
@@ -494,6 +517,10 @@ public class NoteSpawner : MonoBehaviour
         if (!useStopAndWaitMode || isWaitingForNote || mover == null)
             return;
 
+        // Ne pas déclencher de pause si la note n'est pas active pour la pratique
+        if (!mover.isActiveForPractice)
+            return;
+
         StartCoroutine(PauseWhenAtKeyboard(mover));
     }
 
@@ -503,6 +530,9 @@ public class NoteSpawner : MonoBehaviour
         // ou arrêter si la note a déjà été jouée avant d'atteindre le clavier
         while (mover != null && mover.transform.localPosition.z > 0f && !mover.hasBeenHit)
         {
+            // Si entre-temps la note devient non active (changement de main), sortir
+            if (mover != null && !mover.isActiveForPractice)
+                yield break;
             yield return null;
         }
 
