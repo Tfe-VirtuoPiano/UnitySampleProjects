@@ -44,13 +44,13 @@ public class SongLoader : MonoBehaviour
         new NoteData { note = "A4", durationInBeats = 1.0f, startBeat = 5.0f, finger = 3, hand = "left" },
         new NoteData { note = "B4", durationInBeats = 1.0f, startBeat = 6.0f, finger = 4, hand = "right" },
 
-        //new NoteData { note = "C5", durationInBeats = 1.0f, startBeat = 30.0f, finger = 1, hand = "right" },
-        //new NoteData { note = "D5", durationInBeats = 1.0f, startBeat = 31.0f, finger = 2, hand = "left" },
-        //new NoteData { note = "E5", durationInBeats = 1.0f, startBeat = 32.0f, finger = 3, hand = "right" },
-        //new NoteData { note = "F5", durationInBeats = 1.0f, startBeat = 33.0f, finger = 1, hand = "left" },
-        //new NoteData { note = "G5", durationInBeats = 1.0f, startBeat = 34.0f, finger = 2, hand = "right" },
-        //new NoteData { note = "A5", durationInBeats = 1.0f, startBeat = 35.0f, finger = 3, hand = "left" },
-        //new NoteData { note = "B5", durationInBeats = 1.0f, startBeat = 36.0f, finger = 4, hand = "right" },
+        new NoteData { note = "C5", durationInBeats = 1.0f, startBeat = 10.0f, finger = 1, hand = "right" },
+        new NoteData { note = "D5", durationInBeats = 1.0f, startBeat = 11.0f, finger = 2, hand = "left" },
+        new NoteData { note = "E5", durationInBeats = 1.0f, startBeat = 12.0f, finger = 3, hand = "right" },
+        new NoteData { note = "F5", durationInBeats = 1.0f, startBeat = 13.0f, finger = 1, hand = "left" },
+        new NoteData { note = "G5", durationInBeats = 1.0f, startBeat = 14.0f, finger = 2, hand = "right" },
+        new NoteData { note = "A5", durationInBeats = 1.0f, startBeat = 15.0f, finger = 3, hand = "left" },
+        new NoteData { note = "B5", durationInBeats = 1.0f, startBeat = 16.0f, finger = 4, hand = "right" },
 
 
         //new NoteData { note = "C6", durationInBeats = 1.0f, startBeat = 40.0f, finger = 1, hand = "right" },

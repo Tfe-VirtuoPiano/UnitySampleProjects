@@ -25,6 +25,11 @@ public class NoteSpawner : MonoBehaviour
     [Header("Mode d'Apprentissage")]
     public bool useStopAndWaitMode = true; // Mode où le morceau s'arrête tant que la note n'est pas jouée
     public float waitTimeout = 10f; // Temps maximum d'attente avant de passer à la note suivante (en secondes)
+    
+    [Header("Boucle par mesures")]
+    public bool useLoopByMeasures = false; // Activer la boucle
+    public int loopStartMeasure = 1; // Mesure de début (1-indexée)
+    public int loopEndMeasure = 2;   // Mesure de fin incluse (1-indexée)
 
     public float startDelay = 1f;
     public int tempo; // modifiable via UI plus tard
@@ -191,117 +196,148 @@ public class NoteSpawner : MonoBehaviour
         List<NoteData> sortedNotes = new List<NoteData>(songData.notes);
         sortedNotes.Sort((a, b) => a.startBeat.CompareTo(b.startBeat));
         
-        foreach (NoteData note in sortedNotes)
-        {
-            // Temps d'attente basé directement sur les beats et tempo
-            float startTimeInSeconds = note.startBeat * beatDuration;
-            float waitTime = startTimeInSeconds - (Time.time - songStartTime);
-            
-            if (waitTime > 0)
-                yield return new WaitForSeconds(waitTime);
+        // Déterminer le nombre de temps par mesure depuis la signature rythmique (ex: "4/4")
+        int beatsPerMeasure = ParseBeatsPerMeasure(songData.timeSignature);
+        if (beatsPerMeasure <= 0) beatsPerMeasure = 4;
 
-            if (noteToX.TryGetValue(note.note, out float xPos))
+        // Préparer la sélection des notes selon le mode
+        List<NoteData> notesToPlay = sortedNotes;
+        int loopStartBeat = 0;
+        int loopEndBeatExclusive = int.MaxValue;
+
+        if (useLoopByMeasures)
+        {
+            // Clamp des valeurs de mesures
+            int startMeasure = Mathf.Max(1, loopStartMeasure);
+            int endMeasure = Mathf.Max(startMeasure, loopEndMeasure);
+
+            loopStartBeat = (startMeasure - 1) * beatsPerMeasure;
+            loopEndBeatExclusive = endMeasure * beatsPerMeasure; // fin exclusive
+
+            notesToPlay = sortedNotes.FindAll(n => n.startBeat >= loopStartBeat && n.startBeat < loopEndBeatExclusive);
+        }
+
+        // Si aucune note à jouer (segment vide), on sort proprement
+        if (notesToPlay.Count == 0)
+        {
+            Debug.LogWarning("Aucune note dans l'intervalle sélectionné. Lecture annulée.");
+            yield break;
+        }
+
+        // Fonction locale pour jouer une passe (entière ou segment)
+        IEnumerator PlayPass()
+        {
+            foreach (NoteData note in notesToPlay)
             {
-                // Pour positionner correctement les notes, on calcule leur longueur en unités
-                float noteLengthUnits = note.durationInBeats * unitPerBeat;
-                
-                // Créer l'objet note comme enfant du spawner
-                GameObject newNote = Instantiate(notePrefab, transform);
-                
-                // Définir le matériau initial en fonction de la main (gauche/droite) et de la couleur de la touche
-                Renderer noteRenderer = newNote.GetComponent<Renderer>();
-                if (noteRenderer != null)
+                // Temps d'attente basé sur les beats et le tempo
+                float startBeat = useLoopByMeasures ? (note.startBeat - loopStartBeat) : note.startBeat;
+                float startTimeInSeconds = startBeat * beatDuration;
+                float waitTime = startTimeInSeconds - (Time.time - songStartTime);
+                if (waitTime > 0)
+                    yield return new WaitForSeconds(waitTime);
+
+                if (noteToX.TryGetValue(note.note, out float xPos))
                 {
-                    Material baseMaterial;
-                    
-                    // Déterminer quel matériau utiliser en fonction de la main
+                    // Pour positionner correctement les notes, on calcule leur longueur en unités
+                    float noteLengthUnits = note.durationInBeats * unitPerBeat;
+
+                    // Créer l'objet note comme enfant du spawner
+                    GameObject newNote = Instantiate(notePrefab, transform);
+
+                    // Définir le matériau initial en fonction de la main (gauche/droite) et de la couleur de la touche
+                    Renderer noteRenderer = newNote.GetComponent<Renderer>();
+                    if (noteRenderer != null)
+                    {
+                        Material baseMaterial;
+                        if (note.hand != null && note.hand.ToLower() == "left") baseMaterial = leftHandNoteMaterial; else baseMaterial = rightHandNoteMaterial;
+
+                        if (IsBlackKey(note.note))
+                        {
+                            Material darkerMaterial = new Material(baseMaterial);
+                            Color darkerColor = darkerMaterial.color * 0.6f;
+                            darkerColor.a = baseMaterial.color.a;
+                            darkerMaterial.color = darkerColor;
+                            noteRenderer.material = darkerMaterial;
+                        }
+                        else
+                        {
+                            noteRenderer.material = baseMaterial;
+                        }
+                    }
+
+                    // Ajuster l'échelle pour la longueur de la note
+                    float noteWidth = IsBlackKey(note.note) ?  0.08f : 0.14f;
+                    newNote.transform.localScale = new Vector3(noteWidth, 0.1f, noteLengthUnits);
+
+                    // Créer le pivot comme enfant du spawner
+                    GameObject pivotObject = new GameObject("NotePivot_" + note.note);
+                    pivotObject.transform.SetParent(transform);
+
+                    // Position relative au piano - Notes noires plus hautes
+                    float yPos = IsBlackKey(note.note) ? 0.055f : 0f;
+                    pivotObject.transform.localPosition = new Vector3(xPos, yPos, travelDistance);
+
+                    // Collider et rigidbody pour détection
+                    BoxCollider pivotCollider = pivotObject.AddComponent<BoxCollider>();
+                    pivotCollider.size = new Vector3(0.15f, 0.2f, 0.5f);
+                    pivotCollider.center = Vector3.zero;
+                    pivotCollider.isTrigger = true;
+
+                    Rigidbody rb = pivotObject.AddComponent<Rigidbody>();
+                    rb.isKinematic = true;
+                    rb.useGravity = false;
+
+                    // Reparenter la note
+                    newNote.transform.SetParent(pivotObject.transform);
+                    newNote.transform.localPosition = new Vector3(0, 0, noteLengthUnits / 2);
+
+                    // Mouvement
+                    float travelTime = travelDistance / noteSpeed;
+                    NoteMover noteMover = pivotObject.AddComponent<NoteMover>();
+                    float targetYPos = IsBlackKey(note.note) ? 0.055f : 0f;
+                    noteMover.Init(travelTime, new Vector3(xPos, targetYPos, 0), note.note);
+
+                    // Matériau de hit
                     if (note.hand != null && note.hand.ToLower() == "left")
                     {
-                        baseMaterial = leftHandNoteMaterial;
+                        noteMover.hitMaterial = leftHandHitMaterial;
+                        noteMover.handType = "left";
                     }
                     else
                     {
-                        baseMaterial = rightHandNoteMaterial;
+                        noteMover.hitMaterial = rightHandHitMaterial;
+                        noteMover.handType = "right";
                     }
-                    
-                    // Si c'est une note noire, créer une version plus foncée du matériau
-                    if (IsBlackKey(note.note))
-                    {
-                        Material darkerMaterial = new Material(baseMaterial);
-                        Color darkerColor = darkerMaterial.color * 0.6f; // 40% plus foncé
-                        darkerColor.a = baseMaterial.color.a; // Garder la même transparence
-                        darkerMaterial.color = darkerColor;
-                        noteRenderer.material = darkerMaterial;
-                    }
-                    else
-                    {
-                        noteRenderer.material = baseMaterial;
-                    }
-                }
-                
-                // Ajuster l'échelle pour la longueur de la note
-                float noteWidth = IsBlackKey(note.note) ?  0.08f : 0.14f; // Notes noires plus fines
-                newNote.transform.localScale = new Vector3(noteWidth, 0.1f, noteLengthUnits);
-                
-                // Créer le pivot comme enfant du spawner
-                GameObject pivotObject = new GameObject("NotePivot_" + note.note);
-                pivotObject.transform.SetParent(transform);
-                
-                // Position relative au piano - Notes noires plus hautes
-                float yPos = IsBlackKey(note.note) ? 0.055f : 0f; // Notes noires 0.05 unités plus hautes
-                pivotObject.transform.localPosition = new Vector3(xPos, yPos, travelDistance);
-                
-                // Ajouter un BoxCollider plus grand pour la détection des collisions
-                BoxCollider pivotCollider = pivotObject.AddComponent<BoxCollider>();
-                pivotCollider.size = new Vector3(0.15f, 0.2f, 0.5f); // Collider ajusté à la nouvelle largeur
-                pivotCollider.center = Vector3.zero; // Centré sur le pivot
-                pivotCollider.isTrigger = true; // En mode trigger pour la détection
-                
-                // Ajouter un Rigidbody pour que les collisions fonctionnent correctement
-                Rigidbody rb = pivotObject.AddComponent<Rigidbody>();
-                rb.isKinematic = true; // La note ne sera pas affectée par la physique
-                rb.useGravity = false; // Pas de gravité
-                
-                // Reparenter la note sous le pivot
-                newNote.transform.SetParent(pivotObject.transform);
-                
-                // Positionner la note avec le bord avant aligné au pivot
-                // Comme le pivot est au centre, on déplace la note de la moitié de sa longueur
-                newNote.transform.localPosition = new Vector3(0, 0, noteLengthUnits / 2);
-                
-                // Déplacer le pivot (point avant de la note) à vitesse constante
-                float travelTime = travelDistance / noteSpeed;
-                NoteMover noteMover = pivotObject.AddComponent<NoteMover>();
-                // Position cible relative au piano - Notes noires plus hautes
-                float targetYPos = IsBlackKey(note.note) ? 0.055f : 0f;
-                noteMover.Init(travelTime, new Vector3(xPos, targetYPos, 0), note.note);
-                
-                // Assigner le matériau de surbrillance approprié en fonction de la main
-                if (note.hand != null && note.hand.ToLower() == "left")
-                {
-                    noteMover.hitMaterial = leftHandHitMaterial;
-                    noteMover.handType = "left";
-                }
-                else
-                {
-                    noteMover.hitMaterial = rightHandHitMaterial;
-                    noteMover.handType = "right";
                 }
             }
+
+            // Attendre un peu après la dernière note
+            yield return new WaitForSeconds(5f);
         }
-        
-        // Attendre que toutes les notes aient fini de se déplacer
-        yield return new WaitForSeconds(5f); // Attendre 5 secondes après la dernière note
-        
-        // Appeler EndGame() si le GameManager est disponible
-        if (gameManager != null)
+
+        if (useLoopByMeasures)
         {
-            Debug.Log("🏁 Fin de la chanson - Appel de EndGame()");
-            gameManager.EndGame();
+            Debug.Log($"🔁 Lecture en boucle des mesures {loopStartMeasure} à {loopEndMeasure} (beats {loopStartBeat} à {loopEndBeatExclusive - 1})");
+            while (isMusicStarted)
+            {
+                songStartTime = Time.time;
+                yield return StartCoroutine(PlayPass());
+            }
         }
         else
         {
-            Debug.LogWarning("⚠️ GameManager non assigné - Impossible d'appeler EndGame()");
+            yield return StartCoroutine(PlayPass());
+
+            // Appeler EndGame() si le GameManager est disponible
+            if (gameManager != null)
+            {
+                Debug.Log("🏁 Fin de la chanson - Appel de EndGame()");
+                gameManager.EndGame();
+            }
+            else
+            {
+                Debug.LogWarning("⚠️ GameManager non assigné - Impossible d'appeler EndGame()");
+            }
         }
     }
     
@@ -388,6 +424,16 @@ public class NoteSpawner : MonoBehaviour
                 DestroyImmediate(note.gameObject);
             }
         }
+    }
+
+    private int ParseBeatsPerMeasure(string timeSignature)
+    {
+        if (string.IsNullOrEmpty(timeSignature)) return 4;
+        int slash = timeSignature.IndexOf('/')
+;        if (slash <= 0) { int n; if (int.TryParse(timeSignature, out n)) return n; return 4; }
+        int numerator;
+        if (int.TryParse(timeSignature.Substring(0, slash), out numerator)) return numerator;
+        return 4;
     }
     
     // Coroutine pour gérer le timeout d'attente (non affectée par Time.timeScale)

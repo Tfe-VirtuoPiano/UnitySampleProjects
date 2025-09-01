@@ -55,6 +55,20 @@ public class GameManagerEditor : Editor
                     MessageType.Info
                 );
             }
+
+            EditorGUILayout.Space(5);
+            EditorGUILayout.LabelField("🔁 Boucle par mesures", EditorStyles.boldLabel);
+            EditorGUI.BeginChangeCheck();
+            bool loopEnabled = EditorGUILayout.Toggle("Activer la boucle", spawner.useLoopByMeasures);
+            int startMeasure = Mathf.Max(1, EditorGUILayout.IntField("Mesure de début", spawner.loopStartMeasure));
+            int endMeasure = Mathf.Max(startMeasure, EditorGUILayout.IntField("Mesure de fin (incluse)", spawner.loopEndMeasure));
+            if (EditorGUI.EndChangeCheck())
+            {
+                spawner.useLoopByMeasures = loopEnabled;
+                spawner.loopStartMeasure = startMeasure;
+                spawner.loopEndMeasure = endMeasure;
+                EditorUtility.SetDirty(spawner);
+            }
         }
         
 
