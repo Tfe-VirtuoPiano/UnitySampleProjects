@@ -4,6 +4,7 @@ using MidiJack;
 public class NoteTrigger : MonoBehaviour
 {
     public string expectedNote; // La note à attendre (ex: "C4")
+    public NoteSpawner noteSpawner; // Référence au NoteSpawner pour le mode stop-and-wait
 
     private NoteMover noteInZone;
     private GameObject noteObject; // Référence à l'objet note (enfant du pivot)
@@ -13,6 +14,16 @@ public class NoteTrigger : MonoBehaviour
     {
         // Récupérer le numéro MIDI correspondant à la note attendue
         expectedMidiNote = MidiNoteUtils.GetMidiNumber(expectedNote);
+        
+        // Si le NoteSpawner n'est pas assigné, essayer de le trouver automatiquement
+        if (noteSpawner == null)
+        {
+            noteSpawner = FindFirstObjectByType<NoteSpawner>();
+            if (noteSpawner == null)
+            {
+                Debug.LogWarning($"NoteTrigger pour {expectedNote}: NoteSpawner non trouvé - le mode stop-and-wait ne fonctionnera pas");
+            }
+        }
         
         Debug.Log($"NoteTrigger pour {expectedNote} initialisé - MIDI: {expectedMidiNote}");
         
@@ -49,6 +60,12 @@ public class NoteTrigger : MonoBehaviour
             }
             
             Debug.Log($"🎹 Note {expectedNote} prête à être jouée avec MIDI {expectedMidiNote}");
+            
+            // Notifier le NoteSpawner qu'une note est entrée dans la zone (pour le mode stop-and-wait)
+            if (noteSpawner != null)
+            {
+                noteSpawner.OnNoteEnterHitZone(mover);
+            }
         }
     }
 
@@ -91,7 +108,11 @@ public class NoteTrigger : MonoBehaviour
             // Utiliser la méthode Hit() du NoteMover
             noteInZone.Hit();
             
-
+            // Notifier le NoteSpawner que la note a été jouée (pour le mode stop-and-wait)
+            if (noteSpawner != null)
+            {
+                noteSpawner.OnNotePlayed();
+            }
             
             // Réinitialiser les références
             noteInZone = null;

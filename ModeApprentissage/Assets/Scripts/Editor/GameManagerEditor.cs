@@ -38,6 +38,25 @@ public class GameManagerEditor : Editor
             }
         }
         
+        // Afficher les paramètres du NoteSpawner
+        if (gameManager.noteSpawner != null)
+        {
+            EditorGUILayout.Space(5);
+            EditorGUILayout.LabelField("🎹 Mode d'Apprentissage", EditorStyles.boldLabel);
+            
+            NoteSpawner spawner = gameManager.noteSpawner;
+            EditorGUILayout.LabelField("Mode Stop-and-Wait:", spawner.useStopAndWaitMode ? "✅ Activé" : "❌ Désactivé");
+            
+            if (spawner.useStopAndWaitMode)
+            {
+                EditorGUILayout.LabelField("Timeout d'attente:", spawner.waitTimeout.ToString() + " secondes");
+                EditorGUILayout.HelpBox(
+                    "En mode Stop-and-Wait, le morceau se met en pause quand une note arrive dans la zone de jeu et attend d'être jouée.",
+                    MessageType.Info
+                );
+            }
+        }
+        
 
         
         EditorGUILayout.Space(10);
@@ -111,7 +130,46 @@ public class GameManagerEditor : Editor
             EditorGUILayout.EndHorizontal();
         }
         
-
+        // Boutons pour contrôler le mode d'apprentissage
+        if (gameManager.noteSpawner != null)
+        {
+            EditorGUILayout.Space(5);
+            EditorGUILayout.BeginHorizontal();
+            
+            NoteSpawner spawner = gameManager.noteSpawner;
+            
+            // Bouton pour activer/désactiver le mode stop-and-wait
+            if (spawner.useStopAndWaitMode)
+            {
+                GUI.backgroundColor = Color.red;
+                if (GUILayout.Button("⏸️ Désactiver Stop-and-Wait", GUILayout.Height(25)))
+                {
+                    spawner.useStopAndWaitMode = false;
+                    EditorUtility.SetDirty(spawner);
+                }
+            }
+            else
+            {
+                GUI.backgroundColor = Color.green;
+                if (GUILayout.Button("▶️ Activer Stop-and-Wait", GUILayout.Height(25)))
+                {
+                    spawner.useStopAndWaitMode = true;
+                    EditorUtility.SetDirty(spawner);
+                }
+            }
+            
+            EditorGUILayout.EndHorizontal();
+            
+            // Bouton pour forcer le passage à la note suivante (si en mode stop-and-wait)
+            if (spawner.useStopAndWaitMode)
+            {
+                GUI.backgroundColor = new Color(1f, 0.5f, 0f); // Orange personnalisé
+                if (GUILayout.Button("⏭️ Forcer Note Suivante", GUILayout.Height(25)))
+                {
+                    spawner.ForceNextNote();
+                }
+            }
+        }
         
         // Réinitialiser la couleur
         GUI.backgroundColor = Color.white;
@@ -124,6 +182,7 @@ public class GameManagerEditor : Editor
             "• Cliquez sur 'Démarrer' pour commencer le jeu\n" +
             "• Utilisez 'Pause' pour mettre en pause\n" +
             "• 'Recommencer' arrête tout et retourne au menu\n" +
+            "• Mode Stop-and-Wait: Le morceau se met en pause quand une note arrive dans la zone\n" +
             "• Les messages de debug s'affichent dans la console",
             MessageType.Info
         );

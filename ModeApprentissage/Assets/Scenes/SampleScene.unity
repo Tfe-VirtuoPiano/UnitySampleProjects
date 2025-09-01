@@ -644,7 +644,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   expectedNote: F#6
-  scoreManager: {fileID: 130449436}
 --- !u!65 &35044763
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -767,7 +766,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   expectedNote: C#6
-  scoreManager: {fileID: 130449436}
 --- !u!65 &58242788
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1322,60 +1320,6 @@ Transform:
   - {fileID: 1562650285}
   m_Father: {fileID: 364496149}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &130449435
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 130449437}
-  - component: {fileID: 130449436}
-  m_Layer: 0
-  m_Name: ScoreManager
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &130449436
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 130449435}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 93f2ac214588c714b86e9dcda6a03b52, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  basePointsPerNote: 100
-  multiplierIncrement: 1
-  maxMultiplier: 8
-  currentScore: 0
-  currentMultiplier: 1
-  consecutiveHits: 0
-  totalNotesHit: 0
-  totalNotesMissed: 0
-  maxMultiplierReached: 1
-  maxComboReached: 0
---- !u!4 &130449437
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 130449435}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.75868094, y: 1.0911858, z: 0.818543}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &131519912
 GameObject:
   m_ObjectHideFlags: 0
@@ -1424,7 +1368,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   expectedNote: C#4
-  scoreManager: {fileID: 130449436}
 --- !u!65 &131519915
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2009,7 +1952,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   expectedNote: C7
-  scoreManager: {fileID: 130449436}
 --- !u!65 &174219209
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2363,7 +2305,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   expectedNote: B2
-  scoreManager: {fileID: 130449436}
 --- !u!65 &185210682
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2933,7 +2874,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   expectedNote: A#4
-  scoreManager: {fileID: 130449436}
 --- !u!65 &254777450
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -3179,7 +3119,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   expectedNote: A#2
-  scoreManager: {fileID: 130449436}
 --- !u!65 &259229913
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -3302,7 +3241,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   expectedNote: D#5
-  scoreManager: {fileID: 130449436}
 --- !u!65 &265414657
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -3533,7 +3471,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   expectedNote: A5
-  scoreManager: {fileID: 130449436}
 --- !u!65 &287675714
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -3797,7 +3734,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   expectedNote: B4
-  scoreManager: {fileID: 130449436}
 --- !u!65 &302424567
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -4411,7 +4347,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   expectedNote: D#6
-  scoreManager: {fileID: 130449436}
 --- !u!65 &340848369
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -4657,7 +4592,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   expectedNote: F5
-  scoreManager: {fileID: 130449436}
 --- !u!65 &363654390
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -5766,7 +5700,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   expectedNote: F2
-  scoreManager: {fileID: 130449436}
 --- !u!65 &456002312
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -5997,7 +5930,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   expectedNote: G3
-  scoreManager: {fileID: 130449436}
 --- !u!65 &485698076
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -6228,7 +6160,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   expectedNote: D#4
-  scoreManager: {fileID: 130449436}
 --- !u!65 &528922686
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -6351,7 +6282,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   expectedNote: F#2
-  scoreManager: {fileID: 130449436}
 --- !u!65 &533166423
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -7446,7 +7376,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   expectedNote: G#4
-  scoreManager: {fileID: 130449436}
 --- !u!65 &692083174
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -8006,7 +7935,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   expectedNote: A2
-  scoreManager: {fileID: 130449436}
 --- !u!65 &754145471
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -8900,7 +8828,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   expectedNote: A#6
-  scoreManager: {fileID: 130449436}
 --- !u!65 &815064419
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -9072,7 +8999,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   expectedNote: C#3
-  scoreManager: {fileID: 130449436}
 --- !u!65 &852047432
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -9549,7 +9475,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   expectedNote: E6
-  scoreManager: {fileID: 130449436}
 --- !u!65 &873035865
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -9780,7 +9705,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   expectedNote: B6
-  scoreManager: {fileID: 130449436}
 --- !u!65 &908825106
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -10011,7 +9935,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   expectedNote: A6
-  scoreManager: {fileID: 130449436}
 --- !u!65 &932860134
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -10682,7 +10605,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   expectedNote: B3
-  scoreManager: {fileID: 130449436}
 --- !u!65 &1017198075
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -11144,7 +11066,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   expectedNote: E2
-  scoreManager: {fileID: 130449436}
 --- !u!65 &1078334715
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -11267,7 +11188,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   expectedNote: G#6
-  scoreManager: {fileID: 130449436}
 --- !u!65 &1082512993
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -11868,7 +11788,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   expectedNote: D3
-  scoreManager: {fileID: 130449436}
 --- !u!65 &1134590834
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -12468,7 +12387,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   expectedNote: G#2
-  scoreManager: {fileID: 130449436}
 --- !u!65 &1170627521
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -12591,7 +12509,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   expectedNote: C3
-  scoreManager: {fileID: 130449436}
 --- !u!65 &1183199971
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -12714,7 +12631,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   expectedNote: G6
-  scoreManager: {fileID: 130449436}
 --- !u!65 &1188874525
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -12919,7 +12835,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   expectedNote: F#4
-  scoreManager: {fileID: 130449436}
 --- !u!65 &1205464343
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -13411,7 +13326,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   expectedNote: D#3
-  scoreManager: {fileID: 130449436}
 --- !u!65 &1225943334
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -13534,7 +13448,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   expectedNote: F#5
-  scoreManager: {fileID: 130449436}
 --- !u!65 &1230544781
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -13657,7 +13570,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   expectedNote: E3
-  scoreManager: {fileID: 130449436}
 --- !u!65 &1230884973
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -13780,7 +13692,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   expectedNote: G5
-  scoreManager: {fileID: 130449436}
 --- !u!65 &1238890175
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -14011,7 +13922,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   expectedNote: D5
-  scoreManager: {fileID: 130449436}
 --- !u!65 &1253398535
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -14503,7 +14413,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   expectedNote: A3
-  scoreManager: {fileID: 130449436}
 --- !u!65 &1318624750
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -49686,7 +49595,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   expectedNote: D6
-  scoreManager: {fileID: 130449436}
 --- !u!65 &1366375295
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -49794,7 +49702,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   expectedNote: E4
-  scoreManager: {fileID: 130449436}
 --- !u!65 &1366667982
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -50025,7 +49932,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   expectedNote: D4
-  scoreManager: {fileID: 130449436}
 --- !u!65 &1386384281
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -50271,7 +50177,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   expectedNote: A#3
-  scoreManager: {fileID: 130449436}
 --- !u!65 &1410725541
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -50625,7 +50530,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   expectedNote: G#3
-  scoreManager: {fileID: 130449436}
 --- !u!65 &1497139048
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -50748,7 +50652,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   expectedNote: F#3
-  scoreManager: {fileID: 130449436}
 --- !u!65 &1498576302
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -50931,52 +50834,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1499512148}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!1 &1506251955
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1506251957}
-  - component: {fileID: 1506251956}
-  m_Layer: 0
-  m_Name: ScoreUploadManager
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &1506251956
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1506251955}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6a2a38dfff125464dbc88b710d828404, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  apiConfig: {fileID: 11400000, guid: 85eb5d7d96597e84d8c784baab649b35, type: 2}
-  isUploading: 0
---- !u!4 &1506251957
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1506251955}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.15047145, y: 0.72580767, z: 0.16942978}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1510111816
 GameObject:
   m_ObjectHideFlags: 0
@@ -51257,7 +51114,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   expectedNote: G#5
-  scoreManager: {fileID: 130449436}
 --- !u!65 &1525431722
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -51380,7 +51236,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   expectedNote: C2
-  scoreManager: {fileID: 130449436}
 --- !u!65 &1535753018
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -51910,7 +51765,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   expectedNote: F6
-  scoreManager: {fileID: 130449436}
 --- !u!65 &1591226987
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -52849,7 +52703,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   expectedNote: D#2
-  scoreManager: {fileID: 130449436}
 --- !u!65 &1682382842
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -53173,7 +53026,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   expectedNote: C5
-  scoreManager: {fileID: 130449436}
 --- !u!65 &1772894050
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -53527,7 +53379,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   expectedNote: G2
-  scoreManager: {fileID: 130449436}
 --- !u!65 &1825060177
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -53633,8 +53484,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   noteSpawner: {fileID: 1190097019}
   songManager: {fileID: 1363097359}
-  scoreManager: {fileID: 130449436}
-  scoreUploader: {fileID: 1506251956}
   countdownDuration: 1
   currentState: 0
 --- !u!4 &1830779143
@@ -53700,7 +53549,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   expectedNote: A#5
-  scoreManager: {fileID: 130449436}
 --- !u!65 &1839314937
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -54039,7 +53887,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   expectedNote: A4
-  scoreManager: {fileID: 130449436}
 --- !u!65 &1846351016
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -54177,7 +54024,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   expectedNote: B5
-  scoreManager: {fileID: 130449436}
 --- !u!65 &1846647654
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -54300,7 +54146,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   expectedNote: C#5
-  scoreManager: {fileID: 130449436}
 --- !u!65 &1873805304
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -54490,7 +54335,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   expectedNote: C6
-  scoreManager: {fileID: 130449436}
 --- !u!65 &1900391508
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -54721,7 +54565,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   expectedNote: C4
-  scoreManager: {fileID: 130449436}
 --- !u!65 &1942058423
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -55105,7 +54948,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   expectedNote: D2
-  scoreManager: {fileID: 130449436}
 --- !u!65 &1984332535
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -55213,7 +55055,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   expectedNote: F4
-  scoreManager: {fileID: 130449436}
 --- !u!65 &1985719549
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -55582,7 +55423,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   expectedNote: E5
-  scoreManager: {fileID: 130449436}
 --- !u!65 &2005186473
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -55813,7 +55653,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   expectedNote: C#2
-  scoreManager: {fileID: 130449436}
 --- !u!65 &2011238036
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -57025,7 +56864,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   expectedNote: F3
-  scoreManager: {fileID: 130449436}
 --- !u!65 &2095457534
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -57420,7 +57258,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   expectedNote: G4
-  scoreManager: {fileID: 130449436}
 --- !u!65 &2118423398
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -57879,5 +57716,3 @@ SceneRoots:
   - {fileID: 750321640}
   - {fileID: 1830779143}
   - {fileID: 1363097358}
-  - {fileID: 130449437}
-  - {fileID: 1506251957}

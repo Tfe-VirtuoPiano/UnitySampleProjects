@@ -22,6 +22,10 @@ public class NoteSpawner : MonoBehaviour
     [Header("Références")]
     public GameManager gameManager;
 
+    [Header("Mode d'Apprentissage")]
+    public bool useStopAndWaitMode = true; // Mode où le morceau s'arrête tant que la note n'est pas jouée
+    public float waitTimeout = 10f; // Temps maximum d'attente avant de passer à la note suivante (en secondes)
+
     public float startDelay = 1f;
     public int tempo; // modifiable via UI plus tard
     
@@ -38,6 +42,12 @@ public class NoteSpawner : MonoBehaviour
     private bool isMusicStarted = false;
     private bool isPaused = false;
     private Coroutine spawnCoroutine;
+    
+    // Variables pour le mode stop-and-wait
+    private bool isWaitingForNote = false;
+    private NoteData currentWaitingNote = null;
+    private Coroutine waitTimeoutCoroutine;
+    private bool isMusicPaused = false; // Indique si la musique est en pause à cause d'une note en attente
     
     // Mapping des notes vers leur position X relative
     private Dictionary<string, float> noteToX = new Dictionary<string, float>()
@@ -347,8 +357,24 @@ public class NoteSpawner : MonoBehaviour
             spawnCoroutine = null;
         }
         
+        // Réinitialiser le système d'attente
+        ResetWaitingSystem();
+        
         // Nettoyer toutes les notes existantes
         CleanupNotes();
+    }
+    
+    // Méthode pour réinitialiser le système d'attente
+    private void ResetWaitingSystem()
+    {
+        isWaitingForNote = false;
+        currentWaitingNote = null;
+        
+        if (waitTimeoutCoroutine != null)
+        {
+            StopCoroutine(waitTimeoutCoroutine);
+            waitTimeoutCoroutine = null;
+        }
     }
     
     private void CleanupNotes()
@@ -362,5 +388,101 @@ public class NoteSpawner : MonoBehaviour
                 DestroyImmediate(note.gameObject);
             }
         }
+    }
+    
+    // Coroutine pour gérer le timeout d'attente (non affectée par Time.timeScale)
+    IEnumerator WaitTimeoutCoroutine()
+    {
+        yield return new WaitForSecondsRealtime(waitTimeout);
+        
+        if (isWaitingForNote)
+        {
+            Debug.LogWarning($"⏰ Timeout atteint pour la note {currentWaitingNote?.note} - Passage à la note suivante");
+            OnNotePlayed(); // Forcer le passage à la note suivante
+        }
+    }
+    
+    // Méthode publique appelée par NoteTrigger quand une note est jouée
+    public void OnNotePlayed()
+    {
+        if (isWaitingForNote)
+        {
+            Debug.Log($"✅ Note {currentWaitingNote?.note} jouée - Reprise du morceau");
+            isWaitingForNote = false;
+            currentWaitingNote = null;
+            
+            // Reprendre la musique si elle était en pause
+            if (isMusicPaused)
+            {
+                ResumeMusicFromNoteWait();
+            }
+            
+            // Arrêter le timeout
+            if (waitTimeoutCoroutine != null)
+            {
+                StopCoroutine(waitTimeoutCoroutine);
+                waitTimeoutCoroutine = null;
+            }
+        }
+    }
+    
+    // Méthode publique pour forcer le passage à la note suivante (utile pour les tests)
+    [ContextMenu("Forcer passage à la note suivante")]
+    public void ForceNextNote()
+    {
+        if (isWaitingForNote)
+        {
+            Debug.Log($"⏭️ Passage forcé à la note suivante (note {currentWaitingNote?.note} ignorée)");
+            OnNotePlayed();
+        }
+        else
+        {
+            Debug.Log("Aucune note en attente - impossible de forcer le passage");
+        }
+    }
+    
+    // Méthode appelée par NoteTrigger quand une note entre dans la zone de jeu
+    // On attend désormais que le pivot atteigne le plan du clavier (z <= 0) avant de mettre en pause
+    public void OnNoteEnterHitZone(NoteMover mover)
+    {
+        if (!useStopAndWaitMode || isWaitingForNote || mover == null)
+            return;
+
+        StartCoroutine(PauseWhenAtKeyboard(mover));
+    }
+
+    private IEnumerator PauseWhenAtKeyboard(NoteMover mover)
+    {
+        // Attendre que le pivot atteigne le plan du clavier (z <= 0 en local)
+        // ou arrêter si la note a déjà été jouée avant d'atteindre le clavier
+        while (mover != null && mover.transform.localPosition.z > 0f && !mover.hasBeenHit)
+        {
+            yield return null;
+        }
+
+        // Si la note a été jouée avant d'atteindre le clavier, ne pas mettre en pause
+        if (mover == null || !useStopAndWaitMode || isWaitingForNote || mover.hasBeenHit)
+            yield break;
+
+        Debug.Log($"⏸️ Note {mover.noteName} au clavier - Pause du morceau");
+        isWaitingForNote = true;
+        currentWaitingNote = new NoteData { note = mover.noteName, hand = mover.handType };
+        isMusicPaused = true;
+
+        // Mettre en pause le temps du jeu
+        Time.timeScale = 0f;
+
+        // Démarrer le timeout (en temps réel)
+        if (waitTimeoutCoroutine != null)
+            StopCoroutine(waitTimeoutCoroutine);
+        waitTimeoutCoroutine = StartCoroutine(WaitTimeoutCoroutine());
+    }
+    
+    // Méthode pour reprendre la musique après qu'une note soit jouée
+    private void ResumeMusicFromNoteWait()
+    {
+        Debug.Log("▶️ Reprise du morceau après note jouée");
+        isMusicPaused = false;
+        Time.timeScale = 1f;
     }
 }
