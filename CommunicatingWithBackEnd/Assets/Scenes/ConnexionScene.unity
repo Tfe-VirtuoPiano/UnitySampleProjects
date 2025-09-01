@@ -286,8 +286,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   testEmail: ldevroye1@gmail.com
-  testPassword: sfds
+  testPassword: Lilian123
   autoLoginOnStart: 1
+  APIConfig: {fileID: 11400000, guid: 88e5224b603168f46b193d4d8380c31d, type: 2}
 --- !u!4 &107309786
 Transform:
   m_ObjectHideFlags: 0

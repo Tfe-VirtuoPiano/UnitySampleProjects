@@ -12,7 +12,7 @@ public class SongLoader : MonoBehaviour
             title = "La seule Vraie Chanson",
             composer = "Chicagolil",
             genre = "C majeur",
-            tempo = 180,
+            tempo = 120,
             duration_ms = 8000,
             songType = "scaleEx",
             sourceType = "library",
