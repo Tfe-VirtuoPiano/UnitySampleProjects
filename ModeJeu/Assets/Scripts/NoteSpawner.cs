@@ -48,6 +48,14 @@ public class NoteSpawner : MonoBehaviour
         { "B2", -1.76f },
 
         
+        { "C#2", -2.97f },
+        { "D#2", -2.75f },
+        { "F#2", -2.31f },
+        { "G#2", -2.09f },
+        { "A#2", -1.87f },
+
+
+
         { "C3", -1.54f },
         { "D3", -1.32f },
         { "E3", -1.10f },
@@ -55,6 +63,13 @@ public class NoteSpawner : MonoBehaviour
         { "G3", -0.66f },
         { "A3", -0.44f },
         { "B3", -0.22f },
+
+        { "C#3", -1.43f },
+        { "D#3", -1.21f },
+        { "F#3", -0.77f },
+        { "G#3", -0.55f },
+        { "A#3", -0.33f },
+
 
         { "C4", 0.00f },
         { "D4", 0.22f },
@@ -64,6 +79,12 @@ public class NoteSpawner : MonoBehaviour
         { "A4", 1.10f },
         { "B4", 1.32f },
 
+        { "C#4", 0.11f },
+        { "D#4", 0.33f },
+        { "F#4", 0.77f },
+        { "G#4", 0.99f },
+        { "A#4", 1.21f },
+
         { "C5", 1.54f },
         { "D5", 1.76f },
         { "E5", 1.98f },
@@ -71,6 +92,13 @@ public class NoteSpawner : MonoBehaviour
         { "G5", 2.42f },
         { "A5", 2.64f },
         { "B5", 2.86f },
+
+        { "C#5", 1.65f },
+        { "D#5", 1.87f },
+        { "F#5", 2.31f },
+        { "G#5", 2.53f },
+        { "A#5", 2.75f },
+
 
         { "C6", 3.08f },
         { "D6", 3.30f },
@@ -80,15 +108,18 @@ public class NoteSpawner : MonoBehaviour
         { "A6", 4.18f },
         { "B6", 4.40f },
 
+        { "C#6", 3.19f },
+        { "D#6", 3.41f },
+        { "F#6", 3.85f },
+        { "G#6", 4.07f },
+        { "A#6", 4.29f },
+
+
         { "C7", 4.62f },
 
     };
 
-    // { "C#4", 0.11f },
-    // { "D#4", 0.33f },
-    // { "F#4", 0.77f },
-    //       { "G#4", 0.99f },
-    //  { "A#4", 1.21f },
+
 
     // Méthode pour identifier les notes noires
     private bool IsBlackKey(string noteName)

@@ -60,6 +60,38 @@ public class SongLoader : MonoBehaviour
         new NoteData { note = "G6", durationInBeats = 1.0f, startBeat = 44.0f, finger = 2, hand = "right" },
         new NoteData { note = "A6", durationInBeats = 1.0f, startBeat = 45.0f, finger = 3, hand = "left" },
         new NoteData { note = "B6", durationInBeats = 1.0f, startBeat = 46.0f, finger = 4, hand = "right" },
+
+        new NoteData { note = "C#2", durationInBeats = 1.0f, startBeat = 50.0f, finger = 1, hand = "right" },
+        new NoteData { note = "D#2", durationInBeats = 1.0f, startBeat = 51.0f, finger = 2, hand = "left" },
+        new NoteData { note = "F#2", durationInBeats = 1.0f, startBeat = 52.0f, finger = 3, hand = "right" },
+        new NoteData { note = "G#2", durationInBeats = 1.0f, startBeat = 53.0f, finger = 1, hand = "left" },
+        new NoteData { note = "A#2", durationInBeats = 1.0f, startBeat = 54.0f, finger = 2, hand = "right" },
+
+        new NoteData { note = "C#3", durationInBeats = 1.0f, startBeat = 60.0f, finger = 1, hand = "right" },
+        new NoteData { note = "D#3", durationInBeats = 1.0f, startBeat = 61.0f, finger = 2, hand = "left" },
+        new NoteData { note = "F#3", durationInBeats = 1.0f, startBeat = 62.0f, finger = 3, hand = "right" },
+        new NoteData { note = "G#3", durationInBeats = 1.0f, startBeat = 63.0f, finger = 1, hand = "left" },
+        new NoteData { note = "A#3", durationInBeats = 1.0f, startBeat = 64.0f, finger = 2, hand = "right" },
+
+        new NoteData { note = "C#4", durationInBeats = 1.0f, startBeat = 70.0f, finger = 1, hand = "right" },
+        new NoteData { note = "D#4", durationInBeats = 1.0f, startBeat = 71.0f, finger = 2, hand = "left" },
+        new NoteData { note = "F#4", durationInBeats = 1.0f, startBeat = 72.0f, finger = 3, hand = "right" },
+        new NoteData { note = "G#4", durationInBeats = 1.0f, startBeat = 73.0f, finger = 1, hand = "left" },
+        new NoteData { note = "A#4", durationInBeats = 1.0f, startBeat = 74.0f, finger = 2, hand = "right" },
+
+        new NoteData { note = "C#5", durationInBeats = 1.0f, startBeat = 80.0f, finger = 1, hand = "right" },
+        new NoteData { note = "D#5", durationInBeats = 1.0f, startBeat = 81.0f, finger = 2, hand = "left" },
+        new NoteData { note = "F#5", durationInBeats = 1.0f, startBeat = 82.0f, finger = 3, hand = "right" },
+        new NoteData { note = "G#5", durationInBeats = 1.0f, startBeat = 83.0f, finger = 1, hand = "left" },
+        new NoteData { note = "A#5", durationInBeats = 1.0f, startBeat = 84.0f, finger = 2, hand = "right" },
+
+
+        new NoteData { note = "C#6", durationInBeats = 1.0f, startBeat = 90.0f, finger = 1, hand = "right" },
+        new NoteData { note = "D#6", durationInBeats = 1.0f, startBeat = 91.0f, finger = 2, hand = "left" },
+        new NoteData { note = "F#6", durationInBeats = 1.0f, startBeat = 92.0f, finger = 3, hand = "right" },
+        new NoteData { note = "G#6", durationInBeats = 1.0f, startBeat = 93.0f, finger = 1, hand = "left" },
+        new NoteData { note = "A#6", durationInBeats = 1.0f, startBeat = 94.0f, finger = 2, hand = "right" },
+
     }
         };
 
