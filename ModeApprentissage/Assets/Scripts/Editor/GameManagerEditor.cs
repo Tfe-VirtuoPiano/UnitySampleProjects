@@ -195,6 +195,13 @@ public class GameManagerEditor : Editor
                     spawner.ForceNextNote();
                 }
             }
+            
+            // Bouton pour arrêter la session et envoyer le score
+            GUI.backgroundColor = Color.red;
+            if (GUILayout.Button("🛑 Arrêter la session (upload)", GUILayout.Height(25)))
+            {
+                gameManager.EndLearningSessionAndUpload();
+            }
         }
         
         // Réinitialiser la couleur

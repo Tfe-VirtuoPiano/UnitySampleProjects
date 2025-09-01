@@ -1,6 +1,8 @@
 using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.Networking;
+using System.Text;
 
 public class GameManager : MonoBehaviour
 {
@@ -18,6 +20,10 @@ public class GameManager : MonoBehaviour
     [SerializeField] private int goodNotesCount = 0;     // Bonnes notes (jouées au bon moment)
     [SerializeField] private int badNotesCount = 0;      // Mauvaises notes (non attendues)
     [SerializeField] private int missedNotesCount = 0;   // Notes jouées correctement mais trop tard
+    
+    // Horodatage de session (UTC)
+    private System.DateTime sessionStartTimeUtc;
+    private System.DateTime sessionEndTimeUtc;
     
     public enum GameState
     {
@@ -56,6 +62,9 @@ public class GameManager : MonoBehaviour
     {
         Debug.Log("🎮 Démarrage du jeu...");
         SetGameState(GameState.Countdown);
+        // Démarre une nouvelle session
+        ResetSessionStats();
+        sessionStartTimeUtc = System.DateTime.UtcNow;
         
         // Démarrer le compte à rebours
         if (countdownCoroutine != null)
@@ -193,36 +202,115 @@ public class GameManager : MonoBehaviour
         SetGameState(GameState.GameOver);
     }
     
-    // Méthode pour uploader le score si possible
-    private void UploadScoreIfPossible()
+    // ====== Upload du score apprentissage ======
+    [ContextMenu("Arrêter la session et envoyer le score")]
+    public void EndLearningSessionAndUpload()
     {
+        // Arrêter toute lecture/état de jeu
+        Time.timeScale = 1f;
+        if (noteSpawner != null) noteSpawner.StopMusic();
 
-        
-        // Récupérer l'ID utilisateur
+        sessionEndTimeUtc = System.DateTime.UtcNow;
+
+        // Préparer le payload
         string userId = PlayerPrefs.GetString("idUser", "");
-        if (string.IsNullOrEmpty(userId))
+        string authToken = PlayerPrefs.GetString("AuthToken", "");
+        if (string.IsNullOrEmpty(userId) || string.IsNullOrEmpty(authToken))
         {
-            Debug.LogWarning("⚠️ Impossible d'uploader le score - ID utilisateur manquant");
+            Debug.LogError("Utilisateur non connecté ou token manquant - impossible d'envoyer le score");
             return;
         }
-        
-        // Récupérer l'ID de la chanson
+
+        if (songManager == null)
+        {
+            Debug.LogError("SongManager manquant");
+            return;
+        }
         SongData currentSong = songManager.GetCurrentSong();
-        if (currentSong == null)
+        if (currentSong == null || string.IsNullOrEmpty(currentSong.id))
         {
-            Debug.LogWarning("⚠️ Impossible d'uploader le score - Aucune chanson sélectionnée");
+            Debug.LogError("Aucune chanson sélectionnée ou ID de chanson manquant");
             return;
         }
-        
-        Debug.Log($"🔍 Chanson actuelle - ID: '{currentSong.id}', Titre: '{currentSong.title}'");
-        
-        if (string.IsNullOrEmpty(currentSong.id))
+
+        int selectedTempo = noteSpawner != null ? noteSpawner.tempo : 0;
+        string hands = GetHandsFromPractice();
+
+        var payload = new UnityLearningScorePayload
         {
-            Debug.LogWarning("⚠️ Impossible d'uploader le score - ID chanson manquant ou vide");
-            return;
+            userId = userId,
+            songId = currentSong.id,
+            correctNotes = goodNotesCount,
+            missedNotes = missedNotesCount,
+            wrongNotes = badNotesCount,
+            hands = hands,
+            selectedTempo = selectedTempo,
+            sessionStartTime = sessionStartTimeUtc.ToString("o"),
+            sessionEndTime = sessionEndTimeUtc.ToString("o")
+        };
+
+        StartCoroutine(UploadLearningScoreCoroutine(payload));
+    }
+
+    private string GetHandsFromPractice()
+    {
+        if (noteSpawner == null) return null;
+        // Mapper la sélection de main du spawner vers la valeur attendue par l'API
+        var ph = noteSpawner.practiceHand.ToString().ToLower();
+        if (ph == "both" || ph == "left" || ph == "right") return ph;
+        return null;
+    }
+
+    private IEnumerator UploadLearningScoreCoroutine(UnityLearningScorePayload payload)
+    {
+        string baseUrl = songManager.apiConfig != null ? songManager.apiConfig.APIUrl : "";
+        if (string.IsNullOrEmpty(baseUrl))
+        {
+            Debug.LogError("API Url non configurée");
+            yield break;
         }
-        
-    
+        string url = baseUrl.TrimEnd('/') + "/api/unity/recordLearningScore";
+
+        string authToken = PlayerPrefs.GetString("AuthToken", "");
+        string apiKey = songManager.apiConfig != null ? songManager.apiConfig.APIKey : "";
+
+        string json = JsonUtility.ToJson(payload);
+        byte[] bodyRaw = Encoding.UTF8.GetBytes(json);
+
+        using (UnityWebRequest www = new UnityWebRequest(url, "POST"))
+        {
+            www.uploadHandler = new UploadHandlerRaw(bodyRaw);
+            www.downloadHandler = new DownloadHandlerBuffer();
+            www.SetRequestHeader("Content-Type", "application/json");
+            if (!string.IsNullOrEmpty(authToken)) www.SetRequestHeader("Authorization", $"Bearer {authToken}");
+            if (!string.IsNullOrEmpty(apiKey)) www.SetRequestHeader("X-API-Key", apiKey);
+
+            Debug.Log($"📤 Envoi du score d'apprentissage vers {url}: {json}");
+            yield return www.SendWebRequest();
+
+            if (www.result == UnityWebRequest.Result.Success)
+            {
+                Debug.Log($"✅ Score d'apprentissage envoyé: {www.downloadHandler.text}");
+            }
+            else
+            {
+                Debug.LogError($"❌ Échec d'envoi du score: {www.responseCode} - {www.error} - {www.downloadHandler.text}");
+            }
+        }
+    }
+
+    [System.Serializable]
+    private class UnityLearningScorePayload
+    {
+        public string userId;
+        public string songId;
+        public int correctNotes;
+        public int missedNotes;
+        public int wrongNotes;
+        public string hands; // 'right' | 'left' | 'both' | null
+        public int selectedTempo;
+        public string sessionStartTime; // ISO8601
+        public string sessionEndTime;   // ISO8601
     }
     
     // Méthodes pour gérer les événements du SongManager
