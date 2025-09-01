@@ -3,6 +3,7 @@ using System.Collections.Generic;
 [System.Serializable]
 public class SongData
 {
+    public string id;           // ID unique de la chanson pour l'API
     public string title;
     public string composer;
     public string genre;

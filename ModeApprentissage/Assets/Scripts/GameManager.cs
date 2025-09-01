@@ -7,7 +7,7 @@ public class GameManager : MonoBehaviour
     [Header("Références")]
     public NoteSpawner noteSpawner;
     public SongManager songManager;
-    
+
     [Header("Paramètres")]
     public float countdownDuration = 3f;
     
@@ -41,6 +41,7 @@ public class GameManager : MonoBehaviour
             songManager.OnError += OnSongError;
         }
         
+
         // Afficher le menu principal
         SetGameState(GameState.MainMenu);
     }
@@ -129,6 +130,8 @@ public class GameManager : MonoBehaviour
             noteSpawner.StopMusic();
         }
         
+
+        
         SetGameState(GameState.MainMenu);
     }
     
@@ -148,7 +151,42 @@ public class GameManager : MonoBehaviour
     public void EndGame()
     {
         Debug.Log("🏁 Fin de la partie");
+        
+
+        
         SetGameState(GameState.GameOver);
+    }
+    
+    // Méthode pour uploader le score si possible
+    private void UploadScoreIfPossible()
+    {
+
+        
+        // Récupérer l'ID utilisateur
+        string userId = PlayerPrefs.GetString("idUser", "");
+        if (string.IsNullOrEmpty(userId))
+        {
+            Debug.LogWarning("⚠️ Impossible d'uploader le score - ID utilisateur manquant");
+            return;
+        }
+        
+        // Récupérer l'ID de la chanson
+        SongData currentSong = songManager.GetCurrentSong();
+        if (currentSong == null)
+        {
+            Debug.LogWarning("⚠️ Impossible d'uploader le score - Aucune chanson sélectionnée");
+            return;
+        }
+        
+        Debug.Log($"🔍 Chanson actuelle - ID: '{currentSong.id}', Titre: '{currentSong.title}'");
+        
+        if (string.IsNullOrEmpty(currentSong.id))
+        {
+            Debug.LogWarning("⚠️ Impossible d'uploader le score - ID chanson manquant ou vide");
+            return;
+        }
+        
+    
     }
     
     // Méthodes pour gérer les événements du SongManager
@@ -165,6 +203,8 @@ public class GameManager : MonoBehaviour
         {
             noteSpawner.songData = song;
         }
+        
+
     }
     
     void OnSongError(string error)
@@ -190,4 +230,6 @@ public class GameManager : MonoBehaviour
             songManager.SelectFirstSong();
         }
     }
+
+
 }

@@ -60,6 +60,9 @@ public class NoteTrigger : MonoBehaviour
             mover.isInHitZone = false;
             noteInZone = null;
             noteObject = null;
+            
+
+            
             Debug.Log($"❌ MISS: {expectedNote} left the hit zone without being played.");
         }
     }
@@ -76,6 +79,7 @@ public class NoteTrigger : MonoBehaviour
             {
                 PlayNote();
             }
+
         }
     }
     
@@ -86,6 +90,8 @@ public class NoteTrigger : MonoBehaviour
         {
             // Utiliser la méthode Hit() du NoteMover
             noteInZone.Hit();
+            
+
             
             // Réinitialiser les références
             noteInZone = null;

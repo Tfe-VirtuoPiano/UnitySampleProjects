@@ -18,6 +18,9 @@ public class NoteSpawner : MonoBehaviour
     
     // Collection des triggers de notes pour vérification
     public NoteTrigger[] noteTriggers;
+    
+    [Header("Références")]
+    public GameManager gameManager;
 
     public float startDelay = 1f;
     public int tempo; // modifiable via UI plus tard
@@ -275,6 +278,20 @@ public class NoteSpawner : MonoBehaviour
                     noteMover.handType = "right";
                 }
             }
+        }
+        
+        // Attendre que toutes les notes aient fini de se déplacer
+        yield return new WaitForSeconds(5f); // Attendre 5 secondes après la dernière note
+        
+        // Appeler EndGame() si le GameManager est disponible
+        if (gameManager != null)
+        {
+            Debug.Log("🏁 Fin de la chanson - Appel de EndGame()");
+            gameManager.EndGame();
+        }
+        else
+        {
+            Debug.LogWarning("⚠️ GameManager non assigné - Impossible d'appeler EndGame()");
         }
     }
     

@@ -38,6 +38,8 @@ public class GameManagerEditor : Editor
             }
         }
         
+
+        
         EditorGUILayout.Space(10);
         
         // Boutons de contrôle
@@ -108,6 +110,8 @@ public class GameManagerEditor : Editor
             
             EditorGUILayout.EndHorizontal();
         }
+        
+
         
         // Réinitialiser la couleur
         GUI.backgroundColor = Color.white;
