@@ -14,6 +14,7 @@ public class NoteMover : MonoBehaviour
     public bool isInHitZone = false;
     public bool hasBeenHit = false; // Indique si la note a été frappée par le joueur
     public Material hitMaterial; // Matériau à appliquer quand la note est jouée
+    public bool isActiveForPractice = true; // Si faux, la note est ignorée pour la pratique (main non sélectionnée)
     
     private MeshRenderer noteRenderer; // Référence au renderer de la note
     private Vector3 endPosition; // Position finale du pivot après avoir traversé le clavier
@@ -115,14 +116,14 @@ public class NoteMover : MonoBehaviour
         hasBeenHit = true;
         
         // Changer la couleur de la note si on a un renderer et un matériau
-        if (noteRenderer != null && hitMaterial != null)
+        if (isActiveForPractice && noteRenderer != null && hitMaterial != null)
         {
             Debug.Log($"🎨 Changement de couleur pour la note {noteName} ({handType})");
             noteRenderer.material = hitMaterial;
         }
         else
         {
-            Debug.LogWarning($"Impossible de changer la couleur de la note {noteName}");
+            // Ne rien faire visuellement si non active, ou si pas de matériel
         }
     }
 }

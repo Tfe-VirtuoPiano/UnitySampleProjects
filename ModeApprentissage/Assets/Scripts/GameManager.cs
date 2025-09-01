@@ -13,6 +13,11 @@ public class GameManager : MonoBehaviour
     
     [Header("État du jeu")]
     [SerializeField] private GameState currentState = GameState.MainMenu;
+
+    [Header("Statistiques de session")]
+    [SerializeField] private int goodNotesCount = 0;     // Bonnes notes (jouées au bon moment)
+    [SerializeField] private int badNotesCount = 0;      // Mauvaises notes (non attendues)
+    [SerializeField] private int missedNotesCount = 0;   // Notes jouées correctement mais trop tard
     
     public enum GameState
     {
@@ -133,6 +138,37 @@ public class GameManager : MonoBehaviour
 
         
         SetGameState(GameState.MainMenu);
+    }
+
+    // ====== Statistiques de session ======
+    public void ResetSessionStats()
+    {
+        goodNotesCount = 0;
+        badNotesCount = 0;
+        missedNotesCount = 0;
+    }
+
+    public void RegisterGoodNote()
+    {
+        goodNotesCount++;
+        // Debug.Log($"✅ Bonne note. Total: {goodNotesCount}");
+    }
+
+    public void RegisterBadNote()
+    {
+        badNotesCount++;
+        // Debug.Log($"❌ Mauvaise note. Total: {badNotesCount}");
+    }
+
+    public void RegisterMissedNote()
+    {
+        missedNotesCount++;
+        // Debug.Log($"⌛ Note manquée. Total: {missedNotesCount}");
+    }
+
+    public (int good, int bad, int missed) GetSessionStats()
+    {
+        return (goodNotesCount, badNotesCount, missedNotesCount);
     }
     
     void SetGameState(GameState newState)

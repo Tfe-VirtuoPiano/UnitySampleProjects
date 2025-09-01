@@ -96,6 +96,14 @@ public class NoteTrigger : MonoBehaviour
             {
                 PlayNote();
             }
+            else
+            {
+                // Mauvaise note : aucune note attendue dans cette zone au moment de l'appui
+                if (noteSpawner != null && noteSpawner.gameManager != null)
+                {
+                    noteSpawner.gameManager.RegisterBadNote();
+                }
+            }
 
         }
     }
@@ -114,6 +122,12 @@ public class NoteTrigger : MonoBehaviour
                 noteSpawner.OnNotePlayed();
             }
             
+            // Bonne note : dans la bonne zone et attendue
+            if (noteSpawner != null && noteSpawner.gameManager != null)
+            {
+                noteSpawner.gameManager.RegisterGoodNote();
+            }
+
             // Réinitialiser les références
             noteInZone = null;
             noteObject = null;
