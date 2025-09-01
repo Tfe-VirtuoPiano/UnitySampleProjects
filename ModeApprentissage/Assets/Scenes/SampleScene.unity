@@ -644,6 +644,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   expectedNote: F#6
+  noteSpawner: {fileID: 0}
 --- !u!65 &35044763
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -766,6 +767,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   expectedNote: C#6
+  noteSpawner: {fileID: 0}
 --- !u!65 &58242788
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1368,6 +1370,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   expectedNote: C#4
+  noteSpawner: {fileID: 0}
 --- !u!65 &131519915
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1952,6 +1955,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   expectedNote: C7
+  noteSpawner: {fileID: 0}
 --- !u!65 &174219209
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2305,6 +2309,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   expectedNote: B2
+  noteSpawner: {fileID: 0}
 --- !u!65 &185210682
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2874,6 +2879,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   expectedNote: A#4
+  noteSpawner: {fileID: 0}
 --- !u!65 &254777450
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -3119,6 +3125,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   expectedNote: A#2
+  noteSpawner: {fileID: 0}
 --- !u!65 &259229913
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -3241,6 +3248,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   expectedNote: D#5
+  noteSpawner: {fileID: 0}
 --- !u!65 &265414657
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -3471,6 +3479,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   expectedNote: A5
+  noteSpawner: {fileID: 0}
 --- !u!65 &287675714
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -3734,6 +3743,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   expectedNote: B4
+  noteSpawner: {fileID: 0}
 --- !u!65 &302424567
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -4141,7 +4151,7 @@ Transform:
   m_GameObject: {fileID: 330585543}
   serializedVersion: 2
   m_LocalRotation: {x: 0.23081398, y: 0, z: 0, w: 0.9729979}
-  m_LocalPosition: {x: 0.806, y: 1.353, z: -2.14}
+  m_LocalPosition: {x: 0.806, y: 2.79, z: -5.02}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -4347,6 +4357,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   expectedNote: D#6
+  noteSpawner: {fileID: 0}
 --- !u!65 &340848369
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -4592,6 +4603,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   expectedNote: F5
+  noteSpawner: {fileID: 0}
 --- !u!65 &363654390
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -5700,6 +5712,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   expectedNote: F2
+  noteSpawner: {fileID: 0}
 --- !u!65 &456002312
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -5930,6 +5943,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   expectedNote: G3
+  noteSpawner: {fileID: 0}
 --- !u!65 &485698076
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -6160,6 +6174,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   expectedNote: D#4
+  noteSpawner: {fileID: 0}
 --- !u!65 &528922686
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -6282,6 +6297,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   expectedNote: F#2
+  noteSpawner: {fileID: 0}
 --- !u!65 &533166423
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -7376,6 +7392,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   expectedNote: G#4
+  noteSpawner: {fileID: 0}
 --- !u!65 &692083174
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -7935,6 +7952,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   expectedNote: A2
+  noteSpawner: {fileID: 0}
 --- !u!65 &754145471
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -8828,6 +8846,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   expectedNote: A#6
+  noteSpawner: {fileID: 0}
 --- !u!65 &815064419
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -8999,6 +9018,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   expectedNote: C#3
+  noteSpawner: {fileID: 0}
 --- !u!65 &852047432
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -9475,6 +9495,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   expectedNote: E6
+  noteSpawner: {fileID: 0}
 --- !u!65 &873035865
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -9705,6 +9726,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   expectedNote: B6
+  noteSpawner: {fileID: 0}
 --- !u!65 &908825106
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -9935,6 +9957,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   expectedNote: A6
+  noteSpawner: {fileID: 0}
 --- !u!65 &932860134
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -10605,6 +10628,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   expectedNote: B3
+  noteSpawner: {fileID: 0}
 --- !u!65 &1017198075
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -11066,6 +11090,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   expectedNote: E2
+  noteSpawner: {fileID: 0}
 --- !u!65 &1078334715
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -11188,6 +11213,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   expectedNote: G#6
+  noteSpawner: {fileID: 0}
 --- !u!65 &1082512993
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -11788,6 +11814,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   expectedNote: D3
+  noteSpawner: {fileID: 0}
 --- !u!65 &1134590834
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -12387,6 +12414,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   expectedNote: G#2
+  noteSpawner: {fileID: 0}
 --- !u!65 &1170627521
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -12509,6 +12537,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   expectedNote: C3
+  noteSpawner: {fileID: 0}
 --- !u!65 &1183199971
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -12631,6 +12660,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   expectedNote: G6
+  noteSpawner: {fileID: 0}
 --- !u!65 &1188874525
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -12768,8 +12798,15 @@ MonoBehaviour:
   leftHandHitMaterial: {fileID: 2100000, guid: d1ba155686bb6074d978cdfd646a26da, type: 2}
   noteTriggers: []
   gameManager: {fileID: 1830779142}
+  useStopAndWaitMode: 1
+  waitTimeout: 10
+  useLoopByMeasures: 0
+  loopStartMeasure: 1
+  loopEndMeasure: 1
+  practiceHand: 1
+  disabledNoteMaterial: {fileID: 2100000, guid: ab605fe5a601a244f97e1810291d03fc, type: 2}
   startDelay: 3
-  tempo: 0
+  tempo: 120
   travelDistance: 5
   unitPerBeat: 1
 --- !u!4 &1190097020
@@ -12835,6 +12872,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   expectedNote: F#4
+  noteSpawner: {fileID: 0}
 --- !u!65 &1205464343
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -13326,6 +13364,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   expectedNote: D#3
+  noteSpawner: {fileID: 0}
 --- !u!65 &1225943334
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -13448,6 +13487,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   expectedNote: F#5
+  noteSpawner: {fileID: 0}
 --- !u!65 &1230544781
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -13570,6 +13610,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   expectedNote: E3
+  noteSpawner: {fileID: 0}
 --- !u!65 &1230884973
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -13692,6 +13733,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   expectedNote: G5
+  noteSpawner: {fileID: 0}
 --- !u!65 &1238890175
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -13922,6 +13964,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   expectedNote: D5
+  noteSpawner: {fileID: 0}
 --- !u!65 &1253398535
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -14413,6 +14456,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   expectedNote: A3
+  noteSpawner: {fileID: 0}
 --- !u!65 &1318624750
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -14764,13 +14808,174 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   authScript: {fileID: 290191804}
   apiConfig: {fileID: 11400000, guid: 85eb5d7d96597e84d8c784baab649b35, type: 2}
-  songsPerPage: 20
+  songsPerPage: 40
   loadSongsOnStart: 0
   songTypeFilter: 
   genreFilter: 
   isLoading: 0
   availableSongs:
-  - id: 
+  - id: 43c32b29-d0ac-4869-8f01-5444b42e4a3f
+    title: Gamme en Mi Mineur
+    composer: Lilou
+    genre: Exercice
+    tempo: 120
+    duration_ms: 7500
+    songType: scaleEx
+    sourceType: import
+    timeSignature: 4/4
+    level: 3
+    notes:
+    - note: E4
+      durationInBeats: 1
+      startBeat: 0
+      finger: 0
+      hand: right
+    - note: E3
+      durationInBeats: 1
+      startBeat: 0
+      finger: 0
+      hand: left
+    - note: F#4
+      durationInBeats: 1
+      startBeat: 1
+      finger: 0
+      hand: right
+    - note: F#3
+      durationInBeats: 1
+      startBeat: 1
+      finger: 0
+      hand: left
+    - note: G4
+      durationInBeats: 1
+      startBeat: 2
+      finger: 0
+      hand: right
+    - note: G3
+      durationInBeats: 1
+      startBeat: 2
+      finger: 0
+      hand: left
+    - note: A4
+      durationInBeats: 1
+      startBeat: 3
+      finger: 0
+      hand: right
+    - note: A3
+      durationInBeats: 1
+      startBeat: 3
+      finger: 0
+      hand: left
+    - note: B4
+      durationInBeats: 1
+      startBeat: 4
+      finger: 0
+      hand: right
+    - note: B3
+      durationInBeats: 1
+      startBeat: 4
+      finger: 0
+      hand: left
+    - note: C#5
+      durationInBeats: 1
+      startBeat: 5
+      finger: 0
+      hand: right
+    - note: C#4
+      durationInBeats: 1
+      startBeat: 5
+      finger: 0
+      hand: left
+    - note: D#5
+      durationInBeats: 1
+      startBeat: 6
+      finger: 0
+      hand: right
+    - note: D#4
+      durationInBeats: 1
+      startBeat: 6
+      finger: 0
+      hand: left
+    - note: E5
+      durationInBeats: 1
+      startBeat: 7
+      finger: 0
+      hand: right
+    - note: E4
+      durationInBeats: 1
+      startBeat: 7
+      finger: 0
+      hand: left
+    - note: D5
+      durationInBeats: 1
+      startBeat: 8
+      finger: 0
+      hand: right
+    - note: D4
+      durationInBeats: 1
+      startBeat: 8
+      finger: 0
+      hand: left
+    - note: C5
+      durationInBeats: 1
+      startBeat: 9
+      finger: 0
+      hand: right
+    - note: C4
+      durationInBeats: 1
+      startBeat: 9
+      finger: 0
+      hand: left
+    - note: B4
+      durationInBeats: 1
+      startBeat: 10
+      finger: 0
+      hand: right
+    - note: B3
+      durationInBeats: 1
+      startBeat: 10
+      finger: 0
+      hand: left
+    - note: A4
+      durationInBeats: 1
+      startBeat: 11
+      finger: 0
+      hand: right
+    - note: A3
+      durationInBeats: 1
+      startBeat: 11
+      finger: 0
+      hand: left
+    - note: G4
+      durationInBeats: 1
+      startBeat: 12
+      finger: 0
+      hand: right
+    - note: G3
+      durationInBeats: 1
+      startBeat: 12
+      finger: 0
+      hand: left
+    - note: F#4
+      durationInBeats: 1
+      startBeat: 13
+      finger: 0
+      hand: right
+    - note: F#3
+      durationInBeats: 1
+      startBeat: 13
+      finger: 0
+      hand: left
+    - note: E4
+      durationInBeats: 1
+      startBeat: 14
+      finger: 0
+      hand: right
+    - note: E3
+      durationInBeats: 1
+      startBeat: 14
+      finger: 0
+      hand: left
+  - id: 83d88bf9-324a-4ebb-b8fa-20ee5cddbcb1
     title: Test
     composer: TEst
     genre: TEs
@@ -16811,7 +17016,7 @@ MonoBehaviour:
       startBeat: 255.20312
       finger: 0
       hand: 
-  - id: 
+  - id: b2b18acd-d5da-49d8-aebc-cf4b112b88d8
     title: "Enregistrement D\xE9mo Tfe 2 "
     composer: Lili
     genre: Pop
@@ -18852,7 +19057,7 @@ MonoBehaviour:
       startBeat: 255.20312
       finger: 0
       hand: 
-  - id: 
+  - id: b4d3abe5-4856-4ef8-b1d6-3f01147cca3c
     title: "Enregistrement D\xE9mo Tfe"
     composer: Lili
     genre: Pop
@@ -20893,7 +21098,7 @@ MonoBehaviour:
       startBeat: 255.20312
       finger: 0
       hand: 
-  - id: 
+  - id: c9ca9b36-3601-4b51-b651-ecb6cb5f7d44
     title: Enregistrement Unity
     composer: Lillousdcqxcw
     genre: prout
@@ -20949,7 +21154,7 @@ MonoBehaviour:
       startBeat: 15.607291
       finger: 0
       hand: 
-  - id: 
+  - id: 4d880902-cef8-40eb-a72f-0c57edba35fd
     title: Test
     composer: Test
     genre: Test
@@ -21125,7 +21330,7 @@ MonoBehaviour:
       startBeat: 44.295834
       finger: 0
       hand: 
-  - id: 
+  - id: bbd5e95b-71ff-4352-8beb-338453533dfb
     title: Enregistrement Unity
     composer: Lillousdcqxcw
     genre: prout
@@ -21181,7 +21386,7 @@ MonoBehaviour:
       startBeat: 15.607291
       finger: 0
       hand: 
-  - id: 
+  - id: b032078e-8c76-41af-9b20-f596ccda3280
     title: Test
     composer: Test
     genre: Test
@@ -21512,7 +21717,7 @@ MonoBehaviour:
       startBeat: 95.5
       finger: 0
       hand: 
-  - id: 
+  - id: 41bdf293-d1ab-4081-b3cd-1459ed4bf8fa
     title: Nocturne en C majeur
     composer: caca
     genre: Classique
@@ -32033,7 +32238,7 @@ MonoBehaviour:
       startBeat: 186.54688
       finger: 0
       hand: 
-  - id: 
+  - id: 0063fe19-5cf6-4910-b800-2c5767061fe7
     title: Test
     composer: Test
     genre: Test
@@ -32364,7 +32569,7 @@ MonoBehaviour:
       startBeat: 95.5
       finger: 0
       hand: 
-  - id: 
+  - id: a826fd79-ccee-4f87-97d5-2ae3cb6054ad
     title: Lalilalaaaa
     composer: "Fr\xE9deric chopppiiin"
     genre: Jazz
@@ -43465,7 +43670,7 @@ MonoBehaviour:
       startBeat: 307
       finger: 0
       hand: 
-  - id: 
+  - id: 1a8a4748-2305-4896-8a03-96ac730793c1
     title: Musique de la mort
     composer: Compositeur de la mort
     genre: ZiziKKmusic
@@ -43491,7 +43696,7 @@ MonoBehaviour:
       startBeat: 2
       finger: 0
       hand: 
-  - id: 
+  - id: 84fd8227-c7b1-40ca-a763-1e516ca6d34a
     title: Test
     composer: Test
     genre: Test
@@ -48757,7 +48962,7 @@ MonoBehaviour:
       startBeat: 186.54688
       finger: 0
       hand: 
-  - id: 
+  - id: 7cf70d90-13e1-4a8d-aecd-8a6b589bb57a
     title: voluptate
     composer: Kenny Terry
     genre: Soul
@@ -48848,7 +49053,7 @@ MonoBehaviour:
       startBeat: 28.5
       finger: 4
       hand: left
-  - id: 
+  - id: e9462b71-d8f9-4c1d-90fd-f32891bd3b03
     title: audacia
     composer: Emily Beer
     genre: Folk
@@ -48909,7 +49114,7 @@ MonoBehaviour:
       startBeat: 17.5
       finger: 4
       hand: right
-  - id: 
+  - id: 3b6774e0-3fcc-41f9-9bbe-d303f81acd19
     title: culpa
     composer: Mrs. Penny Kautzer
     genre: R&B
@@ -49050,7 +49255,7 @@ MonoBehaviour:
       startBeat: 41
       finger: 5
       hand: right
-  - id: 
+  - id: d91bae91-3528-4394-b98c-ea144c0af0f1
     title: aeger
     composer: Brett Lemke
     genre: Funk
@@ -49126,7 +49331,7 @@ MonoBehaviour:
       startBeat: 14
       finger: 2
       hand: left
-  - id: 
+  - id: f66ea6a5-d940-45c9-91f3-ccd71cafae60
     title: La seule Vraie Chanson
     composer: Chicagolil
     genre: C majeur
@@ -49177,7 +49382,7 @@ MonoBehaviour:
       startBeat: 7
       finger: 5
       hand: left
-  - id: 
+  - id: b0a6cfca-da77-48b5-a737-ea91e0efe167
     title: adstringo
     composer: Steven Wintheiser
     genre: Jazz
@@ -49288,7 +49493,7 @@ MonoBehaviour:
       startBeat: 32
       finger: 2
       hand: left
-  - id: 
+  - id: 72fb4cfe-eda1-4cf6-9a1c-4b581fa94389
     title: aliquam
     composer: Jeanne Pacocha
     genre: Soul
@@ -49419,7 +49624,7 @@ MonoBehaviour:
       startBeat: 37.5
       finger: 3
       hand: left
-  - id: 
+  - id: c5951dbb-9b94-4914-837a-b53de217f87f
     title: allatus
     composer: Merle Fadel
     genre: Pop
@@ -49495,6 +49700,2190 @@ MonoBehaviour:
       startBeat: 17
       finger: 5
       hand: right
+  - id: 928bba9a-5bce-4f54-8da4-659f6dac3128
+    title: amet
+    composer: Angelo Murphy
+    genre: Blues
+    tempo: 54
+    duration_ms: 9677
+    songType: chordEx
+    sourceType: library
+    timeSignature: 4/4
+    level: 1
+    notes:
+    - note: F7
+      durationInBeats: 1
+      startBeat: 0
+      finger: 1
+      hand: right
+    - note: C0
+      durationInBeats: 4
+      startBeat: 1
+      finger: 1
+      hand: right
+    - note: D0
+      durationInBeats: 0.5
+      startBeat: 5
+      finger: 4
+      hand: right
+    - note: F4
+      durationInBeats: 2
+      startBeat: 5.5
+      finger: 2
+      hand: right
+    - note: B6
+      durationInBeats: 0.5
+      startBeat: 7.5
+      finger: 5
+      hand: left
+    - note: D4
+      durationInBeats: 1
+      startBeat: 8
+      finger: 2
+      hand: right
+    - note: F7
+      durationInBeats: 1
+      startBeat: 9
+      finger: 4
+      hand: right
+    - note: C#6
+      durationInBeats: 2
+      startBeat: 10
+      finger: 3
+      hand: right
+    - note: F5
+      durationInBeats: 4
+      startBeat: 12
+      finger: 1
+      hand: left
+    - note: B7
+      durationInBeats: 1
+      startBeat: 16
+      finger: 5
+      hand: left
+    - note: C2
+      durationInBeats: 4
+      startBeat: 17
+      finger: 3
+      hand: right
+    - note: B3
+      durationInBeats: 1.5
+      startBeat: 21
+      finger: 2
+      hand: right
+    - note: A5
+      durationInBeats: 1.5
+      startBeat: 22.5
+      finger: 4
+      hand: left
+    - note: A1
+      durationInBeats: 2
+      startBeat: 24
+      finger: 2
+      hand: left
+    - note: F#1
+      durationInBeats: 4
+      startBeat: 26
+      finger: 3
+      hand: left
+  - id: 716c7990-0c85-40e4-b930-17094d07dbb7
+    title: amplus
+    composer: Mr. Ben Rau
+    genre: Country
+    tempo: 42
+    duration_ms: 13356
+    songType: arpeggioEx
+    sourceType: library
+    timeSignature: 6/8
+    level: 7
+    notes:
+    - note: D#3
+      durationInBeats: 1
+      startBeat: 0
+      finger: 3
+      hand: left
+    - note: A0
+      durationInBeats: 4
+      startBeat: 1
+      finger: 1
+      hand: left
+    - note: A1
+      durationInBeats: 0.5
+      startBeat: 5
+      finger: 5
+      hand: left
+    - note: B7
+      durationInBeats: 0.5
+      startBeat: 5.5
+      finger: 2
+      hand: right
+    - note: D4
+      durationInBeats: 4
+      startBeat: 6
+      finger: 1
+      hand: left
+    - note: G3
+      durationInBeats: 4
+      startBeat: 10
+      finger: 5
+      hand: right
+    - note: C6
+      durationInBeats: 4
+      startBeat: 14
+      finger: 1
+      hand: right
+    - note: A#8
+      durationInBeats: 1.5
+      startBeat: 18
+      finger: 2
+      hand: right
+    - note: A#4
+      durationInBeats: 2
+      startBeat: 19.5
+      finger: 2
+      hand: right
+    - note: A#2
+      durationInBeats: 1.5
+      startBeat: 21.5
+      finger: 5
+      hand: left
+    - note: B3
+      durationInBeats: 1.5
+      startBeat: 23
+      finger: 2
+      hand: left
+    - note: A#3
+      durationInBeats: 4
+      startBeat: 24.5
+      finger: 2
+      hand: left
+    - note: G#3
+      durationInBeats: 4
+      startBeat: 28.5
+      finger: 1
+      hand: left
+  - id: 2a458fbe-2af8-4f9e-8bc6-51df66efdd75
+    title: architecto
+    composer: Isaac Jerde
+    genre: Funk
+    tempo: 41
+    duration_ms: 12061
+    songType: arpeggioEx
+    sourceType: library
+    timeSignature: 4/4
+    level: 7
+    notes:
+    - note: F1
+      durationInBeats: 4
+      startBeat: 0
+      finger: 4
+      hand: right
+    - note: G#8
+      durationInBeats: 2
+      startBeat: 4
+      finger: 1
+      hand: right
+    - note: F8
+      durationInBeats: 0.5
+      startBeat: 6
+      finger: 3
+      hand: left
+    - note: C#8
+      durationInBeats: 1.5
+      startBeat: 6.5
+      finger: 1
+      hand: left
+    - note: C#0
+      durationInBeats: 2
+      startBeat: 8
+      finger: 3
+      hand: left
+    - note: C1
+      durationInBeats: 4
+      startBeat: 10
+      finger: 2
+      hand: right
+    - note: D#7
+      durationInBeats: 1
+      startBeat: 14
+      finger: 5
+      hand: right
+    - note: G8
+      durationInBeats: 1.5
+      startBeat: 15
+      finger: 4
+      hand: left
+    - note: B6
+      durationInBeats: 2
+      startBeat: 16.5
+      finger: 5
+      hand: right
+    - note: D5
+      durationInBeats: 1
+      startBeat: 18.5
+      finger: 2
+      hand: right
+  - id: 7a3f5c28-1d6c-44f7-bd3d-2627ddbc2041
+    title: carpo
+    composer: Dr. Byron Howe
+    genre: Jazz
+    tempo: 121
+    duration_ms: 30000
+    songType: arpeggioEx
+    sourceType: library
+    timeSignature: 4/4
+    level: 10
+    notes:
+    - note: A#8
+      durationInBeats: 0.5
+      startBeat: 0
+      finger: 2
+      hand: right
+    - note: A#3
+      durationInBeats: 1
+      startBeat: 0.5
+      finger: 1
+      hand: left
+    - note: D#3
+      durationInBeats: 0.5
+      startBeat: 1.5
+      finger: 2
+      hand: right
+    - note: G0
+      durationInBeats: 1
+      startBeat: 2
+      finger: 4
+      hand: left
+    - note: C2
+      durationInBeats: 0.5
+      startBeat: 3
+      finger: 2
+      hand: left
+    - note: G7
+      durationInBeats: 1
+      startBeat: 3.5
+      finger: 3
+      hand: left
+    - note: F#8
+      durationInBeats: 4
+      startBeat: 4.5
+      finger: 1
+      hand: right
+    - note: C#0
+      durationInBeats: 1.5
+      startBeat: 8.5
+      finger: 4
+      hand: right
+    - note: A#0
+      durationInBeats: 2
+      startBeat: 10
+      finger: 2
+      hand: left
+    - note: D#4
+      durationInBeats: 1.5
+      startBeat: 12
+      finger: 1
+      hand: left
+    - note: B0
+      durationInBeats: 4
+      startBeat: 13.5
+      finger: 3
+      hand: right
+    - note: G#4
+      durationInBeats: 4
+      startBeat: 17.5
+      finger: 3
+      hand: left
+    - note: D#1
+      durationInBeats: 1
+      startBeat: 21.5
+      finger: 4
+      hand: left
+    - note: C1
+      durationInBeats: 1
+      startBeat: 22.5
+      finger: 3
+      hand: right
+    - note: C#0
+      durationInBeats: 0.5
+      startBeat: 23.5
+      finger: 5
+      hand: left
+    - note: A2
+      durationInBeats: 4
+      startBeat: 24
+      finger: 1
+      hand: left
+    - note: G#3
+      durationInBeats: 0.5
+      startBeat: 28
+      finger: 5
+      hand: left
+    - note: D2
+      durationInBeats: 1
+      startBeat: 28.5
+      finger: 3
+      hand: right
+    - note: D#3
+      durationInBeats: 1
+      startBeat: 29.5
+      finger: 1
+      hand: right
+    - note: G#0
+      durationInBeats: 1.5
+      startBeat: 30.5
+      finger: 1
+      hand: left
+    - note: F4
+      durationInBeats: 1.5
+      startBeat: 32
+      finger: 1
+      hand: left
+    - note: E2
+      durationInBeats: 2
+      startBeat: 33.5
+      finger: 5
+      hand: left
+    - note: E6
+      durationInBeats: 2
+      startBeat: 35.5
+      finger: 5
+      hand: left
+    - note: A8
+      durationInBeats: 0.5
+      startBeat: 37.5
+      finger: 3
+      hand: right
+    - note: A1
+      durationInBeats: 0.5
+      startBeat: 38
+      finger: 3
+      hand: left
+    - note: A#3
+      durationInBeats: 0.5
+      startBeat: 38.5
+      finger: 1
+      hand: right
+  - id: dc24aa1f-2b40-4ef3-812b-9aa0214db242
+    title: cena
+    composer: Blake Ullrich
+    genre: Soul
+    tempo: 125
+    duration_ms: 18333
+    songType: chordEx
+    sourceType: library
+    timeSignature: 6/8
+    level: 10
+    notes:
+    - note: G8
+      durationInBeats: 1
+      startBeat: 0
+      finger: 2
+      hand: left
+    - note: D#5
+      durationInBeats: 2
+      startBeat: 1
+      finger: 4
+      hand: right
+    - note: G4
+      durationInBeats: 2
+      startBeat: 3
+      finger: 1
+      hand: left
+    - note: G4
+      durationInBeats: 4
+      startBeat: 5
+      finger: 5
+      hand: left
+    - note: A6
+      durationInBeats: 1.5
+      startBeat: 9
+      finger: 3
+      hand: right
+    - note: A6
+      durationInBeats: 2
+      startBeat: 10.5
+      finger: 5
+      hand: right
+    - note: G#4
+      durationInBeats: 0.5
+      startBeat: 12.5
+      finger: 2
+      hand: right
+    - note: F6
+      durationInBeats: 1.5
+      startBeat: 13
+      finger: 2
+      hand: left
+    - note: E5
+      durationInBeats: 4
+      startBeat: 14.5
+      finger: 3
+      hand: left
+    - note: G#3
+      durationInBeats: 4
+      startBeat: 18.5
+      finger: 1
+      hand: left
+    - note: G#1
+      durationInBeats: 1
+      startBeat: 22.5
+      finger: 2
+      hand: left
+    - note: F5
+      durationInBeats: 1.5
+      startBeat: 23.5
+      finger: 1
+      hand: left
+    - note: A7
+      durationInBeats: 0.5
+      startBeat: 25
+      finger: 3
+      hand: right
+    - note: B8
+      durationInBeats: 2
+      startBeat: 25.5
+      finger: 3
+      hand: left
+    - note: F#0
+      durationInBeats: 4
+      startBeat: 27.5
+      finger: 2
+      hand: left
+    - note: C3
+      durationInBeats: 1.5
+      startBeat: 31.5
+      finger: 2
+      hand: left
+    - note: B3
+      durationInBeats: 2
+      startBeat: 33
+      finger: 1
+      hand: left
+    - note: C#1
+      durationInBeats: 1.5
+      startBeat: 35
+      finger: 5
+      hand: right
+    - note: G#8
+      durationInBeats: 0.5
+      startBeat: 36.5
+      finger: 5
+      hand: right
+    - note: D#0
+      durationInBeats: 0.5
+      startBeat: 37
+      finger: 4
+      hand: left
+    - note: D2
+      durationInBeats: 1
+      startBeat: 37.5
+      finger: 1
+      hand: left
+    - note: C#5
+      durationInBeats: 1.5
+      startBeat: 38.5
+      finger: 2
+      hand: right
+    - note: F6
+      durationInBeats: 1.5
+      startBeat: 40
+      finger: 4
+      hand: left
+    - note: C#1
+      durationInBeats: 1.5
+      startBeat: 41.5
+      finger: 2
+      hand: right
+    - note: C5
+      durationInBeats: 0.5
+      startBeat: 43
+      finger: 5
+      hand: left
+    - note: A4
+      durationInBeats: 1
+      startBeat: 43.5
+      finger: 4
+      hand: left
+    - note: E2
+      durationInBeats: 1.5
+      startBeat: 44.5
+      finger: 1
+      hand: left
+    - note: A4
+      durationInBeats: 1.5
+      startBeat: 46
+      finger: 4
+      hand: right
+    - note: D#5
+      durationInBeats: 2
+      startBeat: 47.5
+      finger: 1
+      hand: left
+  - id: 2847f143-67d0-452f-bb7d-16454126a3e4
+    title: claustrum
+    composer: Gregg Hammes-Rutherford
+    genre: Blues
+    tempo: 62
+    duration_ms: 43666
+    songType: rythmEx
+    sourceType: library
+    timeSignature: 6/8
+    level: 5
+    notes:
+    - note: E4
+      durationInBeats: 4
+      startBeat: 0
+      finger: 1
+      hand: right
+    - note: A#2
+      durationInBeats: 1
+      startBeat: 4
+      finger: 2
+      hand: left
+    - note: C1
+      durationInBeats: 1
+      startBeat: 5
+      finger: 2
+      hand: right
+    - note: G#0
+      durationInBeats: 1
+      startBeat: 6
+      finger: 2
+      hand: right
+    - note: E4
+      durationInBeats: 2
+      startBeat: 7
+      finger: 3
+      hand: right
+    - note: G6
+      durationInBeats: 2
+      startBeat: 9
+      finger: 3
+      hand: left
+    - note: G#8
+      durationInBeats: 1
+      startBeat: 11
+      finger: 2
+      hand: left
+    - note: G8
+      durationInBeats: 2
+      startBeat: 12
+      finger: 5
+      hand: right
+    - note: B5
+      durationInBeats: 4
+      startBeat: 14
+      finger: 2
+      hand: left
+    - note: G#5
+      durationInBeats: 1
+      startBeat: 18
+      finger: 1
+      hand: right
+    - note: G2
+      durationInBeats: 1.5
+      startBeat: 19
+      finger: 5
+      hand: right
+    - note: D#7
+      durationInBeats: 2
+      startBeat: 20.5
+      finger: 5
+      hand: right
+    - note: G1
+      durationInBeats: 4
+      startBeat: 22.5
+      finger: 5
+      hand: left
+    - note: D8
+      durationInBeats: 4
+      startBeat: 26.5
+      finger: 2
+      hand: right
+    - note: E2
+      durationInBeats: 4
+      startBeat: 30.5
+      finger: 2
+      hand: right
+    - note: D3
+      durationInBeats: 2
+      startBeat: 34.5
+      finger: 1
+      hand: right
+    - note: F#2
+      durationInBeats: 4
+      startBeat: 36.5
+      finger: 2
+      hand: right
+    - note: G1
+      durationInBeats: 0.5
+      startBeat: 40.5
+      finger: 2
+      hand: left
+    - note: A0
+      durationInBeats: 1
+      startBeat: 41
+      finger: 4
+      hand: left
+    - note: C8
+      durationInBeats: 4
+      startBeat: 42
+      finger: 3
+      hand: right
+    - note: C#4
+      durationInBeats: 2
+      startBeat: 46
+      finger: 1
+      hand: right
+    - note: A0
+      durationInBeats: 2
+      startBeat: 48
+      finger: 5
+      hand: left
+    - note: D#6
+      durationInBeats: 1.5
+      startBeat: 50
+      finger: 1
+      hand: left
+    - note: E0
+      durationInBeats: 4
+      startBeat: 51.5
+      finger: 1
+      hand: right
+    - note: A0
+      durationInBeats: 1
+      startBeat: 55.5
+      finger: 4
+      hand: right
+    - note: G5
+      durationInBeats: 4
+      startBeat: 56.5
+      finger: 3
+      hand: right
+    - note: D2
+      durationInBeats: 1
+      startBeat: 60.5
+      finger: 5
+      hand: right
+    - note: B8
+      durationInBeats: 0.5
+      startBeat: 61.5
+      finger: 2
+      hand: left
+    - note: B0
+      durationInBeats: 2
+      startBeat: 62
+      finger: 3
+      hand: right
+    - note: B5
+      durationInBeats: 1.5
+      startBeat: 64
+      finger: 5
+      hand: right
+  - id: cc841dc1-b31c-4630-8f71-1ec0ee6ee6ff
+    title: comis
+    composer: Cassandra Schmidt
+    genre: Rock
+    tempo: 101
+    duration_ms: 32210
+    songType: scaleEx
+    sourceType: library
+    timeSignature: 6/8
+    level: 6
+    notes:
+    - note: F#6
+      durationInBeats: 2
+      startBeat: 0
+      finger: 3
+      hand: left
+    - note: A1
+      durationInBeats: 1.5
+      startBeat: 2
+      finger: 2
+      hand: left
+    - note: F#4
+      durationInBeats: 1
+      startBeat: 3.5
+      finger: 2
+      hand: right
+    - note: C#3
+      durationInBeats: 1.5
+      startBeat: 4.5
+      finger: 4
+      hand: left
+    - note: B3
+      durationInBeats: 1
+      startBeat: 6
+      finger: 5
+      hand: right
+    - note: E6
+      durationInBeats: 1.5
+      startBeat: 7
+      finger: 1
+      hand: left
+    - note: B3
+      durationInBeats: 4
+      startBeat: 8.5
+      finger: 4
+      hand: right
+    - note: A5
+      durationInBeats: 2
+      startBeat: 12.5
+      finger: 5
+      hand: right
+    - note: C#4
+      durationInBeats: 0.5
+      startBeat: 14.5
+      finger: 2
+      hand: left
+    - note: E7
+      durationInBeats: 1
+      startBeat: 15
+      finger: 5
+      hand: left
+    - note: G#5
+      durationInBeats: 2
+      startBeat: 16
+      finger: 3
+      hand: right
+    - note: G4
+      durationInBeats: 4
+      startBeat: 18
+      finger: 1
+      hand: right
+    - note: A5
+      durationInBeats: 0.5
+      startBeat: 22
+      finger: 4
+      hand: right
+    - note: D8
+      durationInBeats: 4
+      startBeat: 22.5
+      finger: 1
+      hand: left
+    - note: A8
+      durationInBeats: 0.5
+      startBeat: 26.5
+      finger: 4
+      hand: right
+    - note: G#3
+      durationInBeats: 1.5
+      startBeat: 27
+      finger: 5
+      hand: left
+    - note: C5
+      durationInBeats: 2
+      startBeat: 28.5
+      finger: 2
+      hand: right
+    - note: G#6
+      durationInBeats: 1
+      startBeat: 30.5
+      finger: 1
+      hand: left
+    - note: C5
+      durationInBeats: 0.5
+      startBeat: 31.5
+      finger: 5
+      hand: right
+    - note: C#7
+      durationInBeats: 1
+      startBeat: 32
+      finger: 5
+      hand: left
+    - note: E3
+      durationInBeats: 2
+      startBeat: 33
+      finger: 5
+      hand: left
+    - note: C#3
+      durationInBeats: 2
+      startBeat: 35
+      finger: 4
+      hand: left
+    - note: C#6
+      durationInBeats: 0.5
+      startBeat: 37
+      finger: 5
+      hand: left
+    - note: B2
+      durationInBeats: 2
+      startBeat: 37.5
+      finger: 1
+      hand: right
+    - note: D7
+      durationInBeats: 4
+      startBeat: 39.5
+      finger: 3
+      hand: right
+    - note: E1
+      durationInBeats: 2
+      startBeat: 43.5
+      finger: 4
+      hand: left
+    - note: C#3
+      durationInBeats: 2
+      startBeat: 45.5
+      finger: 3
+      hand: left
+    - note: E3
+      durationInBeats: 0.5
+      startBeat: 47.5
+      finger: 2
+      hand: left
+    - note: G#5
+      durationInBeats: 1.5
+      startBeat: 48
+      finger: 2
+      hand: left
+    - note: A#5
+      durationInBeats: 1.5
+      startBeat: 49.5
+      finger: 1
+      hand: left
+  - id: cc1ab46f-b770-462d-b091-dae522ad5d80
+    title: contego
+    composer: Dr. Allan Ullrich
+    genre: Blues
+    tempo: 50
+    duration_ms: 18928
+    songType: song
+    sourceType: library
+    timeSignature: 6/8
+    level: 9
+    notes:
+    - note: G#5
+      durationInBeats: 4
+      startBeat: 0
+      finger: 3
+      hand: left
+    - note: G4
+      durationInBeats: 4
+      startBeat: 4
+      finger: 5
+      hand: left
+    - note: G#7
+      durationInBeats: 1.5
+      startBeat: 8
+      finger: 2
+      hand: left
+    - note: A8
+      durationInBeats: 2
+      startBeat: 9.5
+      finger: 4
+      hand: right
+    - note: D6
+      durationInBeats: 1
+      startBeat: 11.5
+      finger: 5
+      hand: right
+    - note: D#1
+      durationInBeats: 4
+      startBeat: 12.5
+      finger: 1
+      hand: left
+    - note: C#5
+      durationInBeats: 4
+      startBeat: 16.5
+      finger: 3
+      hand: left
+    - note: C#7
+      durationInBeats: 1
+      startBeat: 20.5
+      finger: 5
+      hand: right
+    - note: A3
+      durationInBeats: 0.5
+      startBeat: 21.5
+      finger: 5
+      hand: left
+    - note: A6
+      durationInBeats: 0.5
+      startBeat: 22
+      finger: 4
+      hand: left
+    - note: E0
+      durationInBeats: 4
+      startBeat: 22.5
+      finger: 2
+      hand: left
+  - id: 58640faf-2556-4c2f-9cbc-cf63ac4daa6b
+    title: conturbo
+    composer: Jamie Bednar
+    genre: Soul
+    tempo: 57
+    duration_ms: 10223
+    songType: arpeggioEx
+    sourceType: library
+    timeSignature: 3/4
+    level: 8
+    notes:
+    - note: A1
+      durationInBeats: 0.5
+      startBeat: 0
+      finger: 2
+      hand: right
+    - note: G6
+      durationInBeats: 1
+      startBeat: 0.5
+      finger: 5
+      hand: right
+    - note: A1
+      durationInBeats: 4
+      startBeat: 1.5
+      finger: 5
+      hand: right
+    - note: D8
+      durationInBeats: 4
+      startBeat: 5.5
+      finger: 4
+      hand: left
+    - note: C3
+      durationInBeats: 1
+      startBeat: 9.5
+      finger: 2
+      hand: left
+    - note: C#4
+      durationInBeats: 1.5
+      startBeat: 10.5
+      finger: 4
+      hand: left
+    - note: A5
+      durationInBeats: 0.5
+      startBeat: 12
+      finger: 4
+      hand: left
+    - note: G2
+      durationInBeats: 2
+      startBeat: 12.5
+      finger: 5
+      hand: right
+    - note: G#7
+      durationInBeats: 1.5
+      startBeat: 14.5
+      finger: 2
+      hand: left
+    - note: A2
+      durationInBeats: 1.5
+      startBeat: 16
+      finger: 2
+      hand: left
+    - note: G#3
+      durationInBeats: 4
+      startBeat: 17.5
+      finger: 4
+      hand: left
+    - note: A#3
+      durationInBeats: 4
+      startBeat: 21.5
+      finger: 2
+      hand: right
+    - note: D#4
+      durationInBeats: 1
+      startBeat: 25.5
+      finger: 2
+      hand: right
+    - note: B5
+      durationInBeats: 2
+      startBeat: 26.5
+      finger: 1
+      hand: left
+    - note: C#7
+      durationInBeats: 2
+      startBeat: 28.5
+      finger: 1
+      hand: right
+  - id: fffa2509-cbaa-4087-9cfe-b8c1450995e6
+    title: crudelis
+    composer: Elsa Price
+    genre: Jazz
+    tempo: 106
+    duration_ms: 18629
+    songType: rythmEx
+    sourceType: library
+    timeSignature: 4/4
+    level: 8
+    notes:
+    - note: A0
+      durationInBeats: 2
+      startBeat: 0
+      finger: 1
+      hand: left
+    - note: C#1
+      durationInBeats: 2
+      startBeat: 2
+      finger: 2
+      hand: right
+    - note: A2
+      durationInBeats: 1.5
+      startBeat: 4
+      finger: 1
+      hand: left
+    - note: C#0
+      durationInBeats: 0.5
+      startBeat: 5.5
+      finger: 2
+      hand: left
+    - note: C5
+      durationInBeats: 2
+      startBeat: 6
+      finger: 5
+      hand: left
+    - note: D8
+      durationInBeats: 1
+      startBeat: 8
+      finger: 2
+      hand: left
+    - note: F6
+      durationInBeats: 1.5
+      startBeat: 9
+      finger: 2
+      hand: right
+    - note: G#4
+      durationInBeats: 2
+      startBeat: 10.5
+      finger: 3
+      hand: left
+    - note: A7
+      durationInBeats: 1
+      startBeat: 12.5
+      finger: 1
+      hand: left
+    - note: E1
+      durationInBeats: 2
+      startBeat: 13.5
+      finger: 1
+      hand: left
+    - note: E1
+      durationInBeats: 1
+      startBeat: 15.5
+      finger: 4
+      hand: right
+    - note: D8
+      durationInBeats: 1.5
+      startBeat: 16.5
+      finger: 4
+      hand: left
+    - note: G#4
+      durationInBeats: 4
+      startBeat: 18
+      finger: 5
+      hand: left
+    - note: C0
+      durationInBeats: 2
+      startBeat: 22
+      finger: 2
+      hand: right
+    - note: D#6
+      durationInBeats: 0.5
+      startBeat: 24
+      finger: 4
+      hand: left
+    - note: F4
+      durationInBeats: 2
+      startBeat: 24.5
+      finger: 4
+      hand: left
+    - note: C#6
+      durationInBeats: 0.5
+      startBeat: 26.5
+      finger: 2
+      hand: left
+    - note: A#2
+      durationInBeats: 1.5
+      startBeat: 27
+      finger: 3
+      hand: left
+    - note: F4
+      durationInBeats: 1.5
+      startBeat: 28.5
+      finger: 3
+      hand: right
+    - note: F1
+      durationInBeats: 4
+      startBeat: 30
+      finger: 1
+      hand: left
+    - note: A#1
+      durationInBeats: 4
+      startBeat: 34
+      finger: 1
+      hand: right
+    - note: B7
+      durationInBeats: 0.5
+      startBeat: 38
+      finger: 5
+      hand: right
+  - id: 2026b4ed-e779-4280-83c0-7d8d8916b175
+    title: cupio
+    composer: Cory Kshlerin
+    genre: Country
+    tempo: 115
+    duration_ms: 17880
+    songType: arpeggioEx
+    sourceType: library
+    timeSignature: 6/8
+    level: 10
+    notes:
+    - note: A#0
+      durationInBeats: 1.5
+      startBeat: 0
+      finger: 5
+      hand: left
+    - note: B0
+      durationInBeats: 4
+      startBeat: 1.5
+      finger: 5
+      hand: left
+    - note: F1
+      durationInBeats: 2
+      startBeat: 5.5
+      finger: 4
+      hand: left
+    - note: E4
+      durationInBeats: 2
+      startBeat: 7.5
+      finger: 5
+      hand: right
+    - note: D#3
+      durationInBeats: 1
+      startBeat: 9.5
+      finger: 3
+      hand: right
+    - note: A5
+      durationInBeats: 1.5
+      startBeat: 10.5
+      finger: 1
+      hand: left
+    - note: E6
+      durationInBeats: 1.5
+      startBeat: 12
+      finger: 4
+      hand: left
+    - note: F#7
+      durationInBeats: 2
+      startBeat: 13.5
+      finger: 4
+      hand: right
+    - note: F#3
+      durationInBeats: 1
+      startBeat: 15.5
+      finger: 4
+      hand: left
+    - note: D#7
+      durationInBeats: 0.5
+      startBeat: 16.5
+      finger: 2
+      hand: right
+    - note: A7
+      durationInBeats: 4
+      startBeat: 17
+      finger: 5
+      hand: right
+    - note: G#2
+      durationInBeats: 1.5
+      startBeat: 21
+      finger: 3
+      hand: right
+    - note: B2
+      durationInBeats: 2
+      startBeat: 22.5
+      finger: 3
+      hand: left
+    - note: B3
+      durationInBeats: 4
+      startBeat: 24.5
+      finger: 2
+      hand: left
+    - note: F#0
+      durationInBeats: 1.5
+      startBeat: 28.5
+      finger: 1
+      hand: left
+    - note: B7
+      durationInBeats: 0.5
+      startBeat: 30
+      finger: 4
+      hand: left
+    - note: F#1
+      durationInBeats: 4
+      startBeat: 30.5
+      finger: 2
+      hand: left
+    - note: G2
+      durationInBeats: 4
+      startBeat: 34.5
+      finger: 3
+      hand: right
+    - note: A5
+      durationInBeats: 1
+      startBeat: 38.5
+      finger: 5
+      hand: left
+    - note: A#5
+      durationInBeats: 1.5
+      startBeat: 39.5
+      finger: 4
+      hand: left
+    - note: F#8
+      durationInBeats: 2
+      startBeat: 41
+      finger: 1
+      hand: left
+    - note: F2
+      durationInBeats: 1
+      startBeat: 43
+      finger: 2
+      hand: right
+    - note: A5
+      durationInBeats: 1
+      startBeat: 44
+      finger: 5
+      hand: left
+  - id: 69d8de44-3bdb-4aa6-9559-3899e1d2c384
+    title: curatio
+    composer: Noah Lowe
+    genre: Folk
+    tempo: 181
+    duration_ms: 13941
+    songType: song
+    sourceType: library
+    timeSignature: 3/4
+    level: 1
+    notes:
+    - note: G#5
+      durationInBeats: 4
+      startBeat: 0
+      finger: 2
+      hand: left
+    - note: D#1
+      durationInBeats: 1.5
+      startBeat: 4
+      finger: 4
+      hand: left
+    - note: G#3
+      durationInBeats: 0.5
+      startBeat: 5.5
+      finger: 4
+      hand: left
+    - note: F3
+      durationInBeats: 1
+      startBeat: 6
+      finger: 4
+      hand: right
+    - note: F5
+      durationInBeats: 0.5
+      startBeat: 7
+      finger: 4
+      hand: left
+    - note: D3
+      durationInBeats: 2
+      startBeat: 7.5
+      finger: 3
+      hand: left
+    - note: A#7
+      durationInBeats: 0.5
+      startBeat: 9.5
+      finger: 5
+      hand: left
+    - note: E8
+      durationInBeats: 0.5
+      startBeat: 10
+      finger: 1
+      hand: left
+    - note: A7
+      durationInBeats: 2
+      startBeat: 10.5
+      finger: 2
+      hand: left
+    - note: D#2
+      durationInBeats: 1
+      startBeat: 12.5
+      finger: 5
+      hand: right
+    - note: B3
+      durationInBeats: 4
+      startBeat: 13.5
+      finger: 3
+      hand: left
+    - note: D1
+      durationInBeats: 1.5
+      startBeat: 17.5
+      finger: 1
+      hand: right
+    - note: G#4
+      durationInBeats: 0.5
+      startBeat: 19
+      finger: 2
+      hand: right
+    - note: F#2
+      durationInBeats: 0.5
+      startBeat: 19.5
+      finger: 1
+      hand: right
+    - note: D#5
+      durationInBeats: 2
+      startBeat: 20
+      finger: 2
+      hand: right
+    - note: D2
+      durationInBeats: 4
+      startBeat: 22
+      finger: 1
+      hand: right
+    - note: D#3
+      durationInBeats: 4
+      startBeat: 26
+      finger: 5
+      hand: right
+    - note: D8
+      durationInBeats: 0.5
+      startBeat: 30
+      finger: 4
+      hand: right
+    - note: D2
+      durationInBeats: 0.5
+      startBeat: 30.5
+      finger: 4
+      hand: left
+    - note: C#4
+      durationInBeats: 0.5
+      startBeat: 31
+      finger: 4
+      hand: left
+    - note: C#6
+      durationInBeats: 1
+      startBeat: 31.5
+      finger: 3
+      hand: left
+    - note: D4
+      durationInBeats: 1
+      startBeat: 32.5
+      finger: 4
+      hand: right
+    - note: E6
+      durationInBeats: 4
+      startBeat: 33.5
+      finger: 1
+      hand: left
+    - note: A7
+      durationInBeats: 2
+      startBeat: 37.5
+      finger: 2
+      hand: right
+  - id: e92dca90-5ac9-44d5-9993-39224311138a
+    title: currus
+    composer: Mrs. Rita Casper
+    genre: R&B
+    tempo: 184
+    duration_ms: 16377
+    songType: chordEx
+    sourceType: library
+    timeSignature: 4/4
+    level: 2
+    notes:
+    - note: C#0
+      durationInBeats: 2
+      startBeat: 0
+      finger: 3
+      hand: left
+    - note: A4
+      durationInBeats: 2
+      startBeat: 2
+      finger: 1
+      hand: right
+    - note: G#4
+      durationInBeats: 0.5
+      startBeat: 4
+      finger: 1
+      hand: right
+    - note: D5
+      durationInBeats: 1
+      startBeat: 4.5
+      finger: 1
+      hand: left
+    - note: D1
+      durationInBeats: 1
+      startBeat: 5.5
+      finger: 5
+      hand: left
+    - note: F7
+      durationInBeats: 1.5
+      startBeat: 6.5
+      finger: 2
+      hand: right
+    - note: A#3
+      durationInBeats: 4
+      startBeat: 8
+      finger: 3
+      hand: right
+    - note: C4
+      durationInBeats: 1.5
+      startBeat: 12
+      finger: 4
+      hand: right
+    - note: B6
+      durationInBeats: 0.5
+      startBeat: 13.5
+      finger: 5
+      hand: right
+    - note: B3
+      durationInBeats: 1.5
+      startBeat: 14
+      finger: 4
+      hand: right
+    - note: C#4
+      durationInBeats: 2
+      startBeat: 15.5
+      finger: 1
+      hand: left
+    - note: G8
+      durationInBeats: 2
+      startBeat: 17.5
+      finger: 2
+      hand: right
+    - note: D8
+      durationInBeats: 4
+      startBeat: 19.5
+      finger: 3
+      hand: left
+    - note: G4
+      durationInBeats: 2
+      startBeat: 23.5
+      finger: 2
+      hand: right
+    - note: C4
+      durationInBeats: 1.5
+      startBeat: 25.5
+      finger: 2
+      hand: right
+    - note: F6
+      durationInBeats: 2
+      startBeat: 27
+      finger: 5
+      hand: right
+    - note: G0
+      durationInBeats: 2
+      startBeat: 29
+      finger: 3
+      hand: left
+    - note: D1
+      durationInBeats: 0.5
+      startBeat: 31
+      finger: 2
+      hand: right
+    - note: C#8
+      durationInBeats: 1.5
+      startBeat: 31.5
+      finger: 2
+      hand: left
+    - note: F#5
+      durationInBeats: 4
+      startBeat: 33
+      finger: 2
+      hand: right
+    - note: A#7
+      durationInBeats: 4
+      startBeat: 37
+      finger: 4
+      hand: right
+    - note: G#3
+      durationInBeats: 4
+      startBeat: 41
+      finger: 4
+      hand: right
+    - note: A#1
+      durationInBeats: 4
+      startBeat: 45
+      finger: 1
+      hand: left
+    - note: A#1
+      durationInBeats: 1.5
+      startBeat: 49
+      finger: 5
+      hand: right
+    - note: D#0
+      durationInBeats: 1
+      startBeat: 50.5
+      finger: 4
+      hand: left
+    - note: A3
+      durationInBeats: 2
+      startBeat: 51.5
+      finger: 1
+      hand: left
+  - id: 4cd6380e-04ed-48f0-b104-b7bd90ec49b9
+    title: dapifer
+    composer: Julia Carter
+    genre: Pop
+    tempo: 171
+    duration_ms: 13658
+    songType: scaleEx
+    sourceType: library
+    timeSignature: 3/4
+    level: 3
+    notes:
+    - note: E3
+      durationInBeats: 1.5
+      startBeat: 0
+      finger: 1
+      hand: left
+    - note: A1
+      durationInBeats: 2
+      startBeat: 1.5
+      finger: 2
+      hand: left
+    - note: G8
+      durationInBeats: 2
+      startBeat: 3.5
+      finger: 5
+      hand: left
+    - note: A5
+      durationInBeats: 1
+      startBeat: 5.5
+      finger: 4
+      hand: right
+    - note: C#2
+      durationInBeats: 4
+      startBeat: 6.5
+      finger: 4
+      hand: left
+    - note: A7
+      durationInBeats: 1
+      startBeat: 10.5
+      finger: 4
+      hand: left
+    - note: C#0
+      durationInBeats: 1.5
+      startBeat: 11.5
+      finger: 2
+      hand: left
+    - note: D#2
+      durationInBeats: 1
+      startBeat: 13
+      finger: 4
+      hand: right
+    - note: F8
+      durationInBeats: 1
+      startBeat: 14
+      finger: 3
+      hand: left
+    - note: E4
+      durationInBeats: 1.5
+      startBeat: 15
+      finger: 3
+      hand: right
+    - note: D#8
+      durationInBeats: 1.5
+      startBeat: 16.5
+      finger: 3
+      hand: right
+    - note: G2
+      durationInBeats: 1
+      startBeat: 18
+      finger: 2
+      hand: right
+    - note: F7
+      durationInBeats: 0.5
+      startBeat: 19
+      finger: 2
+      hand: left
+    - note: C7
+      durationInBeats: 4
+      startBeat: 19.5
+      finger: 5
+      hand: left
+    - note: A2
+      durationInBeats: 1.5
+      startBeat: 23.5
+      finger: 5
+      hand: right
+    - note: C#0
+      durationInBeats: 1.5
+      startBeat: 25
+      finger: 3
+      hand: left
+    - note: A#7
+      durationInBeats: 1.5
+      startBeat: 26.5
+      finger: 4
+      hand: left
+  - id: 36617949-bf88-43d3-834e-7fde01f1cd5e
+    title: deserunt
+    composer: Erik Crona
+    genre: Funk
+    tempo: 60
+    duration_ms: 8538
+    songType: arpeggioEx
+    sourceType: library
+    timeSignature: 3/4
+    level: 10
+    notes:
+    - note: C#1
+      durationInBeats: 0.5
+      startBeat: 0
+      finger: 1
+      hand: right
+    - note: D#2
+      durationInBeats: 1
+      startBeat: 0.5
+      finger: 4
+      hand: left
+    - note: D4
+      durationInBeats: 4
+      startBeat: 1.5
+      finger: 5
+      hand: left
+    - note: C#7
+      durationInBeats: 2
+      startBeat: 5.5
+      finger: 2
+      hand: left
+    - note: C#5
+      durationInBeats: 1.5
+      startBeat: 7.5
+      finger: 3
+      hand: left
+    - note: F0
+      durationInBeats: 1
+      startBeat: 9
+      finger: 2
+      hand: right
+    - note: F4
+      durationInBeats: 1.5
+      startBeat: 10
+      finger: 2
+      hand: right
+    - note: D2
+      durationInBeats: 2
+      startBeat: 11.5
+      finger: 3
+      hand: left
+    - note: C8
+      durationInBeats: 0.5
+      startBeat: 13.5
+      finger: 4
+      hand: right
+    - note: A8
+      durationInBeats: 2
+      startBeat: 14
+      finger: 5
+      hand: right
+    - note: C#0
+      durationInBeats: 1.5
+      startBeat: 16
+      finger: 4
+      hand: left
+    - note: D#0
+      durationInBeats: 1
+      startBeat: 17.5
+      finger: 5
+      hand: right
+  - id: 03e25c90-02b7-4a1f-b9e1-0650f817f061
+    title: distinctio
+    composer: Gwendolyn Schimmel
+    genre: Rock
+    tempo: 41
+    duration_ms: 57058
+    songType: rythmEx
+    sourceType: library
+    timeSignature: 6/8
+    level: 8
+    notes:
+    - note: A8
+      durationInBeats: 4
+      startBeat: 0
+      finger: 5
+      hand: left
+    - note: G#1
+      durationInBeats: 0.5
+      startBeat: 4
+      finger: 2
+      hand: right
+    - note: A7
+      durationInBeats: 2
+      startBeat: 4.5
+      finger: 3
+      hand: left
+    - note: G#6
+      durationInBeats: 1.5
+      startBeat: 6.5
+      finger: 2
+      hand: left
+    - note: C8
+      durationInBeats: 1.5
+      startBeat: 8
+      finger: 5
+      hand: left
+    - note: G#2
+      durationInBeats: 1.5
+      startBeat: 9.5
+      finger: 1
+      hand: right
+    - note: F5
+      durationInBeats: 1.5
+      startBeat: 11
+      finger: 2
+      hand: left
+    - note: A#8
+      durationInBeats: 1.5
+      startBeat: 12.5
+      finger: 5
+      hand: left
+    - note: C#3
+      durationInBeats: 1
+      startBeat: 14
+      finger: 1
+      hand: left
+    - note: C#6
+      durationInBeats: 0.5
+      startBeat: 15
+      finger: 4
+      hand: left
+    - note: D4
+      durationInBeats: 0.5
+      startBeat: 15.5
+      finger: 5
+      hand: right
+    - note: G#8
+      durationInBeats: 4
+      startBeat: 16
+      finger: 3
+      hand: right
+    - note: D6
+      durationInBeats: 4
+      startBeat: 20
+      finger: 5
+      hand: left
+    - note: D0
+      durationInBeats: 1.5
+      startBeat: 24
+      finger: 2
+      hand: right
+    - note: C#6
+      durationInBeats: 4
+      startBeat: 25.5
+      finger: 3
+      hand: right
+    - note: A#2
+      durationInBeats: 2
+      startBeat: 29.5
+      finger: 5
+      hand: right
+    - note: D#7
+      durationInBeats: 2
+      startBeat: 31.5
+      finger: 5
+      hand: left
+    - note: G#8
+      durationInBeats: 1
+      startBeat: 33.5
+      finger: 4
+      hand: right
+    - note: A#6
+      durationInBeats: 2
+      startBeat: 34.5
+      finger: 2
+      hand: left
+    - note: C#1
+      durationInBeats: 0.5
+      startBeat: 36.5
+      finger: 3
+      hand: left
+    - note: G3
+      durationInBeats: 1.5
+      startBeat: 37
+      finger: 4
+      hand: left
+    - note: G3
+      durationInBeats: 4
+      startBeat: 38.5
+      finger: 5
+      hand: left
+    - note: B1
+      durationInBeats: 2
+      startBeat: 42.5
+      finger: 3
+      hand: left
+    - note: F2
+      durationInBeats: 4
+      startBeat: 44.5
+      finger: 5
+      hand: right
+  - id: bcb9d99b-1ba2-4be1-8527-865c1927c88e
+    title: explicabo
+    composer: Sabrina Strosin
+    genre: R&B
+    tempo: 108
+    duration_ms: 15666
+    songType: arpeggioEx
+    sourceType: library
+    timeSignature: 4/4
+    level: 8
+    notes:
+    - note: E7
+      durationInBeats: 2
+      startBeat: 0
+      finger: 5
+      hand: right
+    - note: D#1
+      durationInBeats: 1
+      startBeat: 2
+      finger: 1
+      hand: left
+    - note: A#4
+      durationInBeats: 1.5
+      startBeat: 3
+      finger: 2
+      hand: left
+    - note: G#3
+      durationInBeats: 4
+      startBeat: 4.5
+      finger: 1
+      hand: right
+    - note: F0
+      durationInBeats: 1.5
+      startBeat: 8.5
+      finger: 3
+      hand: right
+    - note: A0
+      durationInBeats: 4
+      startBeat: 10
+      finger: 4
+      hand: right
+    - note: B3
+      durationInBeats: 1
+      startBeat: 14
+      finger: 5
+      hand: right
+    - note: A#2
+      durationInBeats: 0.5
+      startBeat: 15
+      finger: 4
+      hand: right
+    - note: A#0
+      durationInBeats: 2
+      startBeat: 15.5
+      finger: 5
+      hand: right
+    - note: F3
+      durationInBeats: 2
+      startBeat: 17.5
+      finger: 4
+      hand: right
+    - note: C1
+      durationInBeats: 1
+      startBeat: 19.5
+      finger: 4
+      hand: left
+    - note: D3
+      durationInBeats: 2
+      startBeat: 20.5
+      finger: 1
+      hand: right
+    - note: D4
+      durationInBeats: 4
+      startBeat: 22.5
+      finger: 2
+      hand: right
+    - note: G8
+      durationInBeats: 1
+      startBeat: 26.5
+      finger: 5
+      hand: right
+    - note: C3
+      durationInBeats: 1
+      startBeat: 27.5
+      finger: 1
+      hand: left
+    - note: G4
+      durationInBeats: 0.5
+      startBeat: 28.5
+      finger: 3
+      hand: left
+    - note: G2
+      durationInBeats: 1
+      startBeat: 29
+      finger: 5
+      hand: left
+    - note: B5
+      durationInBeats: 2
+      startBeat: 30
+      finger: 1
+      hand: left
+    - note: A7
+      durationInBeats: 2
+      startBeat: 32
+      finger: 5
+      hand: left
+    - note: B1
+      durationInBeats: 4
+      startBeat: 34
+      finger: 1
+      hand: right
+    - note: G#2
+      durationInBeats: 4
+      startBeat: 38
+      finger: 1
+      hand: right
+    - note: D8
+      durationInBeats: 1.5
+      startBeat: 42
+      finger: 3
+      hand: left
+    - note: C#5
+      durationInBeats: 1.5
+      startBeat: 43.5
+      finger: 4
+      hand: right
+    - note: G1
+      durationInBeats: 1.5
+      startBeat: 45
+      finger: 5
+      hand: left
+    - note: B0
+      durationInBeats: 0.5
+      startBeat: 46.5
+      finger: 3
+      hand: right
+  - id: 504bc906-f70d-4f91-942b-2e14b5288004
+    title: sequi
+    composer: Arlene Sauer
+    genre: R&B
+    tempo: 79
+    duration_ms: 20204
+    songType: rythmEx
+    sourceType: library
+    timeSignature: 6/8
+    level: 6
+    notes:
+    - note: C#4
+      durationInBeats: 1
+      startBeat: 0
+      finger: 2
+      hand: left
+    - note: E3
+      durationInBeats: 1
+      startBeat: 1
+      finger: 2
+      hand: left
+    - note: C#1
+      durationInBeats: 0.5
+      startBeat: 2
+      finger: 2
+      hand: right
+    - note: G#3
+      durationInBeats: 2
+      startBeat: 2.5
+      finger: 1
+      hand: right
+    - note: A#1
+      durationInBeats: 4
+      startBeat: 4.5
+      finger: 1
+      hand: left
+    - note: D6
+      durationInBeats: 1.5
+      startBeat: 8.5
+      finger: 5
+      hand: right
+    - note: E1
+      durationInBeats: 4
+      startBeat: 10
+      finger: 5
+      hand: right
+    - note: C4
+      durationInBeats: 4
+      startBeat: 14
+      finger: 4
+      hand: right
+    - note: A1
+      durationInBeats: 1
+      startBeat: 18
+      finger: 2
+      hand: right
+    - note: F#0
+      durationInBeats: 4
+      startBeat: 19
+      finger: 5
+      hand: left
+    - note: B1
+      durationInBeats: 1.5
+      startBeat: 23
+      finger: 3
+      hand: right
+    - note: G4
+      durationInBeats: 4
+      startBeat: 24.5
+      finger: 1
+      hand: left
+    - note: B4
+      durationInBeats: 0.5
+      startBeat: 28.5
+      finger: 4
+      hand: right
+    - note: D#2
+      durationInBeats: 2
+      startBeat: 29
+      finger: 5
+      hand: left
+    - note: A7
+      durationInBeats: 2
+      startBeat: 31
+      finger: 1
+      hand: left
+  - id: 0819aac8-c20a-48de-bc29-49bbe565b34b
+    title: spes
+    composer: Valerie Parisian
+    genre: Rock
+    tempo: 174
+    duration_ms: 17419
+    songType: scaleEx
+    sourceType: library
+    timeSignature: 6/8
+    level: 4
+    notes:
+    - note: D6
+      durationInBeats: 4
+      startBeat: 0
+      finger: 2
+      hand: right
+    - note: E8
+      durationInBeats: 2
+      startBeat: 4
+      finger: 4
+      hand: right
+    - note: G#6
+      durationInBeats: 2
+      startBeat: 6
+      finger: 1
+      hand: left
+    - note: D3
+      durationInBeats: 2
+      startBeat: 8
+      finger: 4
+      hand: right
+    - note: D3
+      durationInBeats: 0.5
+      startBeat: 10
+      finger: 4
+      hand: right
+    - note: B8
+      durationInBeats: 4
+      startBeat: 10.5
+      finger: 5
+      hand: right
+    - note: A6
+      durationInBeats: 2
+      startBeat: 14.5
+      finger: 5
+      hand: right
+    - note: E7
+      durationInBeats: 4
+      startBeat: 16.5
+      finger: 5
+      hand: right
+    - note: A#4
+      durationInBeats: 0.5
+      startBeat: 20.5
+      finger: 2
+      hand: right
+    - note: C2
+      durationInBeats: 1.5
+      startBeat: 21
+      finger: 1
+      hand: right
+    - note: C1
+      durationInBeats: 1.5
+      startBeat: 22.5
+      finger: 5
+      hand: left
+    - note: A#8
+      durationInBeats: 0.5
+      startBeat: 24
+      finger: 3
+      hand: right
+    - note: E0
+      durationInBeats: 2
+      startBeat: 24.5
+      finger: 2
+      hand: right
+    - note: D8
+      durationInBeats: 1
+      startBeat: 26.5
+      finger: 3
+      hand: left
+    - note: F5
+      durationInBeats: 2
+      startBeat: 27.5
+      finger: 3
+      hand: left
+    - note: B1
+      durationInBeats: 1
+      startBeat: 29.5
+      finger: 1
+      hand: right
+    - note: G6
+      durationInBeats: 1.5
+      startBeat: 30.5
+      finger: 1
+      hand: right
+    - note: D6
+      durationInBeats: 1
+      startBeat: 32
+      finger: 4
+      hand: right
+    - note: D#1
+      durationInBeats: 2
+      startBeat: 33
+      finger: 2
+      hand: left
+    - note: G#0
+      durationInBeats: 1.5
+      startBeat: 35
+      finger: 4
+      hand: left
+    - note: G#2
+      durationInBeats: 1
+      startBeat: 36.5
+      finger: 4
+      hand: right
+    - note: F1
+      durationInBeats: 0.5
+      startBeat: 37.5
+      finger: 2
+      hand: right
+    - note: D7
+      durationInBeats: 0.5
+      startBeat: 38
+      finger: 4
+      hand: left
+    - note: F4
+      durationInBeats: 1
+      startBeat: 38.5
+      finger: 5
+      hand: left
+    - note: A#1
+      durationInBeats: 1
+      startBeat: 39.5
+      finger: 3
+      hand: right
+    - note: B7
+      durationInBeats: 2
+      startBeat: 40.5
+      finger: 3
+      hand: right
+    - note: F3
+      durationInBeats: 1
+      startBeat: 42.5
+      finger: 5
+      hand: left
+    - note: G3
+      durationInBeats: 1.5
+      startBeat: 43.5
+      finger: 2
+      hand: left
   currentSong:
     id: 
     title: La seule Vraie Chanson
@@ -49595,6 +51984,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   expectedNote: D6
+  noteSpawner: {fileID: 0}
 --- !u!65 &1366375295
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -49702,6 +52092,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   expectedNote: E4
+  noteSpawner: {fileID: 0}
 --- !u!65 &1366667982
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -49932,6 +52323,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   expectedNote: D4
+  noteSpawner: {fileID: 1190097019}
 --- !u!65 &1386384281
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -50177,6 +52569,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   expectedNote: A#3
+  noteSpawner: {fileID: 0}
 --- !u!65 &1410725541
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -50530,6 +52923,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   expectedNote: G#3
+  noteSpawner: {fileID: 0}
 --- !u!65 &1497139048
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -50652,6 +53046,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   expectedNote: F#3
+  noteSpawner: {fileID: 0}
 --- !u!65 &1498576302
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -51114,6 +53509,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   expectedNote: G#5
+  noteSpawner: {fileID: 0}
 --- !u!65 &1525431722
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -51236,6 +53632,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   expectedNote: C2
+  noteSpawner: {fileID: 0}
 --- !u!65 &1535753018
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -51765,6 +54162,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   expectedNote: F6
+  noteSpawner: {fileID: 0}
 --- !u!65 &1591226987
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -52703,6 +55101,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   expectedNote: D#2
+  noteSpawner: {fileID: 0}
 --- !u!65 &1682382842
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -53026,6 +55425,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   expectedNote: C5
+  noteSpawner: {fileID: 0}
 --- !u!65 &1772894050
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -53379,6 +55779,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   expectedNote: G2
+  noteSpawner: {fileID: 0}
 --- !u!65 &1825060177
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -53486,6 +55887,9 @@ MonoBehaviour:
   songManager: {fileID: 1363097359}
   countdownDuration: 1
   currentState: 0
+  goodNotesCount: 0
+  badNotesCount: 0
+  missedNotesCount: 0
 --- !u!4 &1830779143
 Transform:
   m_ObjectHideFlags: 0
@@ -53549,6 +55953,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   expectedNote: A#5
+  noteSpawner: {fileID: 0}
 --- !u!65 &1839314937
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -53887,6 +56292,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   expectedNote: A4
+  noteSpawner: {fileID: 0}
 --- !u!65 &1846351016
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -54024,6 +56430,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   expectedNote: B5
+  noteSpawner: {fileID: 0}
 --- !u!65 &1846647654
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -54146,6 +56553,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   expectedNote: C#5
+  noteSpawner: {fileID: 0}
 --- !u!65 &1873805304
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -54335,6 +56743,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   expectedNote: C6
+  noteSpawner: {fileID: 0}
 --- !u!65 &1900391508
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -54565,6 +56974,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   expectedNote: C4
+  noteSpawner: {fileID: 1190097019}
 --- !u!65 &1942058423
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -54948,6 +57358,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   expectedNote: D2
+  noteSpawner: {fileID: 0}
 --- !u!65 &1984332535
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -55055,6 +57466,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   expectedNote: F4
+  noteSpawner: {fileID: 0}
 --- !u!65 &1985719549
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -55423,6 +57835,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   expectedNote: E5
+  noteSpawner: {fileID: 0}
 --- !u!65 &2005186473
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -55653,6 +58066,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   expectedNote: C#2
+  noteSpawner: {fileID: 0}
 --- !u!65 &2011238036
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -56864,6 +59278,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   expectedNote: F3
+  noteSpawner: {fileID: 0}
 --- !u!65 &2095457534
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -57258,6 +59673,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   expectedNote: G4
+  noteSpawner: {fileID: 0}
 --- !u!65 &2118423398
 BoxCollider:
   m_ObjectHideFlags: 0

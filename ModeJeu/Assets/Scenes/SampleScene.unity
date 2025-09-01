@@ -4205,7 +4205,7 @@ Transform:
   m_GameObject: {fileID: 330585543}
   serializedVersion: 2
   m_LocalRotation: {x: 0.23081398, y: 0, z: 0, w: 0.9729979}
-  m_LocalPosition: {x: 0.806, y: 1.353, z: -2.14}
+  m_LocalPosition: {x: 0.806, y: 2.278, z: -2.965}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -14861,7 +14861,168 @@ MonoBehaviour:
   genreFilter: 
   isLoading: 0
   availableSongs:
-  - id: 
+  - id: 43c32b29-d0ac-4869-8f01-5444b42e4a3f
+    title: Gamme en Mi Mineur
+    composer: Lilou
+    genre: Exercice
+    tempo: 120
+    duration_ms: 7500
+    songType: scaleEx
+    sourceType: import
+    timeSignature: 4/4
+    level: 3
+    notes:
+    - note: E4
+      durationInBeats: 1
+      startBeat: 0
+      finger: 0
+      hand: right
+    - note: E3
+      durationInBeats: 1
+      startBeat: 0
+      finger: 0
+      hand: left
+    - note: F#4
+      durationInBeats: 1
+      startBeat: 1
+      finger: 0
+      hand: right
+    - note: F#3
+      durationInBeats: 1
+      startBeat: 1
+      finger: 0
+      hand: left
+    - note: G4
+      durationInBeats: 1
+      startBeat: 2
+      finger: 0
+      hand: right
+    - note: G3
+      durationInBeats: 1
+      startBeat: 2
+      finger: 0
+      hand: left
+    - note: A4
+      durationInBeats: 1
+      startBeat: 3
+      finger: 0
+      hand: right
+    - note: A3
+      durationInBeats: 1
+      startBeat: 3
+      finger: 0
+      hand: left
+    - note: B4
+      durationInBeats: 1
+      startBeat: 4
+      finger: 0
+      hand: right
+    - note: B3
+      durationInBeats: 1
+      startBeat: 4
+      finger: 0
+      hand: left
+    - note: C#5
+      durationInBeats: 1
+      startBeat: 5
+      finger: 0
+      hand: right
+    - note: C#4
+      durationInBeats: 1
+      startBeat: 5
+      finger: 0
+      hand: left
+    - note: D#5
+      durationInBeats: 1
+      startBeat: 6
+      finger: 0
+      hand: right
+    - note: D#4
+      durationInBeats: 1
+      startBeat: 6
+      finger: 0
+      hand: left
+    - note: E5
+      durationInBeats: 1
+      startBeat: 7
+      finger: 0
+      hand: right
+    - note: E4
+      durationInBeats: 1
+      startBeat: 7
+      finger: 0
+      hand: left
+    - note: D5
+      durationInBeats: 1
+      startBeat: 8
+      finger: 0
+      hand: right
+    - note: D4
+      durationInBeats: 1
+      startBeat: 8
+      finger: 0
+      hand: left
+    - note: C5
+      durationInBeats: 1
+      startBeat: 9
+      finger: 0
+      hand: right
+    - note: C4
+      durationInBeats: 1
+      startBeat: 9
+      finger: 0
+      hand: left
+    - note: B4
+      durationInBeats: 1
+      startBeat: 10
+      finger: 0
+      hand: right
+    - note: B3
+      durationInBeats: 1
+      startBeat: 10
+      finger: 0
+      hand: left
+    - note: A4
+      durationInBeats: 1
+      startBeat: 11
+      finger: 0
+      hand: right
+    - note: A3
+      durationInBeats: 1
+      startBeat: 11
+      finger: 0
+      hand: left
+    - note: G4
+      durationInBeats: 1
+      startBeat: 12
+      finger: 0
+      hand: right
+    - note: G3
+      durationInBeats: 1
+      startBeat: 12
+      finger: 0
+      hand: left
+    - note: F#4
+      durationInBeats: 1
+      startBeat: 13
+      finger: 0
+      hand: right
+    - note: F#3
+      durationInBeats: 1
+      startBeat: 13
+      finger: 0
+      hand: left
+    - note: E4
+      durationInBeats: 1
+      startBeat: 14
+      finger: 0
+      hand: right
+    - note: E3
+      durationInBeats: 1
+      startBeat: 14
+      finger: 0
+      hand: left
+  - id: 83d88bf9-324a-4ebb-b8fa-20ee5cddbcb1
     title: Test
     composer: TEst
     genre: TEs
@@ -16902,7 +17063,7 @@ MonoBehaviour:
       startBeat: 255.20312
       finger: 0
       hand: 
-  - id: 
+  - id: b2b18acd-d5da-49d8-aebc-cf4b112b88d8
     title: "Enregistrement D\xE9mo Tfe 2 "
     composer: Lili
     genre: Pop
@@ -18943,7 +19104,7 @@ MonoBehaviour:
       startBeat: 255.20312
       finger: 0
       hand: 
-  - id: 
+  - id: b4d3abe5-4856-4ef8-b1d6-3f01147cca3c
     title: "Enregistrement D\xE9mo Tfe"
     composer: Lili
     genre: Pop
@@ -20984,7 +21145,7 @@ MonoBehaviour:
       startBeat: 255.20312
       finger: 0
       hand: 
-  - id: 
+  - id: c9ca9b36-3601-4b51-b651-ecb6cb5f7d44
     title: Enregistrement Unity
     composer: Lillousdcqxcw
     genre: prout
@@ -21040,7 +21201,7 @@ MonoBehaviour:
       startBeat: 15.607291
       finger: 0
       hand: 
-  - id: 
+  - id: 4d880902-cef8-40eb-a72f-0c57edba35fd
     title: Test
     composer: Test
     genre: Test
@@ -21216,7 +21377,7 @@ MonoBehaviour:
       startBeat: 44.295834
       finger: 0
       hand: 
-  - id: 
+  - id: bbd5e95b-71ff-4352-8beb-338453533dfb
     title: Enregistrement Unity
     composer: Lillousdcqxcw
     genre: prout
@@ -21272,7 +21433,7 @@ MonoBehaviour:
       startBeat: 15.607291
       finger: 0
       hand: 
-  - id: 
+  - id: b032078e-8c76-41af-9b20-f596ccda3280
     title: Test
     composer: Test
     genre: Test
@@ -21603,7 +21764,7 @@ MonoBehaviour:
       startBeat: 95.5
       finger: 0
       hand: 
-  - id: 
+  - id: 41bdf293-d1ab-4081-b3cd-1459ed4bf8fa
     title: Nocturne en C majeur
     composer: caca
     genre: Classique
@@ -32124,7 +32285,7 @@ MonoBehaviour:
       startBeat: 186.54688
       finger: 0
       hand: 
-  - id: 
+  - id: 0063fe19-5cf6-4910-b800-2c5767061fe7
     title: Test
     composer: Test
     genre: Test
@@ -32455,7 +32616,7 @@ MonoBehaviour:
       startBeat: 95.5
       finger: 0
       hand: 
-  - id: 
+  - id: a826fd79-ccee-4f87-97d5-2ae3cb6054ad
     title: Lalilalaaaa
     composer: "Fr\xE9deric chopppiiin"
     genre: Jazz
@@ -43556,7 +43717,7 @@ MonoBehaviour:
       startBeat: 307
       finger: 0
       hand: 
-  - id: 
+  - id: 1a8a4748-2305-4896-8a03-96ac730793c1
     title: Musique de la mort
     composer: Compositeur de la mort
     genre: ZiziKKmusic
@@ -43582,7 +43743,7 @@ MonoBehaviour:
       startBeat: 2
       finger: 0
       hand: 
-  - id: 
+  - id: 84fd8227-c7b1-40ca-a763-1e516ca6d34a
     title: Test
     composer: Test
     genre: Test
@@ -48848,7 +49009,7 @@ MonoBehaviour:
       startBeat: 186.54688
       finger: 0
       hand: 
-  - id: 
+  - id: 7cf70d90-13e1-4a8d-aecd-8a6b589bb57a
     title: voluptate
     composer: Kenny Terry
     genre: Soul
@@ -48939,7 +49100,7 @@ MonoBehaviour:
       startBeat: 28.5
       finger: 4
       hand: left
-  - id: 
+  - id: e9462b71-d8f9-4c1d-90fd-f32891bd3b03
     title: audacia
     composer: Emily Beer
     genre: Folk
@@ -49000,7 +49161,7 @@ MonoBehaviour:
       startBeat: 17.5
       finger: 4
       hand: right
-  - id: 
+  - id: 3b6774e0-3fcc-41f9-9bbe-d303f81acd19
     title: culpa
     composer: Mrs. Penny Kautzer
     genre: R&B
@@ -49141,7 +49302,7 @@ MonoBehaviour:
       startBeat: 41
       finger: 5
       hand: right
-  - id: 
+  - id: d91bae91-3528-4394-b98c-ea144c0af0f1
     title: aeger
     composer: Brett Lemke
     genre: Funk
@@ -49217,7 +49378,7 @@ MonoBehaviour:
       startBeat: 14
       finger: 2
       hand: left
-  - id: 
+  - id: f66ea6a5-d940-45c9-91f3-ccd71cafae60
     title: La seule Vraie Chanson
     composer: Chicagolil
     genre: C majeur
@@ -49268,7 +49429,7 @@ MonoBehaviour:
       startBeat: 7
       finger: 5
       hand: left
-  - id: 
+  - id: b0a6cfca-da77-48b5-a737-ea91e0efe167
     title: adstringo
     composer: Steven Wintheiser
     genre: Jazz
@@ -49379,7 +49540,7 @@ MonoBehaviour:
       startBeat: 32
       finger: 2
       hand: left
-  - id: 
+  - id: 72fb4cfe-eda1-4cf6-9a1c-4b581fa94389
     title: aliquam
     composer: Jeanne Pacocha
     genre: Soul
@@ -49510,134 +49671,168 @@ MonoBehaviour:
       startBeat: 37.5
       finger: 3
       hand: left
-  - id: 
-    title: allatus
-    composer: Merle Fadel
-    genre: Pop
-    tempo: 195
-    duration_ms: 10862
-    songType: scaleEx
-    sourceType: library
-    timeSignature: 3/4
-    level: 7
-    notes:
-    - note: A3
-      durationInBeats: 0.5
-      startBeat: 0
-      finger: 4
-      hand: right
-    - note: D8
-      durationInBeats: 1
-      startBeat: 0.5
-      finger: 2
-      hand: right
-    - note: A1
-      durationInBeats: 2
-      startBeat: 1.5
-      finger: 2
-      hand: left
-    - note: F0
-      durationInBeats: 1
-      startBeat: 3.5
-      finger: 5
-      hand: right
-    - note: G3
-      durationInBeats: 1
-      startBeat: 4.5
-      finger: 4
-      hand: left
-    - note: C#1
-      durationInBeats: 2
-      startBeat: 5.5
-      finger: 1
-      hand: right
-    - note: E0
-      durationInBeats: 2
-      startBeat: 7.5
-      finger: 1
-      hand: right
-    - note: F#5
-      durationInBeats: 0.5
-      startBeat: 9.5
-      finger: 2
-      hand: right
-    - note: G1
-      durationInBeats: 0.5
-      startBeat: 10
-      finger: 5
-      hand: left
-    - note: B7
-      durationInBeats: 1
-      startBeat: 10.5
-      finger: 4
-      hand: left
-    - note: E3
-      durationInBeats: 1.5
-      startBeat: 11.5
-      finger: 1
-      hand: left
-    - note: B1
-      durationInBeats: 4
-      startBeat: 13
-      finger: 2
-      hand: left
-    - note: D#7
-      durationInBeats: 4
-      startBeat: 17
-      finger: 5
-      hand: right
   currentSong:
-    id: 
-    title: La seule Vraie Chanson
-    composer: Chicagolil
-    genre: C majeur
+    id: 43c32b29-d0ac-4869-8f01-5444b42e4a3f
+    title: Gamme en Mi Mineur
+    composer: Lilou
+    genre: Exercice
     tempo: 120
-    duration_ms: 4000
+    duration_ms: 7500
     songType: scaleEx
-    sourceType: library
+    sourceType: import
     timeSignature: 4/4
-    level: 1
+    level: 3
     notes:
-    - note: C4
-      durationInBeats: 1
-      startBeat: 0
-      finger: 1
-      hand: right
-    - note: D4
-      durationInBeats: 1
-      startBeat: 1
-      finger: 2
-      hand: right
     - note: E4
       durationInBeats: 1
-      startBeat: 2
-      finger: 3
-      hand: right
-    - note: F4
+      startBeat: 0
+      finger: 0
+      hand: 
+    - note: E3
       durationInBeats: 1
-      startBeat: 3
-      finger: 1
-      hand: right
+      startBeat: 0
+      finger: 0
+      hand: 
+    - note: F#4
+      durationInBeats: 1
+      startBeat: 1
+      finger: 0
+      hand: 
+    - note: F#3
+      durationInBeats: 1
+      startBeat: 1
+      finger: 0
+      hand: 
     - note: G4
       durationInBeats: 1
-      startBeat: 4
-      finger: 2
-      hand: right
+      startBeat: 2
+      finger: 0
+      hand: 
+    - note: G3
+      durationInBeats: 1
+      startBeat: 2
+      finger: 0
+      hand: 
     - note: A4
       durationInBeats: 1
-      startBeat: 5
-      finger: 3
-      hand: left
+      startBeat: 3
+      finger: 0
+      hand: 
+    - note: A3
+      durationInBeats: 1
+      startBeat: 3
+      finger: 0
+      hand: 
     - note: B4
       durationInBeats: 1
+      startBeat: 4
+      finger: 0
+      hand: 
+    - note: B3
+      durationInBeats: 1
+      startBeat: 4
+      finger: 0
+      hand: 
+    - note: C#5
+      durationInBeats: 1
+      startBeat: 5
+      finger: 0
+      hand: 
+    - note: C#4
+      durationInBeats: 1
+      startBeat: 5
+      finger: 0
+      hand: 
+    - note: D#5
+      durationInBeats: 1
       startBeat: 6
-      finger: 4
-      hand: left
-    - note: C5
+      finger: 0
+      hand: 
+    - note: D#4
+      durationInBeats: 1
+      startBeat: 6
+      finger: 0
+      hand: 
+    - note: E5
       durationInBeats: 1
       startBeat: 7
-      finger: 5
-      hand: left
+      finger: 0
+      hand: 
+    - note: E4
+      durationInBeats: 1
+      startBeat: 7
+      finger: 0
+      hand: 
+    - note: D5
+      durationInBeats: 1
+      startBeat: 8
+      finger: 0
+      hand: 
+    - note: D4
+      durationInBeats: 1
+      startBeat: 8
+      finger: 0
+      hand: 
+    - note: C5
+      durationInBeats: 1
+      startBeat: 9
+      finger: 0
+      hand: 
+    - note: C4
+      durationInBeats: 1
+      startBeat: 9
+      finger: 0
+      hand: 
+    - note: B4
+      durationInBeats: 1
+      startBeat: 10
+      finger: 0
+      hand: 
+    - note: B3
+      durationInBeats: 1
+      startBeat: 10
+      finger: 0
+      hand: 
+    - note: A4
+      durationInBeats: 1
+      startBeat: 11
+      finger: 0
+      hand: 
+    - note: A3
+      durationInBeats: 1
+      startBeat: 11
+      finger: 0
+      hand: 
+    - note: G4
+      durationInBeats: 1
+      startBeat: 12
+      finger: 0
+      hand: 
+    - note: G3
+      durationInBeats: 1
+      startBeat: 12
+      finger: 0
+      hand: 
+    - note: F#4
+      durationInBeats: 1
+      startBeat: 13
+      finger: 0
+      hand: 
+    - note: F#3
+      durationInBeats: 1
+      startBeat: 13
+      finger: 0
+      hand: 
+    - note: E4
+      durationInBeats: 1
+      startBeat: 14
+      finger: 0
+      hand: 
+    - note: E3
+      durationInBeats: 1
+      startBeat: 14
+      finger: 0
+      hand: 
 --- !u!1 &1366375292
 GameObject:
   m_ObjectHideFlags: 0
