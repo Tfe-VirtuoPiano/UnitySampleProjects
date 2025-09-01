@@ -4,6 +4,7 @@ using MidiJack;
 public class NoteTrigger : MonoBehaviour
 {
     public string expectedNote; // La note à attendre (ex: "C4")
+    public ScoreManager scoreManager; // Référence au ScoreManager
 
     private NoteMover noteInZone;
     private GameObject noteObject; // Référence à l'objet note (enfant du pivot)
@@ -60,6 +61,13 @@ public class NoteTrigger : MonoBehaviour
             mover.isInHitZone = false;
             noteInZone = null;
             noteObject = null;
+            
+            // Note manquée - pénaliser le score
+            if (scoreManager != null)
+            {
+                scoreManager.NoteMissed();
+            }
+            
             Debug.Log($"❌ MISS: {expectedNote} left the hit zone without being played.");
         }
     }
@@ -76,6 +84,15 @@ public class NoteTrigger : MonoBehaviour
             {
                 PlayNote();
             }
+            else
+            {
+                // Mauvais input - aucune note dans la zone
+                if (scoreManager != null)
+                {
+                    scoreManager.BadInput();
+                }
+                Debug.Log($"⚠️ Mauvais input sur {expectedNote} - aucune note dans la zone");
+            }
         }
     }
     
@@ -86,6 +103,12 @@ public class NoteTrigger : MonoBehaviour
         {
             // Utiliser la méthode Hit() du NoteMover
             noteInZone.Hit();
+            
+            // Ajouter des points au score
+            if (scoreManager != null)
+            {
+                scoreManager.NoteHit();
+            }
             
             // Réinitialiser les références
             noteInZone = null;

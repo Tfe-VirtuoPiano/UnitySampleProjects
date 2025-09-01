@@ -38,6 +38,17 @@ public class GameManagerEditor : Editor
             }
         }
         
+        // Afficher les informations de score
+        if (gameManager.scoreManager != null)
+        {
+            EditorGUILayout.Space(5);
+            EditorGUILayout.LabelField("🎯 Score", EditorStyles.boldLabel);
+            EditorGUILayout.LabelField("Score:", gameManager.scoreManager.GetScoreText());
+            EditorGUILayout.LabelField("Multiplicateur:", gameManager.scoreManager.GetMultiplierText());
+            EditorGUILayout.LabelField("Combo:", gameManager.scoreManager.GetConsecutiveHits().ToString());
+            EditorGUILayout.LabelField("Précision:", gameManager.scoreManager.GetAccuracyText());
+        }
+        
         EditorGUILayout.Space(10);
         
         // Boutons de contrôle
@@ -104,6 +115,29 @@ public class GameManagerEditor : Editor
             if (GUILayout.Button("🎵 Première Chanson", GUILayout.Height(25)))
             {
                 gameManager.SelectFirstSong();
+            }
+            
+            EditorGUILayout.EndHorizontal();
+        }
+        
+        // Boutons pour le score
+        if (gameManager.scoreManager != null)
+        {
+            EditorGUILayout.Space(5);
+            EditorGUILayout.BeginHorizontal();
+            
+            // Bouton Réinitialiser le score
+            GUI.backgroundColor = new Color(1f, 0.5f, 0f); // Orange
+            if (GUILayout.Button("🔄 Reset Score", GUILayout.Height(25)))
+            {
+                gameManager.ResetScore();
+            }
+            
+            // Bouton Uploader le score
+            GUI.backgroundColor = Color.cyan;
+            if (GUILayout.Button("📤 Upload Score", GUILayout.Height(25)))
+            {
+                gameManager.ForceUploadScore();
             }
             
             EditorGUILayout.EndHorizontal();

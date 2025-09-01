@@ -7,6 +7,8 @@ public class GameManager : MonoBehaviour
     [Header("Références")]
     public NoteSpawner noteSpawner;
     public SongManager songManager;
+    public ScoreManager scoreManager;
+    public ScoreUploader scoreUploader;
     
     [Header("Paramètres")]
     public float countdownDuration = 3f;
@@ -39,6 +41,21 @@ public class GameManager : MonoBehaviour
             songManager.OnSongsLoaded += OnSongsLoaded;
             songManager.OnSongSelected += OnSongSelected;
             songManager.OnError += OnSongError;
+        }
+        
+        // Configurer le ScoreManager
+        if (scoreManager != null)
+        {
+            scoreManager.OnScoreChanged += OnScoreChanged;
+            scoreManager.OnMultiplierChanged += OnMultiplierChanged;
+            scoreManager.OnNoteHit += OnNoteHit;
+            scoreManager.OnNoteMissed += OnNoteMissed;
+        }
+        
+        // Configurer le ScoreUploader
+        if (scoreUploader != null)
+        {
+            scoreUploader.OnScoreUploaded += OnScoreUploaded;
         }
         
         // Afficher le menu principal
@@ -129,6 +146,13 @@ public class GameManager : MonoBehaviour
             noteSpawner.StopMusic();
         }
         
+        // Réinitialiser le score à chaque redémarrage
+        if (scoreManager != null)
+        {
+            scoreManager.ResetScore();
+            Debug.Log("🎯 Score réinitialisé pour le redémarrage");
+        }
+        
         SetGameState(GameState.MainMenu);
     }
     
@@ -148,7 +172,58 @@ public class GameManager : MonoBehaviour
     public void EndGame()
     {
         Debug.Log("🏁 Fin de la partie");
+        
+        // Terminer la session de score
+        if (scoreManager != null)
+        {
+            scoreManager.EndSession();
+            
+            // Uploader le score si on a les données nécessaires
+            UploadScoreIfPossible();
+        }
+        
         SetGameState(GameState.GameOver);
+    }
+    
+    // Méthode pour uploader le score si possible
+    private void UploadScoreIfPossible()
+    {
+        if (scoreManager == null || scoreUploader == null || songManager == null)
+        {
+            Debug.LogWarning("⚠️ Impossible d'uploader le score - composants manquants");
+            return;
+        }
+        
+        // Récupérer l'ID utilisateur
+        string userId = PlayerPrefs.GetString("idUser", "");
+        if (string.IsNullOrEmpty(userId))
+        {
+            Debug.LogWarning("⚠️ Impossible d'uploader le score - ID utilisateur manquant");
+            return;
+        }
+        
+        // Récupérer l'ID de la chanson
+        SongData currentSong = songManager.GetCurrentSong();
+        if (currentSong == null)
+        {
+            Debug.LogWarning("⚠️ Impossible d'uploader le score - Aucune chanson sélectionnée");
+            return;
+        }
+        
+        Debug.Log($"🔍 Chanson actuelle - ID: '{currentSong.id}', Titre: '{currentSong.title}'");
+        
+        if (string.IsNullOrEmpty(currentSong.id))
+        {
+            Debug.LogWarning("⚠️ Impossible d'uploader le score - ID chanson manquant ou vide");
+            return;
+        }
+        
+        // Récupérer les données de score
+        GameScoreData scoreData = scoreManager.GetScoreDataForAPI();
+        
+        // Uploader le score
+        Debug.Log($"📤 Upload du score: {scoreData.totalPoints} points pour la chanson {currentSong.title}");
+        scoreUploader.UploadScore(scoreData, userId, currentSong.id);
     }
     
     // Méthodes pour gérer les événements du SongManager
@@ -164,6 +239,13 @@ public class GameManager : MonoBehaviour
         if (noteSpawner != null)
         {
             noteSpawner.songData = song;
+        }
+        
+        // Réinitialiser le score à chaque changement de chanson
+        if (scoreManager != null)
+        {
+            scoreManager.ResetScore();
+            Debug.Log("🎯 Score réinitialisé pour la nouvelle chanson");
         }
     }
     
@@ -189,5 +271,56 @@ public class GameManager : MonoBehaviour
         {
             songManager.SelectFirstSong();
         }
+    }
+    
+    // Méthodes pour gérer les événements du ScoreManager
+    void OnScoreChanged(int newScore, int multiplier)
+    {
+        Debug.Log($"🎯 Score mis à jour: {newScore} (x{multiplier})");
+    }
+    
+    void OnMultiplierChanged(int newMultiplier)
+    {
+        Debug.Log($"🔥 Multiplicateur: x{newMultiplier}");
+    }
+    
+    void OnNoteHit(int points, int multiplier)
+    {
+        Debug.Log($"✅ Note jouée ! +{points} points (x{multiplier})");
+    }
+    
+    void OnNoteMissed()
+    {
+        Debug.Log($"❌ Note manquée ou mauvais input !");
+    }
+    
+    // Méthode pour gérer l'événement d'upload de score
+    void OnScoreUploaded(bool success, string message)
+    {
+        if (success)
+        {
+            Debug.Log($"✅ {message}");
+        }
+        else
+        {
+            Debug.LogError($"❌ {message}");
+        }
+    }
+    
+    // Méthodes publiques pour contrôler le score
+    [ContextMenu("Réinitialiser le score")]
+    public void ResetScore()
+    {
+        if (scoreManager != null)
+        {
+            scoreManager.ResetScore();
+        }
+    }
+    
+    // Méthode publique pour forcer l'upload du score
+    [ContextMenu("Uploader le score")]
+    public void ForceUploadScore()
+    {
+        UploadScoreIfPossible();
     }
 }
