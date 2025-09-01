@@ -36,14 +36,16 @@ public class AuthScript : MonoBehaviour
         StartCoroutine(LoginWithTestCredentialsCoroutine());
     }
 
-    private IEnumerator LoginWithTestCredentialsCoroutine(){
+    private IEnumerator LoginWithTestCredentialsCoroutine()
+    {
         var LoginData = new LoginData(testEmail, testPassword);
         string jsonLoginData = JsonUtility.ToJson(LoginData);
 
 
         byte[] bodyRaw = Encoding.UTF8.GetBytes(jsonLoginData);
 
-        using (UnityWebRequest www = UnityWebRequest.PostWwwForm(API_CONNECTION_URL, "POST")){
+        using (UnityWebRequest www = UnityWebRequest.PostWwwForm(API_CONNECTION_URL, "POST"))
+        {
             www.uploadHandler = new UploadHandlerRaw(bodyRaw);
             www.downloadHandler = new DownloadHandlerBuffer();
             www.SetRequestHeader("Content-Type", "application/json");
@@ -53,7 +55,7 @@ public class AuthScript : MonoBehaviour
             {
                 yield return null;
             }
-            
+
             try
             {
                 if (www.result == UnityWebRequest.Result.Success)
