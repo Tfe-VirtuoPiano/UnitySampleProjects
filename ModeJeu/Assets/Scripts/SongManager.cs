@@ -140,6 +140,7 @@ public class SongManager : MonoBehaviour
     {
         SongData songData = new SongData
         {
+            id = apiSong.id,        // Assigner l'ID de l'API
             title = apiSong.title,
             composer = apiSong.composer,
             genre = apiSong.genre,
